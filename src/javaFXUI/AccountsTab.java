@@ -35,19 +35,25 @@ public class AccountsTab {
 				new TableColumn<Account, String>("Name");
 		name.setCellValueFactory(
 				new PropertyValueFactory<Account, String>("name"));
-		TableColumn type = new TableColumn("Type");
+		TableColumn<Account, String> type = 
+				new TableColumn<Account, String>("Type");
 		type.setCellValueFactory(
 				new PropertyValueFactory<Account, String>("accountType"));
-		TableColumn rest = new TableColumn("Rest");
+		TableColumn<Account, String> rest = 
+				new TableColumn<Account, String>("Rest");
 		rest.setCellValueFactory(
 				new PropertyValueFactory<Account, String>("rest"));
-		TableColumn comments = new TableColumn("Comments");
+		TableColumn<Account, String> comments = 
+				new TableColumn<Account, String>("Comments");
 		comments.setCellValueFactory(
 				new PropertyValueFactory<Account, String>("comments"));
 
 		fillAccountsWithTestData();
 		
-		tableView.getColumns().addAll(name, type, rest, comments);
+		tableView.getColumns().add(name);
+		tableView.getColumns().add(type);
+		tableView.getColumns().add(rest);
+		tableView.getColumns().add(comments);
 		tableView.setItems(this.accounts);
 		
 		return tableView;
