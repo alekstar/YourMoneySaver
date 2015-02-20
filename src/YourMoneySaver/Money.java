@@ -91,17 +91,4 @@ public class Money {
 		}
 		return new Money(getCurrency(), base, coins, getCoinsDigitsNumber());
 	}
-
-	@Override
-    public String toString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(getBase());
-		stringBuilder.append(getDefaultSeparatorForNumbers());
-		stringBuilder.append(getCoins());
-	    return stringBuilder.toString();
-    }
-
-	private char getDefaultSeparatorForNumbers() {
-	    return ',';
-    }
 }

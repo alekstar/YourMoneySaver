@@ -20,10 +20,4 @@ public class AccountType {
 	public AccountType(String name) throws IllegalArgumentException {
 		setName(name);
 	}
-
-	@Override
-    public String toString() {
-		
-	    return new String(getName());
-    }
 }
