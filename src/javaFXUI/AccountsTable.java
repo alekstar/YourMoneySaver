@@ -15,7 +15,7 @@ public class AccountsTable {
 	        .observableArrayList();
 
 	private void fillAccountsWithTestData() {
-		Currency uah = new Currency("Украинская гривня", "UAH");
+		Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴");
 		AccountType plasticCard = new AccountType("Пластиковая карта");
 		this.accounts.add(new Account("Карта ПриватБанка", plasticCard,
 		        new Money(uah, 150, 45), "Выдана 19.02.2015"));

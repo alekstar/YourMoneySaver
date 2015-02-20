@@ -2,12 +2,21 @@ package YourMoneySaver;
 public class Currency {
 	private String name;
 	private String isoCode;
+	private String sign;
 	
+	public String getSign() {
+		return sign;
+	}
+
+	private void setSign(String sign) {
+		this.sign = sign;
+	}
+
 	public String getIsoCode() {
 		return isoCode;
 	}
 	
-	public void setIsoCode(String iSOCode) {
+	private void setIsoCode(String iSOCode) {
 		isoCode = iSOCode;
 	}
 
@@ -15,12 +24,13 @@ public class Currency {
 		return name;
 	}
 
-	public void setName(String name) {
+	private void setName(String name) {
 		this.name = name;
 	}
 
-	public Currency(String name, String isoCode) {
+	public Currency(String name, String isoCode, String sign) {
 		setName(name);
 		setIsoCode(isoCode);
-	}	
+		setSign(sign);
+	}
 }
