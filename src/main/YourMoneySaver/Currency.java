@@ -1,4 +1,4 @@
-package YourMoneySaver;
+package main.YourMoneySaver;
 public class Currency {
 	private String name;
 	private String isoCode;

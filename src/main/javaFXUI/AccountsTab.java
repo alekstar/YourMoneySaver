@@ -1,4 +1,4 @@
-package javaFXUI;
+package main.javaFXUI;
 import javafx.scene.control.Tab;
 import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;

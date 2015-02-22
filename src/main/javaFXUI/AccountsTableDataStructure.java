@@ -1,6 +1,6 @@
-package javaFXUI;
+package main.javaFXUI;
 
-import YourMoneySaver.Account;
+import main.YourMoneySaver.Account;
 
 public class AccountsTableDataStructure {
 	private String name;

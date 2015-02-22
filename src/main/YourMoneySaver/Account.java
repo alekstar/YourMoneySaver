@@ -1,4 +1,4 @@
-package YourMoneySaver;
+package main.YourMoneySaver;
 
 public class Account {
 	Money rest;

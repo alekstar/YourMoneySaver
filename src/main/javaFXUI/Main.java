@@ -1,4 +1,4 @@
-package javaFXUI;
+package main.javaFXUI;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

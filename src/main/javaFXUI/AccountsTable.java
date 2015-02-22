@@ -1,14 +1,14 @@
-package javaFXUI;
+package main.javaFXUI;
 
+import main.YourMoneySaver.Account;
+import main.YourMoneySaver.AccountType;
+import main.YourMoneySaver.Currency;
+import main.YourMoneySaver.Money;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import YourMoneySaver.Account;
-import YourMoneySaver.AccountType;
-import YourMoneySaver.Currency;
-import YourMoneySaver.Money;
 
 public class AccountsTable {
 	private final ObservableList<AccountsTableDataStructure> accounts = FXCollections

@@ -1,4 +1,4 @@
-package YourMoneySaver;
+package main.YourMoneySaver;
 
 import java.util.Date;
 import java.util.LinkedList;
