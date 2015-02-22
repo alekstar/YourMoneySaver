@@ -1,42 +1,15 @@
 package YourMoneySaver;
 public class Money {
-	Currency currency;
+	
 	long base;
 	long coins;
 	int coinsDigitsNumber = getDefaultCoinsDigitsNumber();
+	Currency currency;
 	
-	public Currency getCurrency() {
-		return currency;
+	public Money(Currency currency, long base, long coins) {
+		this(currency, base, coins, getDefaultCoinsDigitsNumber());
 	}
 	
-	public void setCurrency(Currency currency) {
-		this.currency = currency;
-	}
-	
-	public long getBase() {
-		return base;
-	}
-	
-	public void setBase(long base) {
-		this.base = base;
-	}
-	
-	public long getCoins() {
-		return coins;
-	}
-	
-	public void setCoins(long coins) {
-		this.coins = coins;
-	}
-	
-	public int getCoinsDigitsNumber() {
-		return coinsDigitsNumber;
-	}
-	
-	private void setCoinsDigitsNumber(int coinsDigitsNumber) {
-		this.coinsDigitsNumber = coinsDigitsNumber;
-	}
-
 	public Money(
 			Currency currency, 
 			long base, 
@@ -48,10 +21,6 @@ public class Money {
 		setCoinsDigitsNumber(coinsDigitsNumber);
 	}
 	
-	public Money(Currency currency, long base, long coins) {
-		this(currency, base, coins, getDefaultCoinsDigitsNumber());
-	}
-
 	public static int getDefaultCoinsDigitsNumber() {
 		return 2;
 	}
@@ -66,11 +35,7 @@ public class Money {
 		}
 		return new Money(getCurrency(), base, coins, getCoinsDigitsNumber());
 	}
-
-	private long defineMaximumCoinsAccessable() {
-		return (long) (Math.pow(10, getCoinsDigitsNumber()) - 1.0);
-	}
-
+	
 	private void checkForOperations(Money another) {
 		if(another.getCurrency() != getCurrency()) {
 			throw new RuntimeException("Currencies are not equal.");
@@ -79,6 +44,42 @@ public class Money {
 			throw new RuntimeException("Moneys have different coins digits "
 					+ "number.");
 		}
+	}
+	
+	private long defineMaximumCoinsAccessable() {
+		return (long) (Math.pow(10, getCoinsDigitsNumber()) - 1.0);
+	}
+	
+	public long getBase() {
+		return base;
+	}
+
+	public long getCoins() {
+		return coins;
+	}
+	
+	public int getCoinsDigitsNumber() {
+		return coinsDigitsNumber;
+	}
+
+	public Currency getCurrency() {
+		return currency;
+	}
+	
+	public void setBase(long base) {
+		this.base = base;
+	}
+
+	public void setCoins(long coins) {
+		this.coins = coins;
+	}
+
+	private void setCoinsDigitsNumber(int coinsDigitsNumber) {
+		this.coinsDigitsNumber = coinsDigitsNumber;
+	}
+	
+	public void setCurrency(Currency currency) {
+		this.currency = currency;
 	}
 	
 	public Money substract(Money another) {
