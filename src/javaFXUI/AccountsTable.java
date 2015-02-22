@@ -11,48 +11,101 @@ import YourMoneySaver.Currency;
 import YourMoneySaver.Money;
 
 public class AccountsTable {
-	private final ObservableList<Account> accounts = 
-			FXCollections.observableArrayList();
-	
+	private final ObservableList<AccountsTableDataStructure> accounts = FXCollections
+	        .observableArrayList();
+
 	private void fillAccountsWithTestData() {
-		Currency uah = new Currency("Украинская гривня", "UAH");
-		AccountType plasticCard = new AccountType("Пластиковая карта");
-		this.accounts.add(
-				new Account(
-						"Карта ПриватБанка", 
-						plasticCard, 
-						new Money(uah, 150, 45), 
-						"Выдана 19.02.2015"));
+		Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴");
+		AccountType plasticCard = new AccountType("Plastic card");
+		Account account = new Account("SwedenBank Card", plasticCard,
+		        new Money(uah, 150, 45), "Issued in 19.02.2015");
+		AccountsTableDataStructure accountsTableDataStructure = 
+				new AccountsTableDataStructure(account);
+		this.accounts.add(accountsTableDataStructure);
+	}
+
+	private String getAccountCommentsFieldName() {
+		return "comments";
+	}
+
+	private String getAccountNameFieldName() {
+		return "name";
+	}
+
+	private String getAccountRestFieldName() {
+		return "rest";
 	}
 	
-	public TableView<Account> getTable() {
-		TableView<Account> tableView = new TableView<Account>();
-		
-		TableColumn<Account, String> name = 
-				new TableColumn<Account, String>("Name");
+	private String getAccountCurrencyCodeFieldName() {
+		return "currencyCode";
+	}
+
+	private String getAccountTypeFieldName() {
+		return "type";
+	}
+
+	private String getColumnNameForAccountComments() {
+		return "Comments";
+	}
+
+	private String getColumnNameForAccountName() {
+		return "Name";
+	}
+
+	private String getColumnNameForAccountRest() {
+		return "Rest";
+	}
+
+	private String getColumnNameForAccountCurrencyCode() {
+		return "Currency code";
+	}
+
+	private String getColumnNameForAccountType() {
+		return "Type";
+	}
+
+	public TableView<AccountsTableDataStructure> getTable() {
+		TableView<AccountsTableDataStructure> tableView = 
+				new TableView<AccountsTableDataStructure>();
+		TableColumn<AccountsTableDataStructure, String> name = 
+				new TableColumn<AccountsTableDataStructure, String>(
+						getColumnNameForAccountName());
 		name.setCellValueFactory(
-				new PropertyValueFactory<Account, String>("name"));
-		TableColumn<Account, String> type = 
-				new TableColumn<Account, String>("Type");
+				new PropertyValueFactory<AccountsTableDataStructure, String>(
+						getAccountNameFieldName()));
+		TableColumn<AccountsTableDataStructure, String> type = 
+				new TableColumn<AccountsTableDataStructure, String>(
+						getColumnNameForAccountType());
 		type.setCellValueFactory(
-				new PropertyValueFactory<Account, String>("accountType"));
-		TableColumn<Account, String> rest = 
-				new TableColumn<Account, String>("Rest");
+				new PropertyValueFactory<AccountsTableDataStructure, String>(
+						getAccountTypeFieldName()));
+		TableColumn<AccountsTableDataStructure, String> rest = 
+				new TableColumn<AccountsTableDataStructure, String>(
+						getColumnNameForAccountRest());
 		rest.setCellValueFactory(
-				new PropertyValueFactory<Account, String>("rest"));
-		TableColumn<Account, String> comments = 
-				new TableColumn<Account, String>("Comments");
+				new PropertyValueFactory<AccountsTableDataStructure, String>(
+						getAccountRestFieldName()));
+		TableColumn<AccountsTableDataStructure, String> currencyCode = 
+				new TableColumn<AccountsTableDataStructure, String>(
+						getColumnNameForAccountCurrencyCode());
+		currencyCode.setCellValueFactory(
+				new PropertyValueFactory<AccountsTableDataStructure, String>(
+						getAccountCurrencyCodeFieldName()));
+		TableColumn<AccountsTableDataStructure, String> comments = 
+				new TableColumn<AccountsTableDataStructure, String>(
+						getColumnNameForAccountComments());
 		comments.setCellValueFactory(
-				new PropertyValueFactory<Account, String>("comments"));
+				new PropertyValueFactory<AccountsTableDataStructure, String>(
+						getAccountCommentsFieldName()));
 
 		fillAccountsWithTestData();
-		
+
 		tableView.getColumns().add(name);
 		tableView.getColumns().add(type);
 		tableView.getColumns().add(rest);
+		tableView.getColumns().add(currencyCode);
 		tableView.getColumns().add(comments);
 		tableView.setItems(this.accounts);
-		
 		return tableView;
 	}
 }

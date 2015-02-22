@@ -17,9 +17,9 @@ public class Main extends Application {
 		StackPane root = new StackPane();
 		root.getChildren().add(mainPanel);
 
-		Scene mainWindow = new Scene(root, 600, 500);
+		Scene mainWindow = new Scene(root, 500, 500);
 
-		primaryStage.setTitle("Hello World!");
+		primaryStage.setTitle("YourMoneySaver");
 		primaryStage.setScene(mainWindow);
 		primaryStage.setResizable(false);
 		primaryStage.centerOnScreen();
