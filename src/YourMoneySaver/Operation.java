@@ -5,13 +5,38 @@ import java.util.LinkedList;
 
 public class Operation {
 	Account account;
-	String receiver;
-	LinkedList<Transaction> transactions;
 	String comment;
 	Date date;
+	String receiver;
+	LinkedList<Transaction> transactions;
+
+	public Operation(Account account, String receiver,
+            LinkedList<Transaction> transactions, String comment, Date date) {
+	    setAccount(account);
+	    setReceiver(receiver);
+	    setTransactions(transactions);
+	    setComment(comment);
+	    setDate(date);
+    }
 
 	public Account getAccount() {
 		return account;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public String getReceiver() {
+		return receiver;
+	}
+
+	public LinkedList<Transaction> getTransactions() {
+		return transactions;
 	}
 
 	public void setAccount(Account account) {
@@ -21,16 +46,19 @@ public class Operation {
 		this.account = account;
 	}
 
-	public String getReceiver() {
-		return receiver;
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public void setDate(Date date) {
+		if(date == null) {
+			throw new IllegalArgumentException("Argument date is null.");
+		}
+		this.date = date;
 	}
 
 	public void setReceiver(String receiver) {
 		this.receiver = receiver;
-	}
-
-	public LinkedList<Transaction> getTransactions() {
-		return transactions;
 	}
 
 	public void setTransactions(LinkedList<Transaction> transactions) {
@@ -44,34 +72,4 @@ public class Operation {
 		}
 		this.transactions = transactions;
 	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		if(date == null) {
-			throw new IllegalArgumentException("Argument date is null.");
-		}
-		this.date = date;
-	}
-
-	public Operation(Account account, String receiver,
-            LinkedList<Transaction> transactions, String comment, Date date) {
-	    setAccount(account);
-	    setReceiver(receiver);
-	    setTransactions(transactions);
-	    setComment(comment);
-	    setDate(date);
-    }
-
-	
 }
