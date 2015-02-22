@@ -5,17 +5,40 @@ public class Transaction {
 		MINUS, PLUS
 	};
 
+	private String comment;
 	private Sign sign;
 	private Money sum;
 	private TransactionCategory transactionCategory;
-	private String comment;
 	
+	public Transaction(Sign sign, Money sum,
+            TransactionCategory transactionCategory, String comment) {
+	    setSign(sign);
+	    setTransactionCategory(transactionCategory);
+	    setComment(comment);
+    }
+
+	public String getComment() {
+		return comment;
+	}
+
 	public Sign getDefaultSign() {
 		return Sign.PLUS;
 	}
 
 	public Sign getSign() {
 		return sign;
+	}
+
+	public Money getSum() {
+		return sum;
+	}
+
+	public TransactionCategory getTransactionCategory() {
+		return transactionCategory;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	public void setSign(Sign sign) {
@@ -26,35 +49,12 @@ public class Transaction {
 		}
 	}
 
-	public Money getSum() {
-		return sum;
-	}
-
 	public void setSum(Money sum) {
 		this.sum = sum;
-	}
-
-	public TransactionCategory getTransactionCategory() {
-		return transactionCategory;
 	}
 
 	public void setTransactionCategory(TransactionCategory transactionCategory) {
 		this.transactionCategory = transactionCategory;
 	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	public Transaction(Sign sign, Money sum,
-            TransactionCategory transactionCategory, String comment) {
-	    setSign(sign);
-	    setTransactionCategory(transactionCategory);
-	    setComment(comment);
-    }
 
 }
