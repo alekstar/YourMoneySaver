@@ -1,4 +1,4 @@
-package main.YourMoneySaver;
+package com.yourmoneysaver;
 
 public class TransactionCategory {
 	public enum Sign {

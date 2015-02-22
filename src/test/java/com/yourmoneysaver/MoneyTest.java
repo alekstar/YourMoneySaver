@@ -1,10 +1,11 @@
-package test;
+package com.yourmoneysaver;
 
 import static org.junit.Assert.*;
-import main.YourMoneySaver.Currency;
-import main.YourMoneySaver.Money;
 
 import org.junit.Test;
+
+import com.yourmoneysaver.Currency;
+import com.yourmoneysaver.Money;
 
 public class MoneyTest {
 

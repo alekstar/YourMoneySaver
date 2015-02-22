@@ -1,4 +1,4 @@
-package main.javaFXUI;
+package com.yourmoneysaver.javaFXUI;
 import javafx.scene.control.Tab;
 import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;

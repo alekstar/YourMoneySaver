@@ -1,4 +1,4 @@
-package main.javaFXUI;
+package com.yourmoneysaver.javaFXUI;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

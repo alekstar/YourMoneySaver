@@ -1,9 +1,10 @@
-package main.javaFXUI;
+package com.yourmoneysaver.javaFXUI;
 
-import main.YourMoneySaver.Account;
-import main.YourMoneySaver.AccountType;
-import main.YourMoneySaver.Currency;
-import main.YourMoneySaver.Money;
+import com.yourmoneysaver.Account;
+import com.yourmoneysaver.AccountType;
+import com.yourmoneysaver.Currency;
+import com.yourmoneysaver.Money;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;

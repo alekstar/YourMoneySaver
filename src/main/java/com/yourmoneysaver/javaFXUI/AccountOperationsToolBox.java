@@ -1,4 +1,4 @@
-package main.javaFXUI;
+package com.yourmoneysaver.javaFXUI;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
