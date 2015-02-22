@@ -2,27 +2,34 @@ package YourMoneySaver;
 
 public class TransactionCategory {
 	public enum Sign {
-		PLUS, MINUS
+		MINUS, PLUS
 	};
 
-	private TransactionCategory parent;
 	private String name;
+	private TransactionCategory parent;
 	private Sign sign;
+
+	public TransactionCategory(TransactionCategory parent, String name,
+            Sign sign) {
+	    setParent(parent);
+	    setName(name);
+	    setSign(sign);
+    }
 
 	public Sign getDefaultSign() {
 		return Sign.PLUS;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public TransactionCategory getParent() {
 		return parent;
 	}
 
-	public void setParent(TransactionCategory parent) {
-		this.parent = parent;
-	}
-
-	public String getName() {
-		return name;
+	public Sign getSign() {
+		return sign;
 	}
 
 	public void setName(String name) throws IllegalArgumentException {
@@ -35,8 +42,8 @@ public class TransactionCategory {
 		this.name = name;
 	}
 
-	public Sign getSign() {
-		return sign;
+	public void setParent(TransactionCategory parent) {
+		this.parent = parent;
 	}
 
 	public void setSign(Sign sign) {
@@ -46,11 +53,4 @@ public class TransactionCategory {
 			this.sign = sign;
 		}
 	}
-
-	public TransactionCategory(TransactionCategory parent, String name,
-            Sign sign) {
-	    setParent(parent);
-	    setName(name);
-	    setSign(sign);
-    }
 }
