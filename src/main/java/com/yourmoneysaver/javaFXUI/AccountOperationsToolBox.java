@@ -49,10 +49,19 @@ public class AccountOperationsToolBox {
 	    box.setPadding(getInsideOffsets());
 		box.setSpacing(getNiceSpacing());
     }
+	
+	private Button getEditAccountButton() {
+		return new Button(getEditAccountButtonText());
+	}
+
+	private String getEditAccountButtonText() {
+		return "Edit";
+	}
 
 	private void addButtonsToBox() {
 	    Button addAccountButton = getAddAccountButton();
 		box.getChildren().add(addAccountButton);
+		box.getChildren().add(getEditAccountButton());
 		Button deleteAccountButton = getDeleteAccountButton();
 		box.getChildren().add(deleteAccountButton);
     }
