@@ -1,5 +1,6 @@
 package com.yourmoneysaver.javafxui;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableView;
 import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -12,8 +13,10 @@ public class AccountsTab {
 		accounts.setClosable(false);
 		VBox vBox = new VBox();
 		AccountsTable accountsTable = new AccountsTable();
-		vBox.getChildren().add(accountsTable.getTable());
-		HBox accountOperationsToolBox = getAccountOperationsToolBox();
+		TableView<AccountsTableDataStructure> accountsTableView = 
+				accountsTable.getTable();
+		vBox.getChildren().add(accountsTableView);
+		HBox accountOperationsToolBox = getAccountOperationsToolBox(accountsTableView);
 		vBox.getChildren().add(accountOperationsToolBox);
 		vBox.setPadding(getVBoxInsideOffsets());
 		accounts.setContent(vBox);
@@ -28,9 +31,10 @@ public class AccountsTab {
 	    return "Accounts";
     }
 
-	private HBox getAccountOperationsToolBox() {
+	private HBox getAccountOperationsToolBox(
+			TableView<AccountsTableDataStructure> accountsTableView) {
 	    AccountOperationsToolBox accountOperationsToolBox = 
-	    		new AccountOperationsToolBox();
+	    		new AccountOperationsToolBox(accountsTableView);
 	    return accountOperationsToolBox.getHBox();
     }
 }

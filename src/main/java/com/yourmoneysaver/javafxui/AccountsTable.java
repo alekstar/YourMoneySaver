@@ -110,6 +110,7 @@ public class AccountsTable {
 		tableView.getColumns().add(currencyCode);
 		tableView.getColumns().add(comments);
 		tableView.setItems(this.accounts);
+		
 		return tableView;
 	}
 }
