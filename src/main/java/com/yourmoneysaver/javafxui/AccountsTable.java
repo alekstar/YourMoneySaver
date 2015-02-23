@@ -23,8 +23,10 @@ public class AccountsTable {
 		AccountsTableDataStructure accountsTableDataStructure = 
 				new AccountsTableDataStructure(account);
 		this.accounts.add(accountsTableDataStructure);
-		Account anotherAccount = new Account("PolishBank Card", plasticCard, new Money(uah, 1457, 87), "Issued in 23.02.2015");
-		AccountsTableDataStructure anotherAccountsTableDataStructure = new AccountsTableDataStructure(anotherAccount);
+		Account anotherAccount = new Account("PolishBank Card", 
+				plasticCard, new Money(uah, 1457, 87), "Issued in 23.02.2015");
+		AccountsTableDataStructure anotherAccountsTableDataStructure = 
+				new AccountsTableDataStructure(anotherAccount);
 		this.accounts.add(anotherAccountsTableDataStructure);
 	}
 

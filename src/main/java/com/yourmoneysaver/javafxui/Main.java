@@ -12,7 +12,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 
-		TabPane mainPanel = getMainPanel();
+		TabPane mainPanel = getMainPanel(primaryStage);
 		
 		StackPane root = new StackPane();
 		root.getChildren().add(mainPanel);
@@ -26,10 +26,10 @@ public class Main extends Application {
 		primaryStage.show();
 	}
 
-	private TabPane getMainPanel() {
+	private TabPane getMainPanel(Stage parentWindow) {
 	    TabPane mainPanel = new TabPane();
 	    
-	    AccountsTab accountsTab = new AccountsTab();
+	    AccountsTab accountsTab = new AccountsTab(parentWindow);
 		
 		Tab accounts = accountsTab.getTab();
 		Tab history = getHistoryTab(); 

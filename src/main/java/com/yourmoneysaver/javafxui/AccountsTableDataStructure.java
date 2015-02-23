@@ -10,61 +10,6 @@ public class AccountsTableDataStructure {
 	private String currencyCode;
 	private String comments;
 	
-	public Account getAccount() {
-		return account;
-	}
-
-	public void setAccount(Account account) {
-		if(account == null) {
-			throw new IllegalArgumentException("Argument account is null.");
-		}
-		this.account = account;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	private void setName(String name) {
-		this.name = name;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	private void setType(String type) {
-		this.type = type;
-	}
-
-	public String getRest() {
-		return rest;
-	}
-
-	private void setRest(String rest) {
-		this.rest = rest;
-	}
-
-	public String getCurrencyCode() {
-		return currencyCode;
-	}
-
-	private void setCurrencyCode(String currencyCode) {
-		this.currencyCode = currencyCode;
-	}
-
-	public String getComments() {
-		return comments;
-	}
-
-	private void setComments(String comments) {
-		this.comments = comments;
-	}
-
-	private char getDefaultSeparatorForNumbers() {
-	    return ',';
-    }
-
 	public AccountsTableDataStructure(Account account) {
 		setAccount(account);
 		setName(account.getName());
@@ -76,5 +21,60 @@ public class AccountsTableDataStructure {
 		setRest(restStringBuilder.toString());
 		setCurrencyCode(account.getRest().getCurrency().getIsoCode());
 		setComments(account.getComments());
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public String getCurrencyCode() {
+		return currencyCode;
+	}
+
+	private char getDefaultSeparatorForNumbers() {
+	    return ',';
+    }
+
+	public String getName() {
+		return name;
+	}
+
+	public String getRest() {
+		return rest;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setAccount(Account account) {
+		if(account == null) {
+			throw new IllegalArgumentException("Argument account is null.");
+		}
+		this.account = account;
+	}
+
+	private void setComments(String comments) {
+		this.comments = comments;
+	}
+
+	private void setCurrencyCode(String currencyCode) {
+		this.currencyCode = currencyCode;
+	}
+
+	private void setName(String name) {
+		this.name = name;
+	}
+
+	private void setRest(String rest) {
+		this.rest = rest;
+	}
+
+	private void setType(String type) {
+		this.type = type;
 	}
 }

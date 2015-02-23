@@ -4,9 +4,30 @@ import javafx.scene.control.TableView;
 import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class AccountsTab {
+	Stage parentWindow;
 	
+	public AccountsTab(Stage parentWindow) {
+		setParentWindow(parentWindow);
+	}
+
+	private HBox getAccountOperationsToolBox(
+			TableView<AccountsTableDataStructure> accountsTableView) {
+	    AccountOperationsToolBox accountOperationsToolBox = 
+	    		new AccountOperationsToolBox(accountsTableView, getParentWindow());
+	    return accountOperationsToolBox.getHBox();
+    }
+
+	private String getAccountsTabText() {
+	    return "Accounts";
+    }
+
+	public Stage getParentWindow() {
+		return parentWindow;
+	}
+
 	public Tab getTab() {
 	    Tab accounts = new Tab();
 		accounts.setText(getAccountsTabText());
@@ -16,7 +37,8 @@ public class AccountsTab {
 		TableView<AccountsTableDataStructure> accountsTableView = 
 				accountsTable.getTable();
 		vBox.getChildren().add(accountsTableView);
-		HBox accountOperationsToolBox = getAccountOperationsToolBox(accountsTableView);
+		HBox accountOperationsToolBox = 
+				getAccountOperationsToolBox(accountsTableView);
 		vBox.getChildren().add(accountOperationsToolBox);
 		vBox.setPadding(getVBoxInsideOffsets());
 		accounts.setContent(vBox);
@@ -27,14 +49,11 @@ public class AccountsTab {
 	    return new Insets(10, 10, 10, 10);
     }
 
-	private String getAccountsTabText() {
-	    return "Accounts";
-    }
-
-	private HBox getAccountOperationsToolBox(
-			TableView<AccountsTableDataStructure> accountsTableView) {
-	    AccountOperationsToolBox accountOperationsToolBox = 
-	    		new AccountOperationsToolBox(accountsTableView);
-	    return accountOperationsToolBox.getHBox();
-    }
+	public void setParentWindow(Stage parentWindow) {
+		if(parentWindow == null) {
+			throw new IllegalArgumentException(
+					"Argument parentWidnow is null.");
+		}
+		this.parentWindow = parentWindow;
+	}
 }
