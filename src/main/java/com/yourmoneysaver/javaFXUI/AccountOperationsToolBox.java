@@ -15,24 +15,20 @@ public class AccountOperationsToolBox {
 	    return new Insets(10, 0, 0, 0);
     }
 
-	private Button getDeleteAccountButton() {
-	    Button deleteAccountButton = new Button();
-		deleteAccountButton.setText(getDeleteAccountButtonText());
-	    return deleteAccountButton;
+	private Button getRemoveAccountButton() {
+		return new Button(getRemoveAccountButtonText());
     }
 
-	private String getDeleteAccountButtonText() {
-	    return "Delete account";
+	private String getRemoveAccountButtonText() {
+	    return "Remove";
     }
 
 	private Button getAddAccountButton() {
-	    Button addAccountButton = new Button();
-		addAccountButton.setText(getAddAccountButtonText());
-	    return addAccountButton;
+		return new Button(getAddAccountButtonText());
     }
 
 	private String getAddAccountButtonText() {
-	    return "Add account";
+	    return "Add";
     }
 	
 	public HBox getHBox() {
@@ -59,10 +55,8 @@ public class AccountOperationsToolBox {
 	}
 
 	private void addButtonsToBox() {
-	    Button addAccountButton = getAddAccountButton();
-		box.getChildren().add(addAccountButton);
+		box.getChildren().add(getAddAccountButton());
 		box.getChildren().add(getEditAccountButton());
-		Button deleteAccountButton = getDeleteAccountButton();
-		box.getChildren().add(deleteAccountButton);
+		box.getChildren().add(getRemoveAccountButton());
     }
 }
