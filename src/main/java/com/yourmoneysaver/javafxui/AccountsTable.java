@@ -1,4 +1,4 @@
-package com.yourmoneysaver.javaFXUI;
+package com.yourmoneysaver.javafxui;
 
 import com.yourmoneysaver.Account;
 import com.yourmoneysaver.AccountType;
