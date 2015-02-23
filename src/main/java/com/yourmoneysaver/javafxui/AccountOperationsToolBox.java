@@ -15,26 +15,27 @@ import javafx.stage.WindowEvent;
 public class AccountOperationsToolBox {
 	private class AddAccountButtonAction implements EventHandler<MouseEvent> {
 		@Override
-		public void handle(MouseEvent arg0) {
+		public void handle(MouseEvent mouseEvent) {
+			AddAccountWindow addAccountWindow = 
+					new AddAccountWindow(parentWindow);
+			addAccountWindow.showAndWait();
+		}
+	}
+	private class EditAccountButtonAction implements EventHandler<MouseEvent> {
+		@Override
+		public void handle(MouseEvent mouseEvent) {
 			AccountsTableDataStructure selectedAccount = 
 					(AccountsTableDataStructure) 
 					getTableView().getSelectionModel().getSelectedItem();
-			Stage stage = new Stage();
-			StackPane root = new StackPane();
-			Scene mainWindow = new Scene(root, 500, 500);
-			stage.setScene(mainWindow);
-			stage.initOwner(parentWindow);
-			stage.initModality(Modality.WINDOW_MODAL);
-			stage.showAndWait();
 		}
 	}
 	private HBox box;
 	private TableView<AccountsTableDataStructure> tableView;
-	
 	private Stage parentWindow;
 
 	public AccountOperationsToolBox(
-			TableView<AccountsTableDataStructure> accountsTableView, Stage parentWindow) {
+			TableView<AccountsTableDataStructure> accountsTableView, 
+			Stage parentWindow) {
 		setParentWindow(parentWindow);
 		setBox(new HBox());
 		setTableView(accountsTableView);
