@@ -2,11 +2,6 @@ package com.yourmoneysaver.javafxui;
 
 import java.util.List;
 
-import com.yourmoneysaver.Account;
-import com.yourmoneysaver.AccountType;
-import com.yourmoneysaver.Currency;
-import com.yourmoneysaver.Money;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -26,10 +21,6 @@ public class AccountsTable {
 		accountsTable.setAccountsData(
 				FXCollections.observableArrayList(accountsData));
 		return accountsTable;
-	}
-
-	private ObservableList<AccountsTableDataStructure> getAccountsData() {
-		return accountsData;
 	}
 
 	private void setAccountsData(
