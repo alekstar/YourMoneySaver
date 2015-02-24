@@ -1,4 +1,11 @@
 package com.yourmoneysaver.javafxui;
+import java.util.ArrayList;
+
+import com.yourmoneysaver.Account;
+import com.yourmoneysaver.AccountType;
+import com.yourmoneysaver.Currency;
+import com.yourmoneysaver.Money;
+
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.geometry.Insets;
@@ -30,12 +37,30 @@ public class AccountsTab {
 		return parentWindow;
 	}
 
+	private ArrayList<AccountsTableDataStructure> getTestingAccountsData() {
+		ArrayList<AccountsTableDataStructure> accountsData = 
+				new ArrayList<AccountsTableDataStructure>();
+		Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴");
+		AccountType plasticCard = new AccountType("Plastic card");
+		
+		Account account = new Account("SwedenBank Card", plasticCard,
+		        new Money(uah, 150, 45), "Issued in 19.02.2015");
+		accountsData.add(AccountsTableDataStructure.create(account));
+		
+		Account anotherAccount = new Account("PolishBank Card", 
+				plasticCard, new Money(uah, 1457, 87), "Issued in 23.02.2015");
+		accountsData.add(AccountsTableDataStructure.create(anotherAccount));
+		
+		return accountsData;
+	}
+
 	public Tab getTab() {
 	    Tab accounts = new Tab();
 		accounts.setText(getAccountsTabText());
 		accounts.setClosable(false);
 		VBox vBox = new VBox();
-		AccountsTable accountsTable = new AccountsTable();
+		AccountsTable accountsTable = 
+				AccountsTable.create(getTestingAccountsData());
 		TableView<AccountsTableDataStructure> accountsTableView = 
 				accountsTable.getTable();
 		vBox.getChildren().add(accountsTableView);

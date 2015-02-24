@@ -1,5 +1,7 @@
 package com.yourmoneysaver.javafxui;
 
+import java.util.List;
+
 import com.yourmoneysaver.Account;
 import com.yourmoneysaver.AccountType;
 import com.yourmoneysaver.Currency;
@@ -12,22 +14,31 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AccountsTable {
-	private final ObservableList<AccountsTableDataStructure> accounts = 
-			FXCollections.observableArrayList();
+	private ObservableList<AccountsTableDataStructure> accountsData;
+	
+	private AccountsTable() {
+		
+	}
+	
+	public static AccountsTable create(
+			List<AccountsTableDataStructure> accountsData) {
+		AccountsTable accountsTable = new AccountsTable();
+		accountsTable.setAccountsData(
+				FXCollections.observableArrayList(accountsData));
+		return accountsTable;
+	}
 
-	private void fillAccountsWithTestData() {
-		Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴");
-		AccountType plasticCard = new AccountType("Plastic card");
-		Account account = new Account("SwedenBank Card", plasticCard,
-		        new Money(uah, 150, 45), "Issued in 19.02.2015");
-		AccountsTableDataStructure accountsTableDataStructure = 
-				AccountsTableDataStructure.create(account);
-		this.accounts.add(accountsTableDataStructure);
-		Account anotherAccount = new Account("PolishBank Card", 
-				plasticCard, new Money(uah, 1457, 87), "Issued in 23.02.2015");
-		AccountsTableDataStructure anotherAccountsTableDataStructure = 
-				AccountsTableDataStructure.create(anotherAccount);
-		this.accounts.add(anotherAccountsTableDataStructure);
+	private ObservableList<AccountsTableDataStructure> getAccountsData() {
+		return accountsData;
+	}
+
+	private void setAccountsData(
+			ObservableList<AccountsTableDataStructure> accountsData) {
+		if(accountsData == null) {
+			throw new IllegalArgumentException(
+					"Argument accountsData is null.");
+		}
+		this.accountsData = accountsData;
 	}
 
 	private String getAccountCommentsFieldName() {
@@ -104,14 +115,12 @@ public class AccountsTable {
 				new PropertyValueFactory<AccountsTableDataStructure, String>(
 						getAccountCommentsFieldName()));
 
-		fillAccountsWithTestData();
-
 		tableView.getColumns().add(name);
 		tableView.getColumns().add(type);
 		tableView.getColumns().add(rest);
 		tableView.getColumns().add(currencyCode);
 		tableView.getColumns().add(comments);
-		tableView.setItems(this.accounts);
+		tableView.setItems(this.accountsData);
 		
 		return tableView;
 	}
