@@ -26,8 +26,7 @@ public class AccountsTable {
 	private void setAccountsData(
 			ObservableList<AccountsTableDataStructure> accountsData) {
 		if(accountsData == null) {
-			throw new IllegalArgumentException(
-					"Argument accountsData is null.");
+			throw new ArgumentIsNullException("accountsData");
 		}
 		this.accountsData = accountsData;
 	}

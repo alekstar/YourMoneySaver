@@ -33,7 +33,7 @@ public class AddAccountWindow {
 
 	private void setRootPane(StackPane rootPane) {
 		if(rootPane == null) {
-			throw new IllegalArgumentException("Argument rootPane is null.");
+			throw new ArgumentIsNullException("rootPane");
 		}
 		this.rootPane = rootPane;
 	}
@@ -86,7 +86,7 @@ public class AddAccountWindow {
 
 	private void setThisWindow(Stage thisWindow) {
 		if(thisWindow == null) {
-			throw new IllegalArgumentException("Argument thisWindow is null.");
+			throw new ArgumentIsNullException("thisWindow");
 		}
 		this.thisWindow = thisWindow;
 	}
@@ -97,8 +97,7 @@ public class AddAccountWindow {
 
 	private void setParentWindow(Stage parentWindow) {
 		if(parentWindow == null) {
-			throw new IllegalArgumentException(
-					"Argument parentWindow is null.");
+			throw new ArgumentIsNullException("parentWindow");
 		}
 		this.parentWindow = parentWindow;
 	}

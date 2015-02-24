@@ -82,8 +82,7 @@ public class AccountsTab {
 
 	public void setParentWindow(Stage parentWindow) {
 		if(parentWindow == null) {
-			throw new IllegalArgumentException(
-					"Argument parentWidnow is null.");
+			throw new ArgumentIsNullException("parentWidnow");
 		}
 		this.parentWindow = parentWindow;
 	}

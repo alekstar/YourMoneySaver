@@ -7,7 +7,7 @@ public class Account {
 	String comments;
 
 	public Account(String name, AccountType accountType, Money rest,
-            String comments) throws IllegalArgumentException {
+            String comments) {
 		setRest(rest);
 		setAccountType(accountType);
 		setName(name);
@@ -32,8 +32,7 @@ public class Account {
 
 	public void setAccountType(AccountType accountType) {
 		if(accountType == null) {
-			throw new IllegalArgumentException("Argument accountType is "
-					+ "null.");
+			throw new ArgumentIsNullException("accountType");
 		}
 		this.accountType = accountType;
 	}
@@ -46,9 +45,9 @@ public class Account {
 		this.name = name;
 	}
 
-	public void setRest(Money rest) throws IllegalArgumentException {
+	public void setRest(Money rest) {
 		if(rest == null) {
-			throw new IllegalArgumentException("Argument rest is null.");
+			throw new ArgumentIsNullException("rest");
 		}
 		this.rest = rest;
 	}

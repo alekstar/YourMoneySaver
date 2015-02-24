@@ -32,9 +32,9 @@ public class TransactionCategory {
 		return sign;
 	}
 
-	public void setName(String name) throws IllegalArgumentException {
+	public void setName(String name){
 		if(name == null) {
-			throw new IllegalArgumentException("Argument name is null.");
+			throw new ArgumentIsNullException("name");
 		}
 		if(name.isEmpty()) {
 			throw new IllegalArgumentException("Name can't be empty.");

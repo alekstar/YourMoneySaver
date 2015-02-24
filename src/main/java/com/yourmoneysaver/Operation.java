@@ -3,6 +3,8 @@ package com.yourmoneysaver;
 import java.util.Date;
 import java.util.LinkedList;
 
+import com.yourmoneysaver.exceptions.ArgumentIsNullException;
+
 public class Operation {
 	Account account;
 	String comment;
@@ -41,7 +43,7 @@ public class Operation {
 
 	public void setAccount(Account account) {
 		if(account == null) {
-			throw new IllegalArgumentException("Argument account is null.");
+			throw new ArgumentIsNullException("account");
 		}
 		this.account = account;
 	}
@@ -52,7 +54,7 @@ public class Operation {
 
 	public void setDate(Date date) {
 		if(date == null) {
-			throw new IllegalArgumentException("Argument date is null.");
+			throw new ArgumentIsNullException("date");
 		}
 		this.date = date;
 	}
@@ -63,8 +65,7 @@ public class Operation {
 
 	public void setTransactions(LinkedList<Transaction> transactions) {
 		if(transactions == null) {
-			throw new IllegalArgumentException("Argument transactions is "
-					+ "null.");
+			throw new ArgumentIsNullException("transactions");
 		}
 		if(transactions.isEmpty()) {
 			throw new IllegalArgumentException("There must be one or more "

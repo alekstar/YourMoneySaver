@@ -106,22 +106,21 @@ public class AccountOperationsToolBox {
 	
 	public void setBox(HBox box) {
 		if(box == null) {
-			throw new IllegalArgumentException("Argument box is null.");
+			throw new ArgumentIsNullException("box");
 		}
 		this.box = box;
 	}
 
 	public void setParentWindow(Stage parentWindow) {
 		if(parentWindow == null) {
-			throw new IllegalArgumentException(
-					"Argument parentWindow is null.");
+			throw new ArgumentIsNullException("parentWindow");
 		}
 		this.parentWindow = parentWindow;
 	}
 
 	public void setTableView(TableView<AccountsTableDataStructure> tableView) {
 		if(tableView == null) {
-			throw new IllegalArgumentException("Argument tableView is null.");
+			throw new ArgumentIsNullException("tableView");
 		}
 		this.tableView = tableView;
 	}

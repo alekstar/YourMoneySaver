@@ -3,7 +3,7 @@ package com.yourmoneysaver;
 public class AccountType {
 	private String name;
 
-	public AccountType(String name) throws IllegalArgumentException {
+	public AccountType(String name) {
 		setName(name);
 	}
 
@@ -11,9 +11,9 @@ public class AccountType {
 		return name;
 	}
 	
-	private void setName(String name) throws IllegalArgumentException {
+	private void setName(String name) {
 		if(name == null) {
-			throw new IllegalArgumentException("Argument name is null.");
+			throw new ArgumentIsNullException("name");
 		}
 		if(name.isEmpty()) {
 			throw new IllegalArgumentException("Name can't be empty.");

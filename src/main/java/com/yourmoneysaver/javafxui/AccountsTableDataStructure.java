@@ -1,6 +1,7 @@
 package com.yourmoneysaver.javafxui;
 
 import com.yourmoneysaver.Account;
+import com.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class AccountsTableDataStructure {
 	private Account account;
@@ -62,7 +63,7 @@ public class AccountsTableDataStructure {
 
 	public void setAccount(Account account) {
 		if(account == null) {
-			throw new IllegalArgumentException("Argument account is null.");
+			throw new ArgumentIsNullException("account");
 		}
 		this.account = account;
 	}
