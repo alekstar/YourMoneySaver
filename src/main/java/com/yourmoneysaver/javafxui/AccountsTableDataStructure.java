@@ -10,17 +10,22 @@ public class AccountsTableDataStructure {
 	private String currencyCode;
 	private String comments;
 	
-	public AccountsTableDataStructure(Account account) {
-		setAccount(account);
-		setName(account.getName());
-		setType(account.getAccountType().getName());
+	public static AccountsTableDataStructure create(Account account) {
+		AccountsTableDataStructure accountsTableDataStructure = 
+				new AccountsTableDataStructure();
+		accountsTableDataStructure.setAccount(account);
+		accountsTableDataStructure.setName(account.getName());
+		accountsTableDataStructure.setType(account.getAccountType().getName());
 		StringBuilder restStringBuilder = new StringBuilder();
 		restStringBuilder.append(account.getRest().getBase());
-		restStringBuilder.append(getDefaultSeparatorForNumbers());
+		restStringBuilder.append(
+				accountsTableDataStructure.getDefaultSeparatorForNumbers());
 		restStringBuilder.append(account.getRest().getCoins());
-		setRest(restStringBuilder.toString());
-		setCurrencyCode(account.getRest().getCurrency().getIsoCode());
-		setComments(account.getComments());
+		accountsTableDataStructure.setRest(restStringBuilder.toString());
+		accountsTableDataStructure.setCurrencyCode(
+				account.getRest().getCurrency().getIsoCode());
+		accountsTableDataStructure.setComments(account.getComments());
+		return accountsTableDataStructure;
 	}
 
 	public Account getAccount() {

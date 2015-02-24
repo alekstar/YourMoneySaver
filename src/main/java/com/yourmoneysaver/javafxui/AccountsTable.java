@@ -12,8 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AccountsTable {
-	private final ObservableList<AccountsTableDataStructure> accounts = FXCollections
-	        .observableArrayList();
+	private final ObservableList<AccountsTableDataStructure> accounts = 
+			FXCollections.observableArrayList();
 
 	private void fillAccountsWithTestData() {
 		Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴");
@@ -21,12 +21,12 @@ public class AccountsTable {
 		Account account = new Account("SwedenBank Card", plasticCard,
 		        new Money(uah, 150, 45), "Issued in 19.02.2015");
 		AccountsTableDataStructure accountsTableDataStructure = 
-				new AccountsTableDataStructure(account);
+				AccountsTableDataStructure.create(account);
 		this.accounts.add(accountsTableDataStructure);
 		Account anotherAccount = new Account("PolishBank Card", 
 				plasticCard, new Money(uah, 1457, 87), "Issued in 23.02.2015");
 		AccountsTableDataStructure anotherAccountsTableDataStructure = 
-				new AccountsTableDataStructure(anotherAccount);
+				AccountsTableDataStructure.create(anotherAccount);
 		this.accounts.add(anotherAccountsTableDataStructure);
 	}
 
