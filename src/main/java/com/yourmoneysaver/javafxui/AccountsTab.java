@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class AccountsTab {
 	Stage parentWindow;
 	
-	public static AccountsTab getTab(Stage parentWindow) {
+	public static AccountsTab create(Stage parentWindow) {
 		AccountsTab accountsTab = new AccountsTab();
 		accountsTab.setParentWindow(parentWindow);
 		return accountsTab;
