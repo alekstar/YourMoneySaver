@@ -10,6 +10,10 @@ public class AccountsTableDataStructure {
 	private String currencyCode;
 	private String comments;
 	
+	private AccountsTableDataStructure() {
+		
+	}
+	
 	public static AccountsTableDataStructure create(Account account) {
 		AccountsTableDataStructure accountsTableDataStructure = 
 				new AccountsTableDataStructure();

@@ -14,6 +14,10 @@ public class AddAccountWindow {
 	private Stage parentWindow;
 	private Stage thisWindow;
 	private StackPane rootPane;
+	
+	private AddAccountWindow() {
+		
+	}
 
 	public static AddAccountWindow create(Stage parentWindow) {
 		AddAccountWindow addAccountWindow = new AddAccountWindow();
