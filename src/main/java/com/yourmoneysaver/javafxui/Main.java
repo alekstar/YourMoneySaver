@@ -9,44 +9,44 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-	@Override
-	public void start(Stage primaryStage) {
+    @Override
+    public void start(Stage primaryStage) {
 
-		TabPane mainPanel = getMainPanel(primaryStage);
-		
-		StackPane root = new StackPane();
-		root.getChildren().add(mainPanel);
+        TabPane mainPanel = getMainPanel(primaryStage);
 
-		Scene mainWindow = new Scene(root, 500, 500);
+        StackPane root = new StackPane();
+        root.getChildren().add(mainPanel);
 
-		primaryStage.setTitle("YourMoneySaver");
-		primaryStage.setScene(mainWindow);
-		primaryStage.setResizable(false);
-		primaryStage.centerOnScreen();
-		primaryStage.show();
-	}
+        Scene mainWindow = new Scene(root, 500, 500);
 
-	private TabPane getMainPanel(Stage parentWindow) {
-	    TabPane mainPanel = new TabPane();
-	    
-	    AccountsTab accountsTab = AccountsTab.create(parentWindow);
-		
-		Tab accounts = accountsTab.getTab();
-		Tab history = getHistoryTab(); 
-		
-		mainPanel.getTabs().add(accounts);
-		mainPanel.getTabs().add(history);
-	    return mainPanel;
+        primaryStage.setTitle("YourMoneySaver");
+        primaryStage.setScene(mainWindow);
+        primaryStage.setResizable(false);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
     }
 
-	private Tab getHistoryTab() {
-	    Tab history = new Tab();
-		history.setText("History");
-		history.setClosable(false);
-	    return history;
+    private TabPane getMainPanel(Stage parentWindow) {
+        TabPane mainPanel = new TabPane();
+
+        AccountsTab accountsTab = AccountsTab.create(parentWindow);
+
+        Tab accounts = accountsTab.getTab();
+        Tab history = getHistoryTab();
+
+        mainPanel.getTabs().add(accounts);
+        mainPanel.getTabs().add(history);
+        return mainPanel;
     }
 
-	public static void main(String[] args) {
-		launch(args);
-	}
+    private Tab getHistoryTab() {
+        Tab history = new Tab();
+        history.setText("History");
+        history.setClosable(false);
+        return history;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

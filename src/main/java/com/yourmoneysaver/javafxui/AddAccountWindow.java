@@ -1,6 +1,5 @@
 package com.yourmoneysaver.javafxui;
 
-
 import com.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 import javafx.geometry.Insets;
@@ -13,102 +12,102 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AddAccountWindow {
-	private Stage parentWindow;
-	private Stage thisWindow;
-	private StackPane rootPane;
-	
-	private AddAccountWindow() {
-		
-	}
+    private Stage parentWindow;
+    private Stage thisWindow;
+    private StackPane rootPane;
 
-	public static AddAccountWindow create(Stage parentWindow) {
-		AddAccountWindow addAccountWindow = new AddAccountWindow();
-		addAccountWindow.setParentWindow(parentWindow);
-		addAccountWindow.initializeThisWindow();
-		addAccountWindow.addControlsToThisWindow();
-		return addAccountWindow;
-	}
+    private AddAccountWindow() {
 
-	public StackPane getRootPane() {
-		return rootPane;
-	}
+    }
 
-	private void setRootPane(StackPane rootPane) {
-		if(rootPane == null) {
-			throw new ArgumentIsNullException("rootPane");
-		}
-		this.rootPane = rootPane;
-	}
+    public static AddAccountWindow create(Stage parentWindow) {
+        AddAccountWindow addAccountWindow = new AddAccountWindow();
+        addAccountWindow.setParentWindow(parentWindow);
+        addAccountWindow.initializeThisWindow();
+        addAccountWindow.addControlsToThisWindow();
+        return addAccountWindow;
+    }
 
-	private void initializeThisWindow() {
-		setRootPane(new StackPane());
-		setThisWindow(new Stage());
-		Scene mainWindow = new Scene(getRootPane(), getWidth(), getHeight());
-		getThisWindow().setScene(mainWindow);
-		getThisWindow().initOwner(getParentWindow());
-		getThisWindow().initModality(Modality.WINDOW_MODAL);
-		getThisWindow().setResizable(false);
-	}
-	
-	private Label getLabelInstance(String labelText) {
-		return new Label(labelText);
-	}
-	
-	private Label getNameFieldLabel() {
-		return getLabelInstance(getNameFieldLabelText());
-	}
+    public StackPane getRootPane() {
+        return rootPane;
+    }
 
-	private String getNameFieldLabelText() {
-		return "Name";
-	}
-	
-	private TextField getNameTextField() {
-		return new TextField(getNameFieldLabelText());
-	}
-	
-	private void addControlsToThisWindow() {
-		VBox mainPane = new VBox();
-		mainPane.getChildren().add(getNameFieldLabel());
-		mainPane.getChildren().add(getNameTextField());
-		mainPane.setPadding(getMainPanePadding());
-		getRootPane().getChildren().add(mainPane);
-	}
+    private void setRootPane(StackPane rootPane) {
+        if (rootPane == null) {
+            throw new ArgumentIsNullException("rootPane");
+        }
+        this.rootPane = rootPane;
+    }
 
-	private int getHeight() {
-		return 500;
-	}
+    private void initializeThisWindow() {
+        setRootPane(new StackPane());
+        setThisWindow(new Stage());
+        Scene mainWindow = new Scene(getRootPane(), getWidth(), getHeight());
+        getThisWindow().setScene(mainWindow);
+        getThisWindow().initOwner(getParentWindow());
+        getThisWindow().initModality(Modality.WINDOW_MODAL);
+        getThisWindow().setResizable(false);
+    }
 
-	private int getWidth() {
-		return 500;
-	}
-	
-	public Stage getThisWindow() {
-		return thisWindow;
-	}
+    private Label getLabelInstance(String labelText) {
+        return new Label(labelText);
+    }
 
-	private void setThisWindow(Stage thisWindow) {
-		if(thisWindow == null) {
-			throw new ArgumentIsNullException("thisWindow");
-		}
-		this.thisWindow = thisWindow;
-	}
+    private Label getNameFieldLabel() {
+        return getLabelInstance(getNameFieldLabelText());
+    }
 
-	public Stage getParentWindow() {
-		return parentWindow;
-	}
+    private String getNameFieldLabelText() {
+        return "Name";
+    }
 
-	private void setParentWindow(Stage parentWindow) {
-		if(parentWindow == null) {
-			throw new ArgumentIsNullException("parentWindow");
-		}
-		this.parentWindow = parentWindow;
-	}
-	
-	public void showAndWait() {
-		getThisWindow().showAndWait();
-	}
-	
-	private Insets getMainPanePadding() {
-	    return new Insets(10, 10, 10, 10);
+    private TextField getNameTextField() {
+        return new TextField(getNameFieldLabelText());
+    }
+
+    private void addControlsToThisWindow() {
+        VBox mainPane = new VBox();
+        mainPane.getChildren().add(getNameFieldLabel());
+        mainPane.getChildren().add(getNameTextField());
+        mainPane.setPadding(getMainPanePadding());
+        getRootPane().getChildren().add(mainPane);
+    }
+
+    private int getHeight() {
+        return 500;
+    }
+
+    private int getWidth() {
+        return 500;
+    }
+
+    public Stage getThisWindow() {
+        return thisWindow;
+    }
+
+    private void setThisWindow(Stage thisWindow) {
+        if (thisWindow == null) {
+            throw new ArgumentIsNullException("thisWindow");
+        }
+        this.thisWindow = thisWindow;
+    }
+
+    public Stage getParentWindow() {
+        return parentWindow;
+    }
+
+    private void setParentWindow(Stage parentWindow) {
+        if (parentWindow == null) {
+            throw new ArgumentIsNullException("parentWindow");
+        }
+        this.parentWindow = parentWindow;
+    }
+
+    public void showAndWait() {
+        getThisWindow().showAndWait();
+    }
+
+    private Insets getMainPanePadding() {
+        return new Insets(10, 10, 10, 10);
     }
 }
