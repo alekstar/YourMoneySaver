@@ -23,8 +23,13 @@ public class AccountOperationsToolBox {
     private class EditAccountButtonAction implements EventHandler<MouseEvent> {
         @Override
         public void handle(MouseEvent mouseEvent) {
-            AccountsTableDataStructure selectedAccount = (AccountsTableDataStructure) getTableView()
+            AccountsTableDataStructure selectedAccount = 
+                    (AccountsTableDataStructure) getTableView()
                     .getSelectionModel().getSelectedItem();
+            if(selectedAccount != null) {
+                System.out.println(
+                        "Editing account " + selectedAccount.getName());
+            }
         }
     }
 
@@ -68,7 +73,9 @@ public class AccountOperationsToolBox {
     }
 
     private Button getEditAccountButton() {
-        return new Button(getEditAccountButtonText());
+        Button button = new Button(getEditAccountButtonText());
+        button.setOnMouseClicked(new EditAccountButtonAction());
+        return button;
     }
 
     private String getEditAccountButtonText() {
