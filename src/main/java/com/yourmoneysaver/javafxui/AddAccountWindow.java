@@ -15,10 +15,12 @@ public class AddAccountWindow {
 	private Stage thisWindow;
 	private StackPane rootPane;
 
-	public AddAccountWindow(Stage parentWindow) {
-		setParentWindow(parentWindow);
-		initializeThisWindow();
-		addControlsToThisWindow();
+	public static AddAccountWindow create(Stage parentWindow) {
+		AddAccountWindow addAccountWindow = new AddAccountWindow();
+		addAccountWindow.setParentWindow(parentWindow);
+		addAccountWindow.initializeThisWindow();
+		addAccountWindow.addControlsToThisWindow();
+		return addAccountWindow;
 	}
 
 	public StackPane getRootPane() {

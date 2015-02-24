@@ -17,7 +17,7 @@ public class AccountOperationsToolBox {
 		@Override
 		public void handle(MouseEvent mouseEvent) {
 			AddAccountWindow addAccountWindow = 
-					new AddAccountWindow(parentWindow);
+					AddAccountWindow.create(parentWindow);
 			addAccountWindow.showAndWait();
 		}
 	}
