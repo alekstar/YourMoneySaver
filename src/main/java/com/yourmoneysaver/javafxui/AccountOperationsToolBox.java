@@ -4,15 +4,11 @@ import com.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 public class AccountOperationsToolBox {
     private class AddAccountButtonAction implements EventHandler<MouseEvent> {
