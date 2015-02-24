@@ -29,7 +29,7 @@ public class Main extends Application {
 	private TabPane getMainPanel(Stage parentWindow) {
 	    TabPane mainPanel = new TabPane();
 	    
-	    AccountsTab accountsTab = new AccountsTab(parentWindow);
+	    AccountsTab accountsTab = AccountsTab.getTab(parentWindow);
 		
 		Tab accounts = accountsTab.getTab();
 		Tab history = getHistoryTab(); 

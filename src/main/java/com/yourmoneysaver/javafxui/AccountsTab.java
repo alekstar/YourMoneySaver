@@ -9,8 +9,10 @@ import javafx.stage.Stage;
 public class AccountsTab {
 	Stage parentWindow;
 	
-	public AccountsTab(Stage parentWindow) {
-		setParentWindow(parentWindow);
+	public static AccountsTab getTab(Stage parentWindow) {
+		AccountsTab accountsTab = new AccountsTab();
+		accountsTab.setParentWindow(parentWindow);
+		return accountsTab;
 	}
 
 	private HBox getAccountOperationsToolBox(
