@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AccountsTable {
-    private ObservableList<AccountsTableDataStructure> accountsData;
+    private TableView<AccountsTableDataStructure> tableView;
 
     private AccountsTable() {
 
@@ -20,17 +20,20 @@ public class AccountsTable {
     public static AccountsTable create(
             List<AccountsTableDataStructure> accountsData) {
         AccountsTable accountsTable = new AccountsTable();
-        accountsTable.setAccountsData(FXCollections
+        accountsTable.prepareTable(FXCollections
                 .observableArrayList(accountsData));
         return accountsTable;
     }
 
-    private void setAccountsData(
-            ObservableList<AccountsTableDataStructure> accountsData) {
-        if (accountsData == null) {
-            throw new ArgumentIsNullException("accountsData");
+    public TableView<AccountsTableDataStructure> getTableView() {
+        return tableView;
+    }
+
+    private void setTableView(TableView<AccountsTableDataStructure> tableView) {
+        if (tableView == null) {
+            throw new ArgumentIsNullException("tableView");
         }
-        this.accountsData = accountsData;
+        this.tableView = tableView;
     }
 
     private String getAccountCommentsFieldName() {
@@ -73,8 +76,9 @@ public class AccountsTable {
         return "Type";
     }
 
-    public TableView<AccountsTableDataStructure> getTable() {
-        TableView<AccountsTableDataStructure> tableView = new TableView<AccountsTableDataStructure>();
+    private TableView<AccountsTableDataStructure> prepareTable(
+            ObservableList<AccountsTableDataStructure> accountsData) {
+        setTableView(new TableView<AccountsTableDataStructure>());
         TableColumn<AccountsTableDataStructure, String> name = new TableColumn<AccountsTableDataStructure, String>(
                 getColumnNameForAccountName());
         name.setCellValueFactory(new PropertyValueFactory<AccountsTableDataStructure, String>(
@@ -97,12 +101,12 @@ public class AccountsTable {
         comments.setCellValueFactory(new PropertyValueFactory<AccountsTableDataStructure, String>(
                 getAccountCommentsFieldName()));
 
-        tableView.getColumns().add(name);
-        tableView.getColumns().add(type);
-        tableView.getColumns().add(rest);
-        tableView.getColumns().add(currencyCode);
-        tableView.getColumns().add(comments);
-        tableView.setItems(this.accountsData);
+        getTableView().getColumns().add(name);
+        getTableView().getColumns().add(type);
+        getTableView().getColumns().add(rest);
+        getTableView().getColumns().add(currencyCode);
+        getTableView().getColumns().add(comments);
+        getTableView().setItems(accountsData);
 
         return tableView;
     }

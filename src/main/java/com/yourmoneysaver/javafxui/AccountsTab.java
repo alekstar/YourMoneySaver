@@ -67,7 +67,7 @@ public class AccountsTab {
         AccountsTable accountsTable = AccountsTable
                 .create(getTestingAccountsData());
         TableView<AccountsTableDataStructure> accountsTableView = accountsTable
-                .getTable();
+                .getTableView();
         vBox.getChildren().add(accountsTableView);
         HBox accountOperationsToolBox = getAccountOperationsToolBox(accountsTableView);
         vBox.getChildren().add(accountOperationsToolBox);
