@@ -1,5 +1,7 @@
 package com.yourmoneysaver;
 
+import com.yourmoneysaver.exceptions.ArgumentIsNullException;
+
 public class TransactionCategory {
 	public enum Sign {
 		MINUS, PLUS

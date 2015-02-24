@@ -2,6 +2,8 @@ package com.yourmoneysaver.javafxui;
 
 import java.util.List;
 
+import com.yourmoneysaver.exceptions.ArgumentIsNullException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;

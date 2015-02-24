@@ -1,5 +1,7 @@
 package com.yourmoneysaver;
 
+import com.yourmoneysaver.exceptions.ArgumentIsNullException;
+
 public class Account {
 	Money rest;
 	AccountType accountType;

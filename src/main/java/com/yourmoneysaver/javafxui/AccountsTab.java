@@ -5,6 +5,7 @@ import com.yourmoneysaver.Account;
 import com.yourmoneysaver.AccountType;
 import com.yourmoneysaver.Currency;
 import com.yourmoneysaver.Money;
+import com.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;

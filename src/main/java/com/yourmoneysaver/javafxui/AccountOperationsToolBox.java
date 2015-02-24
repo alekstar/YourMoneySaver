@@ -1,5 +1,7 @@
 package com.yourmoneysaver.javafxui;
 
+import com.yourmoneysaver.exceptions.ArgumentIsNullException;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
