@@ -30,12 +30,15 @@ public class Main extends Application {
         TabPane mainPanel = new TabPane();
 
         AccountsTab accountsTab = AccountsTab.create(parentWindow);
+        CurrenciesTab currenciesTab = CurrenciesTab.create(parentWindow);
 
         Tab accounts = accountsTab.getTab();
         Tab history = getHistoryTab();
+        Tab currencies = currenciesTab.getTab();
 
         mainPanel.getTabs().add(accounts);
         mainPanel.getTabs().add(history);
+        mainPanel.getTabs().add(currencies);
         return mainPanel;
     }
 
