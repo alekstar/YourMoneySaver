@@ -14,8 +14,8 @@ public class AccountOperationsToolBox {
     private class AddAccountButtonAction implements EventHandler<MouseEvent> {
         @Override
         public void handle(MouseEvent mouseEvent) {
-            AddAccountWindow addAccountWindow = AddAccountWindow
-                    .create(parentWindow);
+            AddAccountWindow addAccountWindow =
+                    AddAccountWindow.create(parentWindow);
             addAccountWindow.showAndWait();
         }
     }
@@ -23,12 +23,12 @@ public class AccountOperationsToolBox {
     private class EditAccountButtonAction implements EventHandler<MouseEvent> {
         @Override
         public void handle(MouseEvent mouseEvent) {
-            AccountsTableDataStructure selectedAccount = 
+            AccountsTableDataStructure selectedAccount =
                     (AccountsTableDataStructure) getTableView()
-                    .getSelectionModel().getSelectedItem();
-            if(selectedAccount != null) {
-                System.out.println(
-                        "Editing account " + selectedAccount.getName());
+                            .getSelectionModel().getSelectedItem();
+            if (selectedAccount != null) {
+                System.out.println("Editing account "
+                        + selectedAccount.getName());
             }
         }
     }

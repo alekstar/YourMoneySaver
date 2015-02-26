@@ -1,5 +1,6 @@
 package com.yourmoneysaver.javafxui;
 
+import com.yourmoneysaver.Account;
 import com.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 import javafx.geometry.Insets;
@@ -15,6 +16,7 @@ public class AddAccountWindow {
     private Stage parentWindow;
     private Stage thisWindow;
     private StackPane rootPane;
+    private Account newAccount;
 
     private AddAccountWindow() {
 
@@ -26,6 +28,17 @@ public class AddAccountWindow {
         addAccountWindow.initializeThisWindow();
         addAccountWindow.addControlsToThisWindow();
         return addAccountWindow;
+    }
+
+    public Account getNewAccount() {
+        return newAccount;
+    }
+
+    private void setNewAccount(Account newAccount) {
+        if (newAccount == null) {
+            throw new ArgumentIsNullException("newAccount");
+        }
+        this.newAccount = newAccount;
     }
 
     public StackPane getRootPane() {
@@ -49,26 +62,28 @@ public class AddAccountWindow {
         getThisWindow().setResizable(false);
     }
 
-    private Label getLabelInstance(String labelText) {
+    private Label getNewLabel(String labelText) {
         return new Label(labelText);
     }
 
     private Label getNameFieldLabel() {
-        return getLabelInstance(getNameFieldLabelText());
+        return getNewLabel(getNameFieldLabelText());
     }
 
     private String getNameFieldLabelText() {
         return "Name";
     }
 
-    private TextField getNameTextField() {
-        return new TextField(getNameFieldLabelText());
+    private TextField getNewTextField() {
+        return new TextField();
     }
 
     private void addControlsToThisWindow() {
         VBox mainPane = new VBox();
         mainPane.getChildren().add(getNameFieldLabel());
-        mainPane.getChildren().add(getNameTextField());
+        TextField nameTextField = getNewTextField();
+
+        mainPane.getChildren().add(nameTextField);
         mainPane.setPadding(getMainPanePadding());
         getRootPane().getChildren().add(mainPane);
     }

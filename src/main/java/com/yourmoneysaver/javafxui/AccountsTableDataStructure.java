@@ -16,7 +16,8 @@ public class AccountsTableDataStructure {
     }
 
     public static AccountsTableDataStructure create(Account account) {
-        AccountsTableDataStructure accountsTableDataStructure = new AccountsTableDataStructure();
+        AccountsTableDataStructure accountsTableDataStructure =
+                new AccountsTableDataStructure();
         accountsTableDataStructure.setAccount(account);
         accountsTableDataStructure.setName(account.getName());
         accountsTableDataStructure.setType(account.getAccountType().getName());

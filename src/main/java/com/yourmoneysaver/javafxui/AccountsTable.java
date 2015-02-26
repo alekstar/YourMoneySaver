@@ -79,25 +79,30 @@ public class AccountsTable {
     private TableView<AccountsTableDataStructure> prepareTable(
             ObservableList<AccountsTableDataStructure> accountsData) {
         setTableView(new TableView<AccountsTableDataStructure>());
-        TableColumn<AccountsTableDataStructure, String> name = new TableColumn<AccountsTableDataStructure, String>(
-                getColumnNameForAccountName());
+        TableColumn<AccountsTableDataStructure, String> name =
+                new TableColumn<AccountsTableDataStructure, String>(
+                        getColumnNameForAccountName());
         name.setCellValueFactory(new PropertyValueFactory<AccountsTableDataStructure, String>(
                 getAccountNameFieldName()));
-        TableColumn<AccountsTableDataStructure, String> type = new TableColumn<AccountsTableDataStructure, String>(
-                getColumnNameForAccountType());
+        TableColumn<AccountsTableDataStructure, String> type =
+                new TableColumn<AccountsTableDataStructure, String>(
+                        getColumnNameForAccountType());
         type.setCellValueFactory(new PropertyValueFactory<AccountsTableDataStructure, String>(
                 getAccountTypeFieldName()));
-        TableColumn<AccountsTableDataStructure, String> rest = new TableColumn<AccountsTableDataStructure, String>(
-                getColumnNameForAccountRest());
+        TableColumn<AccountsTableDataStructure, String> rest =
+                new TableColumn<AccountsTableDataStructure, String>(
+                        getColumnNameForAccountRest());
         rest.setCellValueFactory(new PropertyValueFactory<AccountsTableDataStructure, String>(
                 getAccountRestFieldName()));
-        TableColumn<AccountsTableDataStructure, String> currencyCode = new TableColumn<AccountsTableDataStructure, String>(
-                getColumnNameForAccountCurrencyCode());
+        TableColumn<AccountsTableDataStructure, String> currencyCode =
+                new TableColumn<AccountsTableDataStructure, String>(
+                        getColumnNameForAccountCurrencyCode());
         currencyCode
                 .setCellValueFactory(new PropertyValueFactory<AccountsTableDataStructure, String>(
                         getAccountCurrencyCodeFieldName()));
-        TableColumn<AccountsTableDataStructure, String> comments = new TableColumn<AccountsTableDataStructure, String>(
-                getColumnNameForAccountComments());
+        TableColumn<AccountsTableDataStructure, String> comments =
+                new TableColumn<AccountsTableDataStructure, String>(
+                        getColumnNameForAccountComments());
         comments.setCellValueFactory(new PropertyValueFactory<AccountsTableDataStructure, String>(
                 getAccountCommentsFieldName()));
 
