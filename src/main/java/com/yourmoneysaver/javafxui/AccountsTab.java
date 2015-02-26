@@ -6,26 +6,42 @@ import com.yourmoneysaver.Account;
 import com.yourmoneysaver.AccountType;
 import com.yourmoneysaver.Currency;
 import com.yourmoneysaver.Money;
-import com.yourmoneysaver.exceptions.ArgumentIsNullException;
-
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class AccountsTab {
-    Stage parentWindow;
+public class AccountsTab extends AbstractTab {
 
-    private AccountsTab() {
-
+    private AccountsTab(Stage parentWindow) {
+    	super(parentWindow);
     }
 
     public static AccountsTab create(Stage parentWindow) {
-        AccountsTab accountsTab = new AccountsTab();
-        accountsTab.setParentWindow(parentWindow);
+        AccountsTab accountsTab = new AccountsTab(parentWindow);
         return accountsTab;
+    }
+
+    @Override
+    protected String defineName() {
+        return "Accounts";
+    }
+
+    @Override
+    public void constructTab() {
+        getTab().setText(defineName());
+        getTab().setClosable(false);
+        VBox vBox = new VBox();
+        AccountsTable accountsTable = AccountsTable
+                .create(getTestingAccountsData());
+        TableView<AccountsTableDataStructure> accountsTableView = accountsTable
+                .getTableView();
+        vBox.getChildren().add(accountsTableView);
+        HBox accountOperationsToolBox = getAccountOperationsToolBox(accountsTableView);
+        vBox.getChildren().add(accountOperationsToolBox);
+        vBox.setPadding(getVBoxInsideOffsets());
+        getTab().setContent(vBox);
     }
 
     private HBox getAccountOperationsToolBox(
@@ -33,14 +49,6 @@ public class AccountsTab {
         AccountOperationsToolBox accountOperationsToolBox = new AccountOperationsToolBox(
                 accountsTableView, getParentWindow());
         return accountOperationsToolBox.getHBox();
-    }
-
-    private String getAccountsTabText() {
-        return "Accounts";
-    }
-
-    public Stage getParentWindow() {
-        return parentWindow;
     }
 
     private ArrayList<AccountsTableDataStructure> getTestingAccountsData() {
@@ -59,31 +67,7 @@ public class AccountsTab {
         return accountsData;
     }
 
-    public Tab getTab() {
-        Tab accounts = new Tab();
-        accounts.setText(getAccountsTabText());
-        accounts.setClosable(false);
-        VBox vBox = new VBox();
-        AccountsTable accountsTable = AccountsTable
-                .create(getTestingAccountsData());
-        TableView<AccountsTableDataStructure> accountsTableView = accountsTable
-                .getTableView();
-        vBox.getChildren().add(accountsTableView);
-        HBox accountOperationsToolBox = getAccountOperationsToolBox(accountsTableView);
-        vBox.getChildren().add(accountOperationsToolBox);
-        vBox.setPadding(getVBoxInsideOffsets());
-        accounts.setContent(vBox);
-        return accounts;
-    }
-
     private Insets getVBoxInsideOffsets() {
         return new Insets(10, 10, 10, 10);
-    }
-
-    public void setParentWindow(Stage parentWindow) {
-        if (parentWindow == null) {
-            throw new ArgumentIsNullException("parentWidnow");
-        }
-        this.parentWindow = parentWindow;
     }
 }
