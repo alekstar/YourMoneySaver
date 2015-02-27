@@ -2,13 +2,13 @@ package com.yourmoneysaver.javafxui;
 
 import java.util.List;
 
-import com.yourmoneysaver.exceptions.ArgumentIsNullException;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import com.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class AccountsTable {
     private TableView<AccountsTableDataStructure> tableView;
@@ -74,6 +74,10 @@ public class AccountsTable {
 
     private String getColumnNameForAccountType() {
         return "Type";
+    }
+
+    protected void addColumn(String columnName, String fieldName) {
+
     }
 
     private TableView<AccountsTableDataStructure> prepareTable(
