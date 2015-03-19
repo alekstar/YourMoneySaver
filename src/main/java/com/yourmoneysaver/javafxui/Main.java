@@ -7,6 +7,8 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import com.yourmoneysaver.CurrenciesContainer;
+
 public class Main extends Application {
 
     @Override
@@ -30,7 +32,9 @@ public class Main extends Application {
         TabPane mainPanel = new TabPane();
 
         AccountsTab accountsTab = AccountsTab.create(parentWindow);
-        CurrenciesTab currenciesTab = CurrenciesTab.create(parentWindow);
+        CurrenciesContainer currenciesContainer = CurrenciesContainer.create();
+        CurrenciesTab currenciesTab =
+                CurrenciesTab.create(parentWindow, currenciesContainer);
 
         Tab accounts = accountsTab.getTab();
         Tab history = getHistoryTab();
