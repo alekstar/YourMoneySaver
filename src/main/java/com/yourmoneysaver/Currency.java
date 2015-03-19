@@ -1,6 +1,6 @@
 package com.yourmoneysaver;
 
-public class Currency {
+public class Currency implements Comparable<Currency> {
     private String name;
     private String isoCode;
     private String sign;
@@ -33,5 +33,10 @@ public class Currency {
 
     private void setSign(String sign) {
         this.sign = sign;
+    }
+
+    @Override
+    public int compareTo(Currency currency) {
+        return this.getIsoCode().compareTo(currency.getIsoCode());
     }
 }
