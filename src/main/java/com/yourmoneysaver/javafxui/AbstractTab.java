@@ -1,9 +1,9 @@
 package com.yourmoneysaver.javafxui;
 
-import com.yourmoneysaver.exceptions.ArgumentIsNullException;
-
 import javafx.scene.control.Tab;
 import javafx.stage.Stage;
+
+import com.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public abstract class AbstractTab {
     Stage parentWindow;
@@ -14,7 +14,6 @@ public abstract class AbstractTab {
         setTab(new Tab());
         getTab().setClosable(false);
         getTab().setText(defineName());
-        constructTab();
     }
 
     protected Stage getParentWindow() {

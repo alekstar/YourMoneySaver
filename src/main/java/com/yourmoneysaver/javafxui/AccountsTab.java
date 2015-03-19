@@ -21,6 +21,7 @@ public class AccountsTab extends AbstractTab {
 
     public static AccountsTab create(Stage parentWindow) {
         AccountsTab accountsTab = new AccountsTab(parentWindow);
+        accountsTab.constructTab();
         return accountsTab;
     }
 
