@@ -1,4 +1,4 @@
-package com.yourmoneysaver;
+package com.alekstar.yourmoneysaver;
 
 public class Money {
 

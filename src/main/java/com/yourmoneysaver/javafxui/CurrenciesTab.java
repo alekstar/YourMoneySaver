@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import com.yourmoneysaver.CurrenciesContainer;
-import com.yourmoneysaver.Currency;
+import com.alekstar.yourmoneysaver.CurrenciesContainer;
+import com.alekstar.yourmoneysaver.Currency;
 import com.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class CurrenciesTab extends AbstractTab {

@@ -1,4 +1,4 @@
-package com.yourmoneysaver;
+package com.alekstar.yourmoneysaver;
 
 public class Currency implements Comparable<Currency> {
     private String name;

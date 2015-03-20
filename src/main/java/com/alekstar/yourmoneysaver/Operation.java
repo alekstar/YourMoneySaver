@@ -1,4 +1,4 @@
-package com.yourmoneysaver;
+package com.alekstar.yourmoneysaver;
 
 import java.util.Date;
 import java.util.LinkedList;

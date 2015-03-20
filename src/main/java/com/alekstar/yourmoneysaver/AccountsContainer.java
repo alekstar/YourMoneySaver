@@ -1,9 +1,11 @@
-package com.yourmoneysaver;
+package com.alekstar.yourmoneysaver;
 
 import java.util.List;
 
 public class AccountsContainer {
     List<Account> accounts;
+
+    // TODO add constructor and factory method
 
     public int add(Account account) {
         verifyAccounts();

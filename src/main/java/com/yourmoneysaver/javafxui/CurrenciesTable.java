@@ -7,7 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import com.yourmoneysaver.Currency;
+import com.alekstar.yourmoneysaver.Currency;
 import com.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class CurrenciesTable {

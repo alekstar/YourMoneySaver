@@ -1,6 +1,6 @@
 package com.yourmoneysaver.javafxui;
 
-import com.yourmoneysaver.Account;
+import com.alekstar.yourmoneysaver.Account;
 import com.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 import javafx.geometry.Insets;
