@@ -2,7 +2,7 @@ package com.alekstar.yourmoneysaver;
 
 import java.util.TreeSet;
 
-import com.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class CurrenciesContainer {
     TreeSet<Currency> currencies;

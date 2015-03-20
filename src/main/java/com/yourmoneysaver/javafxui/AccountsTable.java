@@ -8,7 +8,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import com.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class AccountsTable {
     private TableView<AccountsTableDataStructure> tableView;

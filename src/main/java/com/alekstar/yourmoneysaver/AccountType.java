@@ -1,6 +1,6 @@
 package com.alekstar.yourmoneysaver;
 
-import com.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class AccountType {
     private String name;

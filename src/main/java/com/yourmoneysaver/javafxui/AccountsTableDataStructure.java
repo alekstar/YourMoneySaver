@@ -1,7 +1,7 @@
 package com.yourmoneysaver.javafxui;
 
 import com.alekstar.yourmoneysaver.Account;
-import com.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class AccountsTableDataStructure {
     private Account account;

@@ -1,4 +1,4 @@
-package com.yourmoneysaver.exceptions;
+package com.alekstar.yourmoneysaver.exceptions;
 
 public class ArgumentIsNullException extends IllegalArgumentException {
     private static final long serialVersionUID = 1L;

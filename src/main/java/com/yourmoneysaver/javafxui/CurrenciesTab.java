@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import com.alekstar.yourmoneysaver.CurrenciesContainer;
 import com.alekstar.yourmoneysaver.Currency;
-import com.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class CurrenciesTab extends AbstractTab {
     CurrenciesContainer currenciesContainer;
