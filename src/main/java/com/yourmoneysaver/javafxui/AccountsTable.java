@@ -20,6 +20,7 @@ public class AccountsTable {
     public static AccountsTable create(
             List<AccountsTableDataStructure> accountsData) {
         AccountsTable accountsTable = new AccountsTable();
+        accountsTable.setTableView(new TableView<AccountsTableDataStructure>());
         accountsTable.prepareTable(FXCollections
                 .observableArrayList(accountsData));
         return accountsTable;
@@ -76,13 +77,8 @@ public class AccountsTable {
         return "Type";
     }
 
-    protected void addColumn(String columnName, String fieldName) {
-
-    }
-
-    private TableView<AccountsTableDataStructure> prepareTable(
+    private void prepareTable(
             ObservableList<AccountsTableDataStructure> accountsData) {
-        setTableView(new TableView<AccountsTableDataStructure>());
         TableColumn<AccountsTableDataStructure, String> name =
                 new TableColumn<AccountsTableDataStructure, String>(
                         getColumnNameForAccountName());
@@ -116,7 +112,5 @@ public class AccountsTable {
         getTableView().getColumns().add(currencyCode);
         getTableView().getColumns().add(comments);
         getTableView().setItems(accountsData);
-
-        return tableView;
     }
 }
