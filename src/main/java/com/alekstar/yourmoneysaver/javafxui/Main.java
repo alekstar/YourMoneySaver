@@ -1,4 +1,4 @@
-package com.yourmoneysaver.javafxui;
+package com.alekstar.yourmoneysaver.javafxui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

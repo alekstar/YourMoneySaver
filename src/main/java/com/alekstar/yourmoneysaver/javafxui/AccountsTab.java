@@ -1,4 +1,4 @@
-package com.yourmoneysaver.javafxui;
+package com.alekstar.yourmoneysaver.javafxui;
 
 import java.util.ArrayList;
 
