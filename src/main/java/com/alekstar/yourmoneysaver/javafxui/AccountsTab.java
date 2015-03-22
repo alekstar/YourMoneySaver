@@ -56,7 +56,7 @@ public class AccountsTab extends AbstractTab {
     private ArrayList<AccountsTableDataStructure> getTestingAccountsData() {
         ArrayList<AccountsTableDataStructure> accountsData =
                 new ArrayList<AccountsTableDataStructure>();
-        Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴");
+        Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴", null);
         AccountType plasticCard = new AccountType("Plastic card");
         Account account =
                 new Account("SwedenBank Card", plasticCard, new Money(uah, 150,

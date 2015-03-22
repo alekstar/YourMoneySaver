@@ -1,16 +1,37 @@
 package com.alekstar.yourmoneysaver;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Currencies")
 public class Currency implements Comparable<Currency> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "currency_id")
     private long id;
+
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "iso_code", nullable = false)
     private String isoCode;
+
+    @Column(name = "symbol", nullable = false)
     private String symbol;
+
+    @Column(name = "comments")
     private String comments;
 
-    public Currency(String name, String isoCode, String sign) {
+    public Currency(String name, String isoCode, String symbol, String comments) {
         setName(name);
         setIsoCode(isoCode);
-        setSymbol(sign);
+        setSymbol(symbol);
+        setComments(comments);
     }
 
     public long getId() {
