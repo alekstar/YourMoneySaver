@@ -1,7 +1,7 @@
 package com.alekstar.yourmoneysaver;
 
 public class Currency implements Comparable<Currency> {
-    private String id;
+    private long id;
     private String name;
     private String isoCode;
     private String symbol;
@@ -12,7 +12,7 @@ public class Currency implements Comparable<Currency> {
         setSymbol(sign);
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -28,7 +28,7 @@ public class Currency implements Comparable<Currency> {
         return symbol;
     }
 
-    private void setId(String id) {
+    private void setId(long id) {
         this.id = id;
     }
 
