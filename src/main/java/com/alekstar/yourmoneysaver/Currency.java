@@ -5,6 +5,7 @@ public class Currency implements Comparable<Currency> {
     private String name;
     private String isoCode;
     private String symbol;
+    private String comments;
 
     public Currency(String name, String isoCode, String sign) {
         setName(name);
@@ -28,6 +29,10 @@ public class Currency implements Comparable<Currency> {
         return symbol;
     }
 
+    public String getComments() {
+        return comments;
+    }
+
     private void setId(long id) {
         this.id = id;
     }
@@ -42,6 +47,10 @@ public class Currency implements Comparable<Currency> {
 
     private void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
     @Override
