@@ -37,15 +37,15 @@ public class Currency implements Comparable<Currency> {
         this.id = id;
     }
 
-    private void setIsoCode(String iSOCode) {
+    public void setIsoCode(String iSOCode) {
         isoCode = iSOCode;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    private void setSymbol(String symbol) {
+    public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
 
