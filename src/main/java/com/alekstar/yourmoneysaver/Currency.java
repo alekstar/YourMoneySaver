@@ -3,12 +3,12 @@ package com.alekstar.yourmoneysaver;
 public class Currency implements Comparable<Currency> {
     private String name;
     private String isoCode;
-    private String sign;
+    private String symbol;
 
     public Currency(String name, String isoCode, String sign) {
         setName(name);
         setIsoCode(isoCode);
-        setSign(sign);
+        setSymbol(sign);
     }
 
     public String getIsoCode() {
@@ -19,8 +19,8 @@ public class Currency implements Comparable<Currency> {
         return name;
     }
 
-    public String getSign() {
-        return sign;
+    public String getSymbol() {
+        return symbol;
     }
 
     private void setIsoCode(String iSOCode) {
@@ -31,8 +31,8 @@ public class Currency implements Comparable<Currency> {
         this.name = name;
     }
 
-    private void setSign(String sign) {
-        this.sign = sign;
+    private void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     @Override
