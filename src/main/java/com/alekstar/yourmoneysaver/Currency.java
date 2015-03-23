@@ -27,6 +27,11 @@ public class Currency implements Comparable<Currency> {
     @Column
     private String comments;
 
+    @SuppressWarnings("unused")
+    private Currency() {
+
+    }
+
     public Currency(String name, String isoCode, String symbol, String comments) {
         setName(name);
         setIsoCode(isoCode);
