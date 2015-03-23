@@ -54,6 +54,7 @@ public class Currency implements Comparable<Currency> {
         return comments;
     }
 
+    @SuppressWarnings("unused")
     private void setId(long id) {
         this.id = id;
     }
