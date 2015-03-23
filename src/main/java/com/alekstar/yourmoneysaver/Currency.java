@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
+
 @Entity
 @Table(name = "Currencies")
 public class Currency implements Comparable<Currency> {
@@ -65,14 +67,23 @@ public class Currency implements Comparable<Currency> {
     }
 
     public void setIsoCode(String iSOCode) {
+        if (iSOCode == null) {
+            throw new ArgumentIsNullException("iSOCode");
+        }
         isoCode = iSOCode;
     }
 
     public void setName(String name) {
+        if (name == null) {
+            throw new ArgumentIsNullException("name");
+        }
         this.name = name;
     }
 
     public void setSymbol(String symbol) {
+        if (symbol == null) {
+            throw new ArgumentIsNullException("symbol");
+        }
         this.symbol = symbol;
     }
 
