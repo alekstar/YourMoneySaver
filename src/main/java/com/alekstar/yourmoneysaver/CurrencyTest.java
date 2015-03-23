@@ -23,4 +23,10 @@ public class CurrencyTest {
         Currency uah = new Currency("Ukrainian hrivnya", "UAH", "₴", null);
         assertEquals("₴", uah.getSymbol());
     }
+
+    @Test
+    public void shouldCreateCurrencyObjectWithEmptyComments() {
+        Currency uah = new Currency("Ukrainian hrivnya", "UAH", "₴", null);
+        assertEquals(null, uah.getComments());
+    }
 }
