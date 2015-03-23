@@ -12,4 +12,10 @@ public class CurrencyTest {
         assertEquals("Ukrainian hrivnya", uah.getName());
     }
 
+    @Test
+    public void shouldCreateCurrencyObjectWithIsoCodeEqualsUAH() {
+        Currency uah = new Currency("Ukrainian hrivnya", "UAH", "₴", null);
+        assertEquals("UAH", uah.getIsoCode());
+    }
+
 }
