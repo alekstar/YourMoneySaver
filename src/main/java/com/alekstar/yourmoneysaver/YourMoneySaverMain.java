@@ -22,9 +22,8 @@ public class YourMoneySaverMain {
                 entityManager.persist(usd);
                 entityManager.persist(rub);
                 entityManager.getTransaction().commit();
-            } finally {
+            } catch (RuntimeException e) {
                 entityManager.getTransaction().rollback();
-
             }
         } finally {
             entityManager.close();
