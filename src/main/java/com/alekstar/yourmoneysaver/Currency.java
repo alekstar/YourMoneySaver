@@ -12,19 +12,19 @@ import javax.persistence.Table;
 public class Currency implements Comparable<Currency> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "currency_id")
+    @Column
     private long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(nullable = false)
     private String name;
 
     @Column(name = "iso_code", nullable = false)
     private String isoCode;
 
-    @Column(name = "symbol", nullable = false)
+    @Column(nullable = false)
     private String symbol;
 
-    @Column(name = "comments")
+    @Column
     private String comments;
 
     public Currency(String name, String isoCode, String symbol, String comments) {
