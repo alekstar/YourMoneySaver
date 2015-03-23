@@ -18,4 +18,9 @@ public class CurrencyTest {
         assertEquals("UAH", uah.getIsoCode());
     }
 
+    @Test
+    public void shouldCreateCurrencyObjectWithSymbolEquals₴() {
+        Currency uah = new Currency("Ukrainian hrivnya", "UAH", "₴", null);
+        assertEquals("₴", uah.getSymbol());
+    }
 }
