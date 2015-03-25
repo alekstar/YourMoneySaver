@@ -39,36 +39,66 @@ public class CurrenciesTable {
         return "isoCode";
     }
 
-    private String defineColumnNameForCurrencySign() {
-        return "Sign";
+    private String defineColumnNameForCurrencySymbol() {
+        return "Symbol";
     }
 
-    private String defineCurrencySignFieldName() {
-        return "sign";
+    private String defineCurrencySymbolFieldName() {
+        return "symbol";
+    }
+
+    private String defineColumnNameForCurrencyComments() {
+        return "Comments";
+    }
+
+    private String defineCurrencyCommentsFieldName() {
+        return "comments";
     }
 
     private void prepareTable(List<Currency> currenciesData) {
+        getTableView().getColumns().add(defineNameColumn());
+        getTableView().getColumns().add(defineIsoCodeColumn());
+        getTableView().getColumns().add(defineSymbolColumn());
+        getTableView().getColumns().add(defineCommentsColumn());
+        getTableView().setItems(
+                FXCollections.observableArrayList(currenciesData));
+
+    }
+
+    private TableColumn<Currency, String> defineCommentsColumn() {
+        TableColumn<Currency, String> comments =
+                new TableColumn<Currency, String>(
+                        defineColumnNameForCurrencyComments());
+        comments.setCellValueFactory(new PropertyValueFactory<Currency, String>(
+                defineCurrencyCommentsFieldName()));
+        return comments;
+    }
+
+    private TableColumn<Currency, String> defineNameColumn() {
         TableColumn<Currency, String> name =
                 new TableColumn<Currency, String>(
                         defineColumnNameForCurrencyName());
         name.setCellValueFactory(new PropertyValueFactory<Currency, String>(
                 defineCurrencyNameFieldName()));
+        return name;
+    }
+
+    private TableColumn<Currency, String> defineIsoCodeColumn() {
         TableColumn<Currency, String> isoCode =
                 new TableColumn<Currency, String>(
                         defineColumnNameForCurrencyIsoCode());
         isoCode.setCellValueFactory(new PropertyValueFactory<Currency, String>(
                 defineCurrencyIsoCodeFieldName()));
-        TableColumn<Currency, String> sign =
-                new TableColumn<Currency, String>(
-                        defineColumnNameForCurrencySign());
-        sign.setCellValueFactory(new PropertyValueFactory<Currency, String>(
-                defineCurrencySignFieldName()));
-        getTableView().getColumns().add(name);
-        getTableView().getColumns().add(isoCode);
-        getTableView().getColumns().add(sign);
-        getTableView().setItems(
-                FXCollections.observableArrayList(currenciesData));
+        return isoCode;
+    }
 
+    private TableColumn<Currency, String> defineSymbolColumn() {
+        TableColumn<Currency, String> symbol =
+                new TableColumn<Currency, String>(
+                        defineColumnNameForCurrencySymbol());
+        symbol.setCellValueFactory(new PropertyValueFactory<Currency, String>(
+                defineCurrencySymbolFieldName()));
+        return symbol;
     }
 
     public TableView<Currency> getTableView() {

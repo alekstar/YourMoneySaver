@@ -1,39 +1,29 @@
 package com.alekstar.yourmoneysaver.javafxui;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import com.alekstar.yourmoneysaver.CurrenciesContainer;
+import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
+
 import com.alekstar.yourmoneysaver.Currency;
-import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class CurrenciesTab extends AbstractTab {
-    CurrenciesContainer currenciesContainer;
+    private EntityManager entityManager;
 
     private CurrenciesTab(Stage parentWindow) {
         super(parentWindow);
+        initializeEntityManager();
     }
 
-    public static CurrenciesTab create(Stage parentWindow,
-            CurrenciesContainer currencies) {
+    public static CurrenciesTab create(Stage parentWindow) {
         CurrenciesTab tab = new CurrenciesTab(parentWindow);
-        tab.setCurrenciesContainer(currencies);
         tab.constructTab();
         return tab;
-    }
-
-    protected void setCurrenciesContainer(
-            CurrenciesContainer currenciesContainer) {
-        if (currenciesContainer == null) {
-            throw new ArgumentIsNullException("currenciesContainer");
-        }
-        this.currenciesContainer = currenciesContainer;
-    }
-
-    public CurrenciesContainer getCurrenciesContainer() {
-        return currenciesContainer;
     }
 
     @Override
@@ -41,12 +31,30 @@ public class CurrenciesTab extends AbstractTab {
         return "Currencies";
     }
 
+    private void initializeEntityManager() {
+        entityManager = EntityManagerFactorySingleton.getEntityManager();
+    }
+
+    private EntityManager getEntityManager() {
+        return this.entityManager;
+    }
+
+    private List<Currency> getAllCurrenciesFromBase() {
+        Session session = getEntityManager().unwrap(Session.class);
+        List<Object> listOfObjectsFromDataBase =
+                session.createCriteria(Currency.class).list();
+        List<Currency> currenciesList = new ArrayList<Currency>();
+        for (Object currenctObject : listOfObjectsFromDataBase) {
+            currenciesList.add((Currency) currenctObject);
+        }
+        return currenciesList;
+    }
+
     @Override
     protected void constructTab() {
         VBox mainPanel = new VBox();
         CurrenciesTable currenciesTable =
-                CurrenciesTable.create(new ArrayList<Currency>(
-                        getCurrenciesContainer().getCurrencies()));
+                CurrenciesTable.create(getAllCurrenciesFromBase());
         mainPanel.getChildren().add(currenciesTable.getTableView());
         getTab().setContent(mainPanel);
     }
