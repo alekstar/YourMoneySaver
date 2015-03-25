@@ -23,4 +23,12 @@ public class EntityManagerFactorySingleton {
     public static EntityManager getEntityManager() {
         return getInstance().createEntityManager();
     }
+
+    public static void close() {
+        try {
+            entityManagerFactory.close();
+        } catch (IllegalStateException e) {
+            System.err.println("EntityManagerFactory is already closed.");
+        }
+    }
 }
