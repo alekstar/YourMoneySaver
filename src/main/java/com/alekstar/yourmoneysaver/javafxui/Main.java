@@ -50,6 +50,11 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        try {
+            launch(args);
+        } finally {
+            System.err.println("Attempt to close EntityManagerFactory.");
+            EntityManagerFactorySingleton.close();
+        }
     }
 }
