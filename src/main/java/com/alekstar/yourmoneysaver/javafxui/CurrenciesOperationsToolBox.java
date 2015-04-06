@@ -16,6 +16,7 @@ public class CurrenciesOperationsToolBox {
     private CurrenciesOperationsToolBox() {
         initializeBox();
         addAddButton();
+        addEditButton();
     }
 
     public HBox getBox() {
@@ -36,6 +37,11 @@ public class CurrenciesOperationsToolBox {
 
     private void addAddButton() {
         Button button = new Button("Add");
+        addNode(button);
+    }
+
+    private void addEditButton() {
+        Button button = new Button("Edit");
         addNode(button);
     }
 
