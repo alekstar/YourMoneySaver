@@ -87,11 +87,11 @@ public class AccountOperationsToolBox {
     }
 
     private Insets getInsideOffsets() {
-        return new Insets(10, 0, 0, 0);
+        return Standarts.defineToolBoxInsets();
     }
 
-    private int getNiceSpacing() {
-        return 10;
+    private double getNiceSpacing() {
+        return Standarts.defineToolBoxSpacing();
     }
 
     public Stage getParentWindow() {

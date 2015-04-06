@@ -72,6 +72,6 @@ public class AccountsTab extends AbstractTab {
     }
 
     private Insets getVBoxInsideOffsets() {
-        return new Insets(10, 10, 10, 10);
+        return Standarts.defineMainPanelInsets();
     }
 }
