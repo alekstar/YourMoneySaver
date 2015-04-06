@@ -3,6 +3,7 @@ package com.alekstar.yourmoneysaver.javafxui;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -50,12 +51,20 @@ public class CurrenciesTab extends AbstractTab {
         return currenciesList;
     }
 
+    private Node defineToolBox() {
+        CurrenciesOperationsToolBox toolBox =
+                CurrenciesOperationsToolBox.create();
+        return toolBox.getBox();
+    }
+
     @Override
     protected void constructTab() {
         VBox mainPanel = new VBox();
         CurrenciesTable currenciesTable =
                 CurrenciesTable.create(getAllCurrenciesFromBase());
         mainPanel.getChildren().add(currenciesTable.getTableView());
+        mainPanel.getChildren().add(defineToolBox());
+        mainPanel.setPadding(Standarts.defineMainPanelInsets());
         getTab().setContent(mainPanel);
     }
 }
