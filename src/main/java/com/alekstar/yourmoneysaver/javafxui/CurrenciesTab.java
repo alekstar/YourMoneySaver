@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.Node;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -15,6 +17,8 @@ import com.alekstar.yourmoneysaver.Currency;
 
 public class CurrenciesTab extends AbstractTab {
     private EntityManager entityManager;
+    private CurrenciesTable table;
+    private Pane mainPanel;
 
     private CurrenciesTab(Stage parentWindow) {
         super(parentWindow);
@@ -27,17 +31,43 @@ public class CurrenciesTab extends AbstractTab {
         return tab;
     }
 
+    private EntityManager getEntityManager() {
+        return this.entityManager;
+    }
+
+    private CurrenciesTable getTable() {
+        return this.table;
+    }
+
+    public Pane getMainPanel() {
+        return this.mainPanel;
+    }
+
     @Override
     protected String defineName() {
         return "Currencies";
     }
 
-    private void initializeEntityManager() {
-        entityManager = EntityManagerFactorySingleton.getEntityManager();
+    @Override
+    protected void constructTab() {
+        initializeTable();
+        initializeMainPanel();
+        getTab().setContent(getMainPanel());
     }
 
-    private EntityManager getEntityManager() {
-        return this.entityManager;
+    private void initializeTable() {
+        this.table = CurrenciesTable.create(getAllCurrenciesFromBase());
+    }
+
+    private void initializeMainPanel() {
+        this.mainPanel = new VBox();
+        getMainPanel().getChildren().add(getTable().getTableView());
+        getMainPanel().getChildren().add(defineToolBox());
+        getMainPanel().setPadding(Standarts.defineMainPanelInsets());
+    }
+
+    private void initializeEntityManager() {
+        entityManager = EntityManagerFactorySingleton.getEntityManager();
     }
 
     private List<Currency> getAllCurrenciesFromBase() {
@@ -55,16 +85,5 @@ public class CurrenciesTab extends AbstractTab {
         CurrenciesOperationsToolBox toolBox =
                 CurrenciesOperationsToolBox.create();
         return toolBox.getBox();
-    }
-
-    @Override
-    protected void constructTab() {
-        VBox mainPanel = new VBox();
-        CurrenciesTable currenciesTable =
-                CurrenciesTable.create(getAllCurrenciesFromBase());
-        mainPanel.getChildren().add(currenciesTable.getTableView());
-        mainPanel.getChildren().add(defineToolBox());
-        mainPanel.setPadding(Standarts.defineMainPanelInsets());
-        getTab().setContent(mainPanel);
     }
 }
