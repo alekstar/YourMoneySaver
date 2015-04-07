@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.Node;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -66,13 +65,17 @@ public class CurrenciesTab extends AbstractTab {
         getMainPanel().setPadding(Standarts.defineMainPanelInsets());
     }
 
+    public void refresh() {
+        initializeTable();
+    }
+
     private void initializeEntityManager() {
         entityManager = EntityManagerFactorySingleton.getEntityManager();
     }
 
     private List<Currency> getAllCurrenciesFromBase() {
         Session session = getEntityManager().unwrap(Session.class);
-        List<Object> listOfObjectsFromDataBase =
+        List<?> listOfObjectsFromDataBase =
                 session.createCriteria(Currency.class).list();
         List<Currency> currenciesList = new ArrayList<Currency>();
         for (Object currenctObject : listOfObjectsFromDataBase) {
