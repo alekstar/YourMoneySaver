@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.javafxui;
+package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,6 +14,7 @@ import javafx.stage.Window;
 
 import com.alekstar.yourmoneysaver.Currency;
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.javafxui.Standarts;
 
 public class AddCurrencyWindow {
     private Currency newCurrency;
