@@ -70,10 +70,18 @@ public class Currency implements Comparable<Currency> {
         if (isoCode == null) {
             throw new ArgumentIsNullException("isoCode");
         }
+        if (isoCode.length() != defineIsoCodeStringLength()) {
+            throw new IllegalArgumentException(
+                    "ISO code should be consisted of 3 letters.");
+        }
         if (!isoCode.matches(defineRegularExpressionForIsoCode())) {
             throw new IllegalArgumentException("ISO code is not valid.");
         }
         this.isoCode = isoCode;
+    }
+
+    private int defineIsoCodeStringLength() {
+        return 3;
     }
 
     private String defineRegularExpressionForIsoCode() {
