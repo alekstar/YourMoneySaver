@@ -66,11 +66,18 @@ public class Currency implements Comparable<Currency> {
         this.id = id;
     }
 
-    public void setIsoCode(String iSOCode) {
-        if (iSOCode == null) {
-            throw new ArgumentIsNullException("iSOCode");
+    public void setIsoCode(String isoCode) {
+        if (isoCode == null) {
+            throw new ArgumentIsNullException("isoCode");
         }
-        isoCode = iSOCode;
+        if (!isoCode.matches(defineRegularExpressionForIsoCode())) {
+            throw new IllegalArgumentException("Iso code is not valid.");
+        }
+        this.isoCode = isoCode;
+    }
+
+    private String defineRegularExpressionForIsoCode() {
+        return "^[A-Z][A-Z][A-Z]$";
     }
 
     public void setName(String name) {
