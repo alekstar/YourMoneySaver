@@ -1,5 +1,7 @@
 package com.alekstar.yourmoneysaver.javafxui;
 
+import com.alekstar.yourmoneysaver.javafxui.currenciestab.CurrenciesTab;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
