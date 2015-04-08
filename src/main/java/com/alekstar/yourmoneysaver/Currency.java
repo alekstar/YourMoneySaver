@@ -91,6 +91,10 @@ public class Currency implements Comparable<Currency> {
         if (symbol == null) {
             throw new ArgumentIsNullException("symbol");
         }
+        if (symbol.length() != 1) {
+            throw new IllegalArgumentException(
+                    "Currency's symbol should be exactly one character.");
+        }
         this.symbol = symbol;
     }
 
