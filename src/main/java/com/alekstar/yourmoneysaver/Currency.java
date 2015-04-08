@@ -71,7 +71,7 @@ public class Currency implements Comparable<Currency> {
             throw new ArgumentIsNullException("isoCode");
         }
         if (!isoCode.matches(defineRegularExpressionForIsoCode())) {
-            throw new IllegalArgumentException("Iso code is not valid.");
+            throw new IllegalArgumentException("ISO code is not valid.");
         }
         this.isoCode = isoCode;
     }
