@@ -1,7 +1,6 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
-import com.alekstar.yourmoneysaver.javafxui.AddCurrencyButtonEventHandler;
 import com.alekstar.yourmoneysaver.javafxui.Standarts;
 import com.sun.glass.events.KeyEvent;
 
