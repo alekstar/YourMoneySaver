@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.javafxui;
+package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
 import java.util.List;
 
