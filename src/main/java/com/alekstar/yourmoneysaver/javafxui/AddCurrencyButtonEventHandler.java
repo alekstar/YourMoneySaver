@@ -48,7 +48,7 @@ public class AddCurrencyButtonEventHandler implements EventHandler<InputEvent> {
     }
 
     private boolean isAcceptibleEvent(InputEvent event) {
-        if (isAcceptibleEventType(event)) {
+        if (!isAcceptibleEventType(event)) {
             return false;
         }
         if (event instanceof MouseEvent) {
@@ -67,7 +67,7 @@ public class AddCurrencyButtonEventHandler implements EventHandler<InputEvent> {
     }
 
     private boolean isAcceptibleEventType(InputEvent event) {
-        if(!(event instanceof MouseEvent) && !(event instanceof KeyEvent)) {
+        if (!(event instanceof MouseEvent) && !(event instanceof KeyEvent)) {
             return false;
         }
         return true;
