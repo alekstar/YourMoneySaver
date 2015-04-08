@@ -82,4 +82,24 @@ public class CurrencyTest {
         fail();
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenSymbolHasMoreThan1Characters() {
+        @SuppressWarnings("unused")
+        Currency currency = new Currency("Some currency", "USD", "12", null);
+        fail();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenSymbolHasNoCharacters() {
+        @SuppressWarnings("unused")
+        Currency currency = new Currency("Some currency", "USD", "", null);
+        fail();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenSymbolIsNull() {
+        @SuppressWarnings("unused")
+        Currency currency = new Currency("Some currency", "USD", null, null);
+        fail();
+    }
 }
