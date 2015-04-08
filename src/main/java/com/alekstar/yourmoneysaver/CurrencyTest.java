@@ -39,4 +39,47 @@ public class CurrencyTest {
         Currency uah = new Currency(null, "UAH", "₴", null);
         fail();
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenIsoCodeIs123() {
+        @SuppressWarnings("unused")
+        Currency currency = new Currency("Some currency", "123", "1", null);
+        fail();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenIsoCodeIsuah() {
+        @SuppressWarnings("unused")
+        Currency currency = new Currency("Some currency", "uah", "1", null);
+        fail();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenIsoCodeIsUA() {
+        @SuppressWarnings("unused")
+        Currency currency = new Currency("Some currency", "UA", "1", null);
+        fail();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenIsoCodeIsUA1() {
+        @SuppressWarnings("unused")
+        Currency currency = new Currency("Some currency", "UA1", "1", null);
+        fail();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenIsoCodeIsUAH1() {
+        @SuppressWarnings("unused")
+        Currency currency = new Currency("Some currency", "UAH1", "1", null);
+        fail();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenIsoCodeIsNotEnglishLetters() {
+        @SuppressWarnings("unused")
+        Currency currency = new Currency("Some currency", "УКР", "1", null);
+        fail();
+    }
+
 }
