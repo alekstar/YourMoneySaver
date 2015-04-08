@@ -19,9 +19,14 @@ public class AddCurrencyWindow {
     private Currency newCurrency;
     private Stage thisWindow;
     private Window parentWindow;
+    private TextField name;
+    private TextField isoCode;
+    private TextField symbol;
+    private TextField comments;
 
     protected AddCurrencyWindow(Window parentWindow) {
         setParentWindow(parentWindow);
+        initializeTextFields();
         initializeThisWindow();
     }
 
@@ -32,13 +37,13 @@ public class AddCurrencyWindow {
     private void addControlsToPane(Pane pane) {
         VBox vBox = new VBox();
         vBox.getChildren().add(new Label("Name: "));
-        vBox.getChildren().add(new TextField());
+        vBox.getChildren().add(getName());
         vBox.getChildren().add(new Label("ISO code: "));
-        vBox.getChildren().add(new TextField());
+        vBox.getChildren().add(getIsoCode());
         vBox.getChildren().add(new Label("Symbol: "));
-        vBox.getChildren().add(new TextField());
+        vBox.getChildren().add(getSymbol());
         vBox.getChildren().add(new Label("Comments: "));
-        vBox.getChildren().add(new TextField());
+        vBox.getChildren().add(getComments());
         vBox.setPadding(Standarts.defineMainPanelInsets());
 
         HBox hBox = new HBox();
@@ -47,6 +52,13 @@ public class AddCurrencyWindow {
         vBox.getChildren().add(hBox);
 
         pane.getChildren().add(vBox);
+    }
+
+    private void initializeTextFields() {
+        setName(new TextField());
+        setIsoCode(new TextField());
+        setSymbol(new TextField());
+        setComments(new TextField());
     }
 
     private void initializeThisWindow() {
@@ -64,6 +76,38 @@ public class AddCurrencyWindow {
 
     public void showAndWait() {
         getThisWindow().showAndWait();
+    }
+
+    private TextField getName() {
+        return name;
+    }
+
+    private void setName(TextField name) {
+        this.name = name;
+    }
+
+    private TextField getIsoCode() {
+        return isoCode;
+    }
+
+    private void setIsoCode(TextField isoCode) {
+        this.isoCode = isoCode;
+    }
+
+    private TextField getSymbol() {
+        return symbol;
+    }
+
+    private void setSymbol(TextField symbol) {
+        this.symbol = symbol;
+    }
+
+    private TextField getComments() {
+        return comments;
+    }
+
+    private void setComments(TextField comments) {
+        this.comments = comments;
     }
 
     private Currency getNewCurrency() {
