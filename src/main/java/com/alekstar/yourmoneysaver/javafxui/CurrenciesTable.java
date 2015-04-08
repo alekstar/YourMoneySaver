@@ -111,4 +111,8 @@ public class CurrenciesTable {
         }
         this.tableView = tableView;
     }
+
+    public Currency getCurrencyFromCurrentPosition() {
+        return getTableView().getFocusModel().getFocusedItem();
+    }
 }
