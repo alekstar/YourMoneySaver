@@ -48,23 +48,44 @@ public class AddCurrencyButtonEventHandler implements EventHandler<InputEvent> {
     }
 
     private boolean isAcceptibleEvent(InputEvent event) {
-        if (!(event instanceof MouseEvent) && !(event instanceof KeyEvent)) {
+        if (isAcceptibleEventType(event)) {
             return false;
         }
         if (event instanceof MouseEvent) {
             MouseEvent mouseEvent = (MouseEvent) event;
-            if (mouseEvent.getButton() != MouseButton.PRIMARY) {
-                return false;
-            }
-            if (mouseEvent.getEventType() != MouseEvent.MOUSE_CLICKED) {
+            if (!isAcceptibleMouseEvent(mouseEvent)) {
                 return false;
             }
         }
         if (event instanceof KeyEvent) {
             KeyEvent keyEvent = (KeyEvent) event;
-            if (keyEvent.getCode() != KeyCode.ENTER) {
+            if (!isAcceptibleKeyEvent(keyEvent)) {
                 return false;
             }
+        }
+        return true;
+    }
+
+    private boolean isAcceptibleEventType(InputEvent event) {
+        if(!(event instanceof MouseEvent) && !(event instanceof KeyEvent)) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isAcceptibleMouseEvent(MouseEvent mouseEvent) {
+        if (mouseEvent.getButton() != MouseButton.PRIMARY) {
+            return false;
+        }
+        if (mouseEvent.getEventType() != MouseEvent.MOUSE_CLICKED) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isAcceptibleKeyEvent(KeyEvent keyEvent) {
+        if (keyEvent.getCode() != KeyCode.ENTER) {
+            return false;
         }
         return true;
     }
