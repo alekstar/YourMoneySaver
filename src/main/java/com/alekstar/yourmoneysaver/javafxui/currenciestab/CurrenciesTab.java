@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.javafxui;
+package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,11 @@ import javax.persistence.EntityManager;
 import org.hibernate.Session;
 
 import com.alekstar.yourmoneysaver.Currency;
+import com.alekstar.yourmoneysaver.javafxui.AbstractTab;
+import com.alekstar.yourmoneysaver.javafxui.CurrenciesOperationsToolBox;
+import com.alekstar.yourmoneysaver.javafxui.CurrenciesTable;
+import com.alekstar.yourmoneysaver.javafxui.EntityManagerFactorySingleton;
+import com.alekstar.yourmoneysaver.javafxui.Standarts;
 
 public class CurrenciesTab extends AbstractTab {
     private EntityManager entityManager;
