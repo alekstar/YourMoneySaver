@@ -17,16 +17,16 @@ public class Currency implements Comparable<Currency> {
     @Column
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(name = "iso_code", nullable = false)
+    @Column(name = "iso_code", nullable = false, length = 3)
     private String isoCode;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 1)
     private String symbol;
 
-    @Column
+    @Column(length = 100)
     private String comments;
 
     @SuppressWarnings("unused")
