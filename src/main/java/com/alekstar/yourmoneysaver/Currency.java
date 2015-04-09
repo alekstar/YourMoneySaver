@@ -93,6 +93,15 @@ public class Currency implements Comparable<Currency> {
         if (name == null) {
             throw new ArgumentIsNullException("name");
         }
+        if (name.length() > NAME_MAX_STRING_LENGTH) {
+            StringBuilder exceptionMessageBuilder = new StringBuilder();
+            exceptionMessageBuilder
+                    .append("Length of name's string can not be more than ");
+            exceptionMessageBuilder.append(NAME_MAX_STRING_LENGTH);
+            exceptionMessageBuilder.append(" symbols.");
+            throw new IllegalArgumentException(
+                    exceptionMessageBuilder.toString());
+        }
         this.name = name;
     }
 
