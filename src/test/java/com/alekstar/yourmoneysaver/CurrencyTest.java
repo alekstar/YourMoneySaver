@@ -1,7 +1,6 @@
 package com.alekstar.yourmoneysaver;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -100,6 +99,25 @@ public class CurrencyTest {
     public void shouldThrowExceptionWhenSymbolIsNull() {
         @SuppressWarnings("unused")
         Currency currency = new Currency("Some currency", "USD", null, null);
+        fail();
+    }
+
+    @Test
+    public void shouldCreateCurrencyObjectWithNamesLengthIs50() {
+        Currency currency =
+                new Currency(
+                        "The length of this string equals fifty characters.",
+                        "USD", "$", null);
+        assertEquals(50, currency.getName().length());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenNamesLengthIs53() {
+        @SuppressWarnings("unused")
+        Currency currency =
+                new Currency(
+                        "The length of this string is fifty three characters!!",
+                        "USD", "$", null);
         fail();
     }
 }
