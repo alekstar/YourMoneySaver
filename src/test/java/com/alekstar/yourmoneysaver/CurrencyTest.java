@@ -120,4 +120,25 @@ public class CurrencyTest {
                         "USD", "$", null);
         fail();
     }
+
+    @Test
+    public void shouldCreateCurrencyObjectWithCommentsLengthIs100() {
+        Currency currency =
+                new Currency("US Dollar", "USD", "$",
+                        "The length of this very very very long string equals "
+                                + "one hundred characters. It really is! "
+                                + "Yes it is");
+        assertEquals(100, currency.getComments().length());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionWhenCommentsLengthIs101() {
+        @SuppressWarnings("unused")
+        Currency currency =
+                new Currency("US Dollar", "USD", "$",
+                        "The length of this very very very long string is one "
+                                + "hundred and one characters. It really is! "
+                                + "Yeap!!");
+        fail();
+    }
 }
