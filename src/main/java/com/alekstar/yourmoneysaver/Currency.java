@@ -12,21 +12,26 @@ import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 @Entity
 @Table(name = "Currencies")
 public class Currency implements Comparable<Currency> {
+    private static final int NAME_MAX_STRING_LENGTH = 50;
+    private static final int ISO_CODE_STRING_LENGTH = 3;
+    private static final int SYMBOL_STRING_LENGTH = 1;
+    private static final int COMMENTS_MAX_STRING_LENGTH = 100;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = NAME_MAX_STRING_LENGTH)
     private String name;
 
-    @Column(name = "iso_code", nullable = false, length = 3)
+    @Column(name = "iso_code", nullable = false, length = ISO_CODE_STRING_LENGTH)
     private String isoCode;
 
-    @Column(nullable = false, length = 1)
+    @Column(nullable = false, length = SYMBOL_STRING_LENGTH)
     private String symbol;
 
-    @Column(length = 100)
+    @Column(length = COMMENTS_MAX_STRING_LENGTH)
     private String comments;
 
     @SuppressWarnings("unused")
@@ -70,7 +75,7 @@ public class Currency implements Comparable<Currency> {
         if (isoCode == null) {
             throw new ArgumentIsNullException("isoCode");
         }
-        if (isoCode.length() != defineIsoCodeStringLength()) {
+        if (isoCode.length() != ISO_CODE_STRING_LENGTH) {
             throw new IllegalArgumentException(
                     "ISO code should be consisted of 3 letters.");
         }
@@ -78,10 +83,6 @@ public class Currency implements Comparable<Currency> {
             throw new IllegalArgumentException("ISO code is not valid.");
         }
         this.isoCode = isoCode;
-    }
-
-    private int defineIsoCodeStringLength() {
-        return 3;
     }
 
     private String defineRegularExpressionForIsoCode() {
@@ -99,15 +100,11 @@ public class Currency implements Comparable<Currency> {
         if (symbol == null) {
             throw new ArgumentIsNullException("symbol");
         }
-        if (symbol.length() != defineSymbolStringLength()) {
+        if (symbol.length() != SYMBOL_STRING_LENGTH) {
             throw new IllegalArgumentException(
                     "Currency's symbol should be exactly one character.");
         }
         this.symbol = symbol;
-    }
-
-    private int defineSymbolStringLength() {
-        return 1;
     }
 
     public void setComments(String comments) {
