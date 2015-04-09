@@ -49,10 +49,7 @@ public class AddCurrencyButtonEventHandler extends AbstractButtonEventHandler {
     }
 
     @Override
-    public void handle(InputEvent event) {
-        if (!isAcceptibleEvent(event)) {
-            return;
-        }
+    protected void executeAction() {
         AddCurrencyWindow window = AddCurrencyWindow.create(getParentWindow());
         window.showAndWait();
     }

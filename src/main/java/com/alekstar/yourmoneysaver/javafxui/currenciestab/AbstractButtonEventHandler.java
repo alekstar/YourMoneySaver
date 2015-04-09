@@ -1,5 +1,7 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
+import com.alekstar.yourmoneysaver.javafxui.currenciestab.addwindow.AddCurrencyWindow;
+
 import javafx.event.EventHandler;
 import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyCode;
@@ -7,9 +9,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * This event handler handles mouse clicking and pressing ENTER button
+ *
+ */
 public abstract class AbstractButtonEventHandler implements
         EventHandler<InputEvent> {
-    protected boolean isAcceptibleEvent(InputEvent event) {
+    private boolean isAcceptibleEvent(InputEvent event) {
         if (!isAcceptibleEventType(event)) {
             return false;
         }
@@ -51,4 +57,18 @@ public abstract class AbstractButtonEventHandler implements
         }
         return true;
     }
+
+    @Override
+    final public void handle(InputEvent event) {
+        if (!isAcceptibleEvent(event)) {
+            return;
+        }
+        executeAction();
+    }
+
+    /**
+     * At this method should be action which will be executed after button is
+     * clicked or press ENTER, when it is in focus
+     */
+    abstract protected void executeAction();
 }
