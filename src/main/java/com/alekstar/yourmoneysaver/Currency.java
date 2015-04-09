@@ -117,6 +117,15 @@ public class Currency implements Comparable<Currency> {
     }
 
     public void setComments(String comments) {
+        if (comments != null && comments.length() > COMMENTS_MAX_STRING_LENGTH) {
+            StringBuilder exceptionMessageBuilder = new StringBuilder();
+            exceptionMessageBuilder
+                    .append("Length of comments' string can not be more than ");
+            exceptionMessageBuilder.append(COMMENTS_MAX_STRING_LENGTH);
+            exceptionMessageBuilder.append(" symbols.");
+            throw new IllegalArgumentException(
+                    exceptionMessageBuilder.toString());
+        }
         this.comments = comments;
     }
 
