@@ -1,44 +1,15 @@
 package com.alekstar.yourmoneysaver;
 
-import java.util.TreeSet;
+import java.util.List;
 
-import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
+public interface CurrenciesContainer {
+    void save(Currency currency);
 
-public class CurrenciesContainer {
-    TreeSet<Currency> currencies;
+    void remove(Currency currency);
 
-    protected CurrenciesContainer() {
-        setCurrencies(new TreeSet<Currency>());
-    }
+    void add(Currency currency);
 
-    public static CurrenciesContainer create() {
-        return new CurrenciesContainer();
-    }
+    List<Currency> loadAll();
 
-    private void setCurrencies(TreeSet<Currency> currencies) {
-        if (currencies == null) {
-            throw new ArgumentIsNullException("currencies");
-        }
-        this.currencies = currencies;
-    }
-
-    public void add(Currency currency) {
-        verifyCurrencies();
-        currencies.add(currency);
-    }
-
-    private void verifyCurrencies() {
-        if (currencies == null) {
-            throw new IllegalStateException(
-                    "Reference to list of currencies is null.");
-        }
-    }
-
-    public TreeSet<Currency> getCurrencies() {
-        return this.currencies;
-    }
-
-    public void delete(Currency currency) {
-        currencies.remove(currency);
-    }
+    List<Currency> loadAll(int from, int to);
 }
