@@ -1,8 +1,11 @@
 package com.alekstar.yourmoneysaver.database;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+
+import org.hibernate.Session;
 
 import com.alekstar.yourmoneysaver.CurrenciesContainer;
 import com.alekstar.yourmoneysaver.Currency;
@@ -20,32 +23,37 @@ public class CurrenciesAtJPA implements CurrenciesContainer {
 
     @Override
     public void save(Currency currency) {
-        // TODO Auto-generated method stub
+        try {
+            getEntityManager().getTransaction().begin();
+            getEntityManager().persist(currency);
+            getEntityManager().getTransaction().commit();
+        } catch (Exception e) {
+            getEntityManager().getTransaction().rollback();
+        }
 
     }
 
     @Override
     public void remove(Currency currency) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void add(Currency currency) {
-        // TODO Auto-generated method stub
-
+        try {
+            getEntityManager().getTransaction().begin();
+            getEntityManager().remove(currency);
+            getEntityManager().getTransaction().commit();
+        } catch (Exception e) {
+            getEntityManager().getTransaction().rollback();
+        }
     }
 
     @Override
     public List<Currency> loadAll() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public List<Currency> loadAll(int from, int to) {
-        // TODO Auto-generated method stub
-        return null;
+        Session session = getEntityManager().unwrap(Session.class);
+        List<?> listOfObjectsFromDataBase =
+                session.createCriteria(Currency.class).list();
+        List<Currency> currenciesList = new ArrayList<Currency>();
+        for (Object currenctObject : listOfObjectsFromDataBase) {
+            currenciesList.add((Currency) currenctObject);
+        }
+        return currenciesList;
     }
 
     private EntityManager getEntityManager() {

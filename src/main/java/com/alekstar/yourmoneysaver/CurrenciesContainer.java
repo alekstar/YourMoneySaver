@@ -7,9 +7,5 @@ public interface CurrenciesContainer {
 
     void remove(Currency currency);
 
-    void add(Currency currency);
-
     List<Currency> loadAll();
-
-    List<Currency> loadAll(int from, int to);
 }
