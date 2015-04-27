@@ -7,10 +7,10 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
 
-import com.alekstar.yourmoneysaver.CurrenciesContainer;
+import com.alekstar.yourmoneysaver.CurrenciesDataAccessObject;
 import com.alekstar.yourmoneysaver.Currency;
 
-public class CurrenciesAtJPA implements CurrenciesContainer {
+public class CurrenciesAtJPA implements CurrenciesDataAccessObject {
     private EntityManager entityManager;
 
     protected CurrenciesAtJPA(EntityManager entityManager) {
@@ -22,10 +22,10 @@ public class CurrenciesAtJPA implements CurrenciesContainer {
     }
 
     @Override
-    public void save(Currency currency) {
+    public void save(CurrencyEntity currencyEntity) {
         try {
             getEntityManager().getTransaction().begin();
-            getEntityManager().persist(currency);
+            getEntityManager().persist(currencyEntity);
             getEntityManager().getTransaction().commit();
         } catch (Exception e) {
             getEntityManager().getTransaction().rollback();
@@ -34,10 +34,10 @@ public class CurrenciesAtJPA implements CurrenciesContainer {
     }
 
     @Override
-    public void remove(Currency currency) {
+    public void remove(CurrencyEntity currencyEntity) {
         try {
             getEntityManager().getTransaction().begin();
-            getEntityManager().remove(currency);
+            getEntityManager().remove(currencyEntity);
             getEntityManager().getTransaction().commit();
         } catch (Exception e) {
             getEntityManager().getTransaction().rollback();
@@ -45,13 +45,13 @@ public class CurrenciesAtJPA implements CurrenciesContainer {
     }
 
     @Override
-    public List<Currency> loadAll() {
+    public List<CurrencyEntity> loadAll() {
         Session session = getEntityManager().unwrap(Session.class);
         List<?> listOfObjectsFromDataBase =
-                session.createCriteria(Currency.class).list();
-        List<Currency> currenciesList = new ArrayList<Currency>();
+                session.createCriteria(CurrencyEntity.class).list();
+        List<CurrencyEntity> currenciesList = new ArrayList<CurrencyEntity>();
         for (Object currenctObject : listOfObjectsFromDataBase) {
-            currenciesList.add((Currency) currenctObject);
+            currenciesList.add((CurrencyEntity) currenctObject);
         }
         return currenciesList;
     }
