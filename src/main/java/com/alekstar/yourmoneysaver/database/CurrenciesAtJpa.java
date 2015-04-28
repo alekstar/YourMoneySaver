@@ -9,15 +9,15 @@ import org.hibernate.Session;
 
 import com.alekstar.yourmoneysaver.CurrenciesDataAccessObject;
 
-public class CurrenciesAtJPA implements CurrenciesDataAccessObject {
+public class CurrenciesAtJpa implements CurrenciesDataAccessObject {
     private EntityManager entityManager;
 
-    protected CurrenciesAtJPA(EntityManager entityManager) {
+    protected CurrenciesAtJpa(EntityManager entityManager) {
         setEntityManager(entityManager);
     }
 
-    public static CurrenciesAtJPA create(EntityManager entityManager) {
-        return new CurrenciesAtJPA(entityManager);
+    public static CurrenciesAtJpa create(EntityManager entityManager) {
+        return new CurrenciesAtJpa(entityManager);
     }
 
     @Override

@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 
 import org.junit.Test;
 
-import com.alekstar.yourmoneysaver.database.CurrenciesAtJPA;
+import com.alekstar.yourmoneysaver.database.CurrenciesAtJpa;
 import com.alekstar.yourmoneysaver.database.CurrencyEntity;
 import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJpa;
 
@@ -29,7 +29,7 @@ public class CurrenciesAtJpaTest {
         CurrencyEntity usdEntity = new CurrencyEntityAtJpa(usd);
         try {
             CurrenciesDataAccessObject currenciesDataAccessObject =
-                    CurrenciesAtJPA.create(entityManager);
+                    CurrenciesAtJpa.create(entityManager);
             currenciesDataAccessObject.save(usdEntity);
             return usdEntity;
         } finally {
@@ -42,7 +42,7 @@ public class CurrenciesAtJpaTest {
                 entityManagerFactory.createEntityManager();
         try {
             CurrenciesDataAccessObject currenciesDataAccessObject =
-                    CurrenciesAtJPA.create(entityManager);
+                    CurrenciesAtJpa.create(entityManager);
 
             List<CurrencyEntity> listOfCurrenciesEntities =
                     currenciesDataAccessObject.loadAll();
