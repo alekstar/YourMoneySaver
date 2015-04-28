@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import com.alekstar.yourmoneysaver.database.CurrenciesAtJPA;
 import com.alekstar.yourmoneysaver.database.CurrencyEntity;
-import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJPA;
+import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJpa;
 
 public class CurrenciesAtJpaTest {
     EntityManagerFactory entityManagerFactory = Persistence
@@ -26,7 +26,7 @@ public class CurrenciesAtJpaTest {
         EntityManager entityManager =
                 entityManagerFactory.createEntityManager();
         Currency usd = new Currency("United States dollar", "USD", "$", null);
-        CurrencyEntity usdEntity = new CurrencyEntityAtJPA(usd);
+        CurrencyEntity usdEntity = new CurrencyEntityAtJpa(usd);
         try {
             CurrenciesDataAccessObject currenciesDataAccessObject =
                     CurrenciesAtJPA.create(entityManager);

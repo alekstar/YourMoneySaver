@@ -12,7 +12,7 @@ import com.alekstar.yourmoneysaver.Currency;
 
 @Entity
 @Table(name = "Currencies")
-public class CurrencyEntityAtJPA implements CurrencyEntity {
+public class CurrencyEntityAtJpa implements CurrencyEntity {
     public static final int NAME_MAX_STRING_LENGTH =
             Currency.NAME_MAX_STRING_LENGTH;
     public static final int ISO_CODE_STRING_LENGTH =
@@ -25,16 +25,16 @@ public class CurrencyEntityAtJPA implements CurrencyEntity {
     private Currency currency;
     private long id;
 
-    public CurrencyEntityAtJPA() {
+    public CurrencyEntityAtJpa() {
         setCurrency(new Currency("Invalid currency", "INV", "I", null));
     }
 
-    public CurrencyEntityAtJPA(String name, String isoCode, String symbol,
+    public CurrencyEntityAtJpa(String name, String isoCode, String symbol,
             String comments) {
         setCurrency(new Currency(name, isoCode, symbol, comments));
     }
 
-    public CurrencyEntityAtJPA(Currency currency) {
+    public CurrencyEntityAtJpa(Currency currency) {
         this(currency.getName(), currency.getIsoCode(), currency.getSymbol(),
                 currency.getComments());
     }
@@ -110,10 +110,10 @@ public class CurrencyEntityAtJPA implements CurrencyEntity {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof CurrencyEntityAtJPA)) {
+        if (!(obj instanceof CurrencyEntityAtJpa)) {
             throw new IllegalArgumentException(obj.toString()
                     + " is not CurrencyEntityAtJPA object.");
         }
-        return getCurrency().equals(((CurrencyEntityAtJPA) obj).getCurrency());
+        return getCurrency().equals(((CurrencyEntityAtJpa) obj).getCurrency());
     }
 }
