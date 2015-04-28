@@ -22,74 +22,60 @@ public class CurrencyEntityAtJPA implements CurrencyEntity {
     public static final int COMMENTS_MAX_STRING_LENGTH =
             Currency.COMMENTS_MAX_STRING_LENGTH;
 
-    @Transient
     private Currency currency;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     private long id;
 
-    @Column(nullable = false, length = NAME_MAX_STRING_LENGTH)
-    private String name;
-
-    @Column(name = "iso_code", nullable = false, length = ISO_CODE_STRING_LENGTH)
-    private String isoCode;
-
-    @Column(nullable = false, length = SYMBOL_STRING_LENGTH)
-    private String symbol;
-
-    @Column(length = COMMENTS_MAX_STRING_LENGTH)
-    private String comments;
-
     public CurrencyEntityAtJPA() {
-
+        setCurrency(new Currency("Invalid currency", "INV", "I", null));
     }
 
     public CurrencyEntityAtJPA(String name, String isoCode, String symbol,
             String comments) {
-        this.name = name;
-        this.isoCode = isoCode;
-        this.symbol = symbol;
-        this.comments = comments;
-        createCurrency();
+        setCurrency(new Currency(name, isoCode, symbol, comments));
     }
 
     public CurrencyEntityAtJPA(Currency currency) {
         this(currency.getName(), currency.getIsoCode(), currency.getSymbol(),
                 currency.getComments());
-        createCurrency();
     }
 
+    @Transient
     public Currency getCurrency() {
         return currency;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     public long getId() {
         return id;
     }
 
     @Override
+    @Column(name = "iso_code", nullable = false, length = ISO_CODE_STRING_LENGTH)
     public String getIsoCode() {
-        return isoCode;
+        return getCurrency().getIsoCode();
     }
 
     @Override
+    @Column(name = "name", nullable = false, length = NAME_MAX_STRING_LENGTH)
     public String getName() {
-        return name;
+        return getCurrency().getName();
     }
 
     @Override
+    @Column(name = "symbol", nullable = false, length = SYMBOL_STRING_LENGTH)
     public String getSymbol() {
-        return symbol;
+        return getCurrency().getSymbol();
     }
 
     @Override
+    @Column(name = "comments", nullable = true, length = COMMENTS_MAX_STRING_LENGTH)
     public String getComments() {
-        return comments;
+        return getCurrency().getComments();
     }
 
-    public void setCurrency(Currency currency) {
+    private void setCurrency(Currency currency) {
         this.currency = currency;
     }
 
@@ -99,35 +85,35 @@ public class CurrencyEntityAtJPA implements CurrencyEntity {
 
     @Override
     public void setIsoCode(String isoCode) {
-        this.isoCode = isoCode;
-        refreshCurrency();
+        getCurrency().setIsoCode(isoCode);
     }
 
     @Override
     public void setName(String name) {
-        this.name = name;
-        refreshCurrency();
+        getCurrency().setName(name);
     }
 
     @Override
     public void setSymbol(String symbol) {
-        this.symbol = symbol;
-        refreshCurrency();
+        getCurrency().setSymbol(symbol);
     }
 
     @Override
     public void setComments(String comments) {
-        this.comments = comments;
-        refreshCurrency();
+        getCurrency().setComments(comments);
     }
 
-    private void refreshCurrency() {
-        currency =
-                new Currency(getName(), getIsoCode(), getSymbol(),
-                        getComments());
+    @Override
+    public int hashCode() {
+        return getCurrency().hashCode();
     }
 
-    private void createCurrency() {
-        refreshCurrency();
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof CurrencyEntityAtJPA)) {
+            throw new IllegalArgumentException(obj.toString()
+                    + " is not CurrencyEntityAtJPA object.");
+        }
+        return getCurrency().equals(((CurrencyEntityAtJPA) obj).getCurrency());
     }
 }
