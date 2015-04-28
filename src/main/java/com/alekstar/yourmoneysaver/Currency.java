@@ -36,7 +36,7 @@ public class Currency implements Comparable<Currency> {
         return comments;
     }
 
-    private void setIsoCode(String isoCode) {
+    public void setIsoCode(String isoCode) {
         if (isoCode == null) {
             throw new ArgumentIsNullException("isoCode");
         }
@@ -50,11 +50,7 @@ public class Currency implements Comparable<Currency> {
         this.isoCode = isoCode;
     }
 
-    private String defineRegularExpressionForIsoCode() {
-        return "^[A-Z][A-Z][A-Z]$";
-    }
-
-    private void setName(String name) {
+    public void setName(String name) {
         if (name == null) {
             throw new ArgumentIsNullException("name");
         }
@@ -70,7 +66,7 @@ public class Currency implements Comparable<Currency> {
         this.name = name;
     }
 
-    private void setSymbol(String symbol) {
+    public void setSymbol(String symbol) {
         if (symbol == null) {
             throw new ArgumentIsNullException("symbol");
         }
@@ -81,7 +77,7 @@ public class Currency implements Comparable<Currency> {
         this.symbol = symbol;
     }
 
-    private void setComments(String comments) {
+    public void setComments(String comments) {
         if (comments != null && comments.length() > COMMENTS_MAX_STRING_LENGTH) {
             StringBuilder exceptionMessageBuilder = new StringBuilder();
             exceptionMessageBuilder
@@ -94,8 +90,56 @@ public class Currency implements Comparable<Currency> {
         this.comments = comments;
     }
 
+    private String defineRegularExpressionForIsoCode() {
+        return "^[A-Z][A-Z][A-Z]$";
+    }
+
     @Override
     public int compareTo(Currency currency) {
         return this.getIsoCode().compareTo(currency.getIsoCode());
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result =
+                prime * result + ((comments == null) ? 0 : comments.hashCode());
+        result = prime * result + ((isoCode == null) ? 0 : isoCode.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((symbol == null) ? 0 : symbol.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Currency other = (Currency) obj;
+        if (comments == null) {
+            if (other.comments != null)
+                return false;
+        } else if (!comments.equals(other.comments))
+            return false;
+        if (isoCode == null) {
+            if (other.isoCode != null)
+                return false;
+        } else if (!isoCode.equals(other.isoCode))
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        if (symbol == null) {
+            if (other.symbol != null)
+                return false;
+        } else if (!symbol.equals(other.symbol))
+            return false;
+        return true;
     }
 }
