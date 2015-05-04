@@ -67,4 +67,68 @@ public class CurrenciesAtJpaTest {
             entityManagerFactory.close();
         }
     }
+
+    private CurrencyEntity readFirstCurrencyFromDataBaseForEditing(
+            CurrenciesDataAccessObject currenciesDataAccessObject) {
+        List<CurrencyEntity> listOfCurrenciesEntities =
+                currenciesDataAccessObject.loadAll();
+        return listOfCurrenciesEntities.get(0);
+    }
+
+    private void changeCommentsAndNameOfUah(
+            CurrencyEntity uahEntityThatHaveToBeRead) {
+        Currency uahThatHaveToBeEdited =
+                ((CurrencyEntityAtJpa) uahEntityThatHaveToBeRead).getCurrency();
+        uahThatHaveToBeEdited.setComments("This comment was edited.");
+        uahThatHaveToBeEdited
+                .setName("New name of Ukrainian national currency.");
+    }
+
+    private void saveCurrencyToDataBase(
+            CurrencyEntity uahEntityThatHaveToBeCreated,
+            CurrenciesDataAccessObject currenciesDataAccessObject) {
+        currenciesDataAccessObject.save(uahEntityThatHaveToBeCreated);
+    }
+
+    @Test
+    public void afterChangingOfInternalCurrencyInstanceOfCurrencyEntityAtJpaOnSaveChangesShouldBeInDataBase() {
+        EntityManagerFactory entityManagerFactory =
+                Persistence
+                        .createEntityManagerFactory(defineNameOfPersistenceUnit());
+        try {
+            CurrencyEntityAtJpa uahEntityThatHaveToBeCreated =
+                    new CurrencyEntityAtJpa("Ukrainian hrivnya", "UAH", "₴",
+                            null);
+            EntityManager entityManager =
+                    entityManagerFactory.createEntityManager();
+            try {
+                CurrenciesDataAccessObject currenciesDataAccessObject =
+                        CurrenciesAtJpa.create(entityManager);
+
+                saveCurrencyToDataBase(uahEntityThatHaveToBeCreated,
+                        currenciesDataAccessObject);
+
+                CurrencyEntity uahEntityThatHaveToBeRead =
+                        readFirstCurrencyFromDataBaseForEditing(currenciesDataAccessObject);
+                changeCommentsAndNameOfUah(uahEntityThatHaveToBeRead);
+                saveCurrencyToDataBase(uahEntityThatHaveToBeRead,
+                        currenciesDataAccessObject);
+                CurrencyEntityAtJpa uahEntityThatHaveToBeReadAfterChangesOfCurrency =
+                        (CurrencyEntityAtJpa) readFirstCurrencyFromDataBase(entityManagerFactory);
+                Currency actual =
+                        uahEntityThatHaveToBeReadAfterChangesOfCurrency
+                                .getCurrency();
+                Currency expected =
+                        new Currency(
+                                "New name of Ukrainian national currency.",
+                                "UAH", "₴", "This comment was edited.");
+                assertEquals(expected, actual);
+
+            } finally {
+                entityManager.close();
+            }
+        } finally {
+            entityManagerFactory.close();
+        }
+    }
 }
