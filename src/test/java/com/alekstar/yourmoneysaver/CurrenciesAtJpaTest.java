@@ -15,14 +15,13 @@ import com.alekstar.yourmoneysaver.database.CurrencyEntity;
 import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJpa;
 
 public class CurrenciesAtJpaTest {
-    EntityManagerFactory entityManagerFactory = Persistence
-            .createEntityManagerFactory(defineNameOfPersistenceUnit());
 
     private String defineNameOfPersistenceUnit() {
         return "YourMoneySaverH2TestDataBase";
     }
 
-    private CurrencyEntity createUSDCurrencyToDataBase() {
+    private CurrencyEntity createUSDCurrencyToDataBase(
+            EntityManagerFactory entityManagerFactory) {
         EntityManager entityManager =
                 entityManagerFactory.createEntityManager();
         Currency usd = new Currency("United States dollar", "USD", "$", null);
@@ -37,7 +36,8 @@ public class CurrenciesAtJpaTest {
         }
     }
 
-    private CurrencyEntity readFirstCurrencyFromDataBase() {
+    private CurrencyEntity readFirstCurrencyFromDataBase(
+            EntityManagerFactory entityManagerFactory) {
         EntityManager entityManager =
                 entityManagerFactory.createEntityManager();
         try {
@@ -54,12 +54,17 @@ public class CurrenciesAtJpaTest {
 
     @Test
     public void shouldCreateUSDCurrency() {
+        EntityManagerFactory entityManagerFactory =
+                Persistence
+                        .createEntityManagerFactory(defineNameOfPersistenceUnit());
         try {
-            CurrencyEntity expected = createUSDCurrencyToDataBase();
-            CurrencyEntity actual = readFirstCurrencyFromDataBase();
+            CurrencyEntity expected =
+                    createUSDCurrencyToDataBase(entityManagerFactory);
+            CurrencyEntity actual =
+                    readFirstCurrencyFromDataBase(entityManagerFactory);
             assertEquals(expected, actual);
         } finally {
-            this.entityManagerFactory.close();
+            entityManagerFactory.close();
         }
     }
 }
