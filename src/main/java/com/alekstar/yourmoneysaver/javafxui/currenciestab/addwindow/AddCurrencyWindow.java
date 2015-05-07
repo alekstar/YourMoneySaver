@@ -138,6 +138,9 @@ public class AddCurrencyWindow {
 
     private Button defineAddButton() {
         Button button = new Button("Add");
+        AddButtonEventHandler eventHandler = new AddButtonEventHandler(this);
+        button.setOnKeyPressed(eventHandler);
+        button.setOnMouseClicked(eventHandler);
         return button;
     }
 
