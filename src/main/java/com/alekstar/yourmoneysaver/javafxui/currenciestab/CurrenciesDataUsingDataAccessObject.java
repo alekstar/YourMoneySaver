@@ -1,6 +1,5 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
-import java.util.Collections;
 import java.util.List;
 
 import com.alekstar.yourmoneysaver.CurrenciesDataAccessObject;
@@ -43,8 +42,8 @@ public class CurrenciesDataUsingDataAccessObject implements CurrenciesData {
         refreshData();
     }
 
-    private void copyDataFromBase() {
-        Collections.copy(getList(), getCurrenciesDataAccessObject().loadAll());
+    private void addDataFromBase() {
+        getList().addAll(getCurrenciesDataAccessObject().loadAll());
     }
 
     private void clearData() {
@@ -53,6 +52,6 @@ public class CurrenciesDataUsingDataAccessObject implements CurrenciesData {
 
     private void refreshData() {
         clearData();
-        copyDataFromBase();
+        addDataFromBase();
     }
 }
