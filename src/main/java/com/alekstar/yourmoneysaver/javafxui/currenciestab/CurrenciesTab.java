@@ -1,40 +1,32 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import javax.persistence.EntityManager;
-
-import org.hibernate.Session;
-
-import com.alekstar.yourmoneysaver.Currency;
+import com.alekstar.yourmoneysaver.CurrenciesDataAccessObject;
 import com.alekstar.yourmoneysaver.javafxui.AbstractTab;
-import com.alekstar.yourmoneysaver.javafxui.EntityManagerFactorySingleton;
 import com.alekstar.yourmoneysaver.javafxui.Standarts;
 
 public class CurrenciesTab extends AbstractTab {
-    private EntityManager entityManager;
+    private CurrenciesDataAccessObject currenciesDataAccessObject;
     private CurrenciesTable table;
     private Pane mainPanel;
+    private CurrenciesData currenciesData;
 
-    private CurrenciesTab(Stage parentWindow) {
+    private CurrenciesTab(Stage parentWindow,
+            CurrenciesDataAccessObject currenciesDataAccessObject) {
         super(parentWindow);
-        initializeEntityManager();
+        setCurrenciesDataAccessObject(currenciesDataAccessObject);
+        initializeCurrenciesData();
     }
 
-    public static CurrenciesTab create(Stage parentWindow) {
-        CurrenciesTab tab = new CurrenciesTab(parentWindow);
+    public static CurrenciesTab create(Stage parentWindow,
+            CurrenciesDataAccessObject currenciesDataAccessObject) {
+        CurrenciesTab tab =
+                new CurrenciesTab(parentWindow, currenciesDataAccessObject);
         tab.constructTab();
         return tab;
-    }
-
-    private EntityManager getEntityManager() {
-        return this.entityManager;
     }
 
     private CurrenciesTable getTable() {
@@ -43,6 +35,23 @@ public class CurrenciesTab extends AbstractTab {
 
     public Pane getMainPanel() {
         return this.mainPanel;
+    }
+
+    public CurrenciesDataAccessObject getCurrenciesDataAccessObject() {
+        return this.currenciesDataAccessObject;
+    }
+
+    private void setCurrenciesDataAccessObject(
+            CurrenciesDataAccessObject currenciesDataAccessObject) {
+        this.currenciesDataAccessObject = currenciesDataAccessObject;
+    }
+
+    private CurrenciesData getCurrenciesData() {
+        return currenciesData;
+    }
+
+    private void setCurrenciesData(CurrenciesData currenciesData) {
+        this.currenciesData = currenciesData;
     }
 
     @Override
@@ -58,7 +67,16 @@ public class CurrenciesTab extends AbstractTab {
     }
 
     private void initializeTable() {
-        this.table = CurrenciesTable.create(getAllCurrenciesFromBase());
+        this.table = CurrenciesTable.create(getCurrenciesData());
+    }
+
+    private void initializeCurrenciesData() {
+        setCurrenciesData(defineCurrenciesData());
+    }
+
+    private CurrenciesDataUsingDataAccessObject defineCurrenciesData() {
+        return CurrenciesDataUsingDataAccessObject
+                .create(getCurrenciesDataAccessObject());
     }
 
     private void initializeMainPanel() {
@@ -68,29 +86,10 @@ public class CurrenciesTab extends AbstractTab {
         getMainPanel().setPadding(Standarts.defineMainPanelInsets());
     }
 
-    public void refresh() {
-        initializeTable();
-    }
-
-    private void initializeEntityManager() {
-        entityManager = EntityManagerFactorySingleton.getEntityManager();
-    }
-
-    private List<Currency> getAllCurrenciesFromBase() {
-        Session session = getEntityManager().unwrap(Session.class);
-        List<?> listOfObjectsFromDataBase =
-                session.createCriteria(Currency.class).list();
-        List<Currency> currenciesList = new ArrayList<Currency>();
-        for (Object currenctObject : listOfObjectsFromDataBase) {
-            currenciesList.add((Currency) currenctObject);
-        }
-        return currenciesList;
-    }
-
     private Node defineToolBox() {
         CurrenciesOperationsToolBox toolBox =
-                CurrenciesOperationsToolBox.create(getTable(),
-                        getParentWindow());
+                CurrenciesOperationsToolBox.create(getParentWindow(),
+                        getCurrenciesData());
         return toolBox.getBox();
     }
 }

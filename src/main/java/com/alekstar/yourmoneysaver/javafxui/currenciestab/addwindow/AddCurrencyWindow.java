@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.javafxui.currenciestab;
+package com.alekstar.yourmoneysaver.javafxui.currenciestab.addwindow;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,13 +11,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
-import com.alekstar.yourmoneysaver.Currency;
+import com.alekstar.yourmoneysaver.database.CurrencyEntity;
+import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJpa;
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.javafxui.Standarts;
+import com.alekstar.yourmoneysaver.javafxui.currenciestab.CurrenciesData;
 
 public class AddCurrencyWindow {
-    private Currency newCurrency;
+    private CurrenciesData currenciesData;
     private Stage thisWindow;
     private Window parentWindow;
     private TextField name;
@@ -25,58 +26,17 @@ public class AddCurrencyWindow {
     private TextField symbol;
     private TextField comments;
 
-    protected AddCurrencyWindow(Window parentWindow) {
+    protected AddCurrencyWindow(Window parentWindow,
+            CurrenciesData currenciesData) {
+        setCurrenciesData(currenciesData);
         setParentWindow(parentWindow);
         initializeTextFields();
         initializeThisWindow();
     }
 
-    public static AddCurrencyWindow create(Window parentWindow) {
-        return new AddCurrencyWindow(parentWindow);
-    }
-
-    private void addControlsToPane(Pane pane) {
-        VBox vBox = new VBox();
-        vBox.getChildren().add(new Label("Name: "));
-        vBox.getChildren().add(getName());
-        vBox.getChildren().add(new Label("ISO code: "));
-        vBox.getChildren().add(getIsoCode());
-        vBox.getChildren().add(new Label("Symbol: "));
-        vBox.getChildren().add(getSymbol());
-        vBox.getChildren().add(new Label("Comments: "));
-        vBox.getChildren().add(getComments());
-        vBox.setPadding(Standarts.defineMainPanelInsets());
-
-        HBox hBox = new HBox();
-        hBox.getChildren().add(new Button("Add"));
-        hBox.setPadding(Standarts.defineToolBoxInsets());
-        vBox.getChildren().add(hBox);
-
-        pane.getChildren().add(vBox);
-    }
-
-    private void initializeTextFields() {
-        setName(new TextField());
-        setIsoCode(new TextField());
-        setSymbol(new TextField());
-        setComments(new TextField());
-    }
-
-    private void initializeThisWindow() {
-        Stage window = new Stage();
-        StackPane stackPane = new StackPane();
-        addControlsToPane(stackPane);
-        Scene scene = new Scene(stackPane, 500, 200);
-        window.setScene(scene);
-        window.initOwner(getParentWindow());
-        window.initModality(Modality.WINDOW_MODAL);
-        window.setResizable(false);
-        window.setTitle("Add new currency");
-        setThisWindow(window);
-    }
-
-    public void showAndWait() {
-        getThisWindow().showAndWait();
+    public static AddCurrencyWindow create(Window parentWindow,
+            CurrenciesData currenciesData) {
+        return new AddCurrencyWindow(parentWindow, currenciesData);
     }
 
     private TextField getName() {
@@ -111,14 +71,6 @@ public class AddCurrencyWindow {
         this.comments = comments;
     }
 
-    private Currency getNewCurrency() {
-        return newCurrency;
-    }
-
-    private void setNewCurrency(Currency newCurrency) {
-        this.newCurrency = newCurrency;
-    }
-
     private Stage getThisWindow() {
         return thisWindow;
     }
@@ -141,4 +93,68 @@ public class AddCurrencyWindow {
         this.parentWindow = parentWindow;
     }
 
+    private CurrenciesData getCurrenciesData() {
+        return currenciesData;
+    }
+
+    private void setCurrenciesData(CurrenciesData currenciesData) {
+        this.currenciesData = currenciesData;
+    }
+
+    private void addControlsToPane(Pane pane) {
+        VBox vBox = new VBox();
+        vBox.getChildren().add(new Label("Name: "));
+        vBox.getChildren().add(getName());
+        vBox.getChildren().add(new Label("ISO code: "));
+        vBox.getChildren().add(getIsoCode());
+        vBox.getChildren().add(new Label("Symbol: "));
+        vBox.getChildren().add(getSymbol());
+        vBox.getChildren().add(new Label("Comments: "));
+        vBox.getChildren().add(getComments());
+        vBox.setPadding(Standarts.defineMainPanelInsets());
+
+        HBox hBox = new HBox();
+        hBox.getChildren().add(defineAddButton());
+        hBox.setPadding(Standarts.defineToolBoxInsets());
+        vBox.getChildren().add(hBox);
+
+        pane.getChildren().add(vBox);
+    }
+
+    private void initializeTextFields() {
+        setName(new TextField());
+        setIsoCode(new TextField());
+        setSymbol(new TextField());
+        setComments(new TextField());
+    }
+
+    public void createNewCurrency() {
+        CurrencyEntity currencyEntity =
+                new CurrencyEntityAtJpa(getName().getText(), getIsoCode()
+                        .getText(), getSymbol().getText(), getComments()
+                        .getText());
+        getCurrenciesData().save(currencyEntity);
+    }
+
+    private Button defineAddButton() {
+        Button button = new Button("Add");
+        return button;
+    }
+
+    private void initializeThisWindow() {
+        Stage window = new Stage();
+        StackPane stackPane = new StackPane();
+        addControlsToPane(stackPane);
+        Scene scene = new Scene(stackPane, 500, 200);
+        window.setScene(scene);
+        window.initOwner(getParentWindow());
+        window.initModality(Modality.WINDOW_MODAL);
+        window.setResizable(false);
+        window.setTitle("Add new currency");
+        setThisWindow(window);
+    }
+
+    public void showAndWait() {
+        getThisWindow().showAndWait();
+    }
 }

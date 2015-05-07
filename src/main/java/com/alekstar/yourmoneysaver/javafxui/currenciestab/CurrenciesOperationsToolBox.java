@@ -2,9 +2,6 @@ package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.javafxui.Standarts;
-import com.sun.glass.events.KeyEvent;
-
-import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -12,31 +9,20 @@ import javafx.stage.Window;
 
 public class CurrenciesOperationsToolBox {
     private HBox box = new HBox();
-    private CurrenciesTable currenciesTable;
     private Window parentWindow;
+    private CurrenciesData currenciesData;
 
-    public static CurrenciesOperationsToolBox create(
-            CurrenciesTable currenciesTable, Window parentWindow) {
-        return new CurrenciesOperationsToolBox(currenciesTable, parentWindow);
+    public static CurrenciesOperationsToolBox create(Window parentWindow,
+            CurrenciesData currenciesData) {
+        return new CurrenciesOperationsToolBox(parentWindow, currenciesData);
     }
 
-    private CurrenciesOperationsToolBox(CurrenciesTable currenciesTable,
-            Window parentWindow) {
+    private CurrenciesOperationsToolBox(Window parentWindow,
+            CurrenciesData currenciesData) {
+        setCurrenciesData(currenciesData);
         setParentWindow(parentWindow);
-        setCurrenciesTable(currenciesTable);
         initializeBox();
         addButtons();
-    }
-
-    private void setCurrenciesTable(CurrenciesTable currenciesTable) {
-        if (currenciesTable == null) {
-            throw new ArgumentIsNullException("currenciesTable");
-        }
-        this.currenciesTable = currenciesTable;
-    }
-
-    private CurrenciesTable getCurrenciesTable() {
-        return this.currenciesTable;
     }
 
     public HBox getBox() {
@@ -45,6 +31,14 @@ public class CurrenciesOperationsToolBox {
 
     private Window getParentWindow() {
         return parentWindow;
+    }
+
+    private CurrenciesData getCurrenciesData() {
+        return currenciesData;
+    }
+
+    private void setCurrenciesData(CurrenciesData currenciesData) {
+        this.currenciesData = currenciesData;
     }
 
     private void setParentWindow(Window parentWindow) {
@@ -69,8 +63,8 @@ public class CurrenciesOperationsToolBox {
     private void addAddButton() {
         Button button = new Button("Add");
         AddCurrencyButtonEventHandler pressedHandler =
-                AddCurrencyButtonEventHandler.create(getCurrenciesTable(),
-                        getParentWindow());
+                AddCurrencyButtonEventHandler.create(getParentWindow(),
+                        getCurrenciesData());
         button.setOnKeyPressed(pressedHandler);
         button.setOnMouseClicked(pressedHandler);
         addNode(button);

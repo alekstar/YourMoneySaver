@@ -2,39 +2,21 @@ package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.javafxui.currenciestab.addwindow.AddCurrencyWindow;
-
-import javafx.event.EventHandler;
-import javafx.scene.input.InputEvent;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Window;
 
 public class AddCurrencyButtonEventHandler extends AbstractButtonEventHandler {
-    private CurrenciesTable currenciesTable;
     private Window parentWindow;
+    private CurrenciesData currenciesData;
 
-    protected AddCurrencyButtonEventHandler(CurrenciesTable currenciesTable,
-            Window parentWindow) {
-        setCurrenciesTable(currenciesTable);
+    protected AddCurrencyButtonEventHandler(Window parentWindow,
+            CurrenciesData currenciesData) {
         setParentWindow(parentWindow);
+        setCurrenciesData(currenciesData);
     }
 
-    public static AddCurrencyButtonEventHandler create(
-            CurrenciesTable currenciesTable, Window parentWindow) {
-        return new AddCurrencyButtonEventHandler(currenciesTable, parentWindow);
-    }
-
-    private void setCurrenciesTable(CurrenciesTable currenciesTable) {
-        if (currenciesTable == null) {
-            throw new ArgumentIsNullException("currenciesTable");
-        }
-        this.currenciesTable = currenciesTable;
-    }
-
-    private CurrenciesTable getCurrenciesTable() {
-        return this.currenciesTable;
+    public static AddCurrencyButtonEventHandler create(Window parentWindow,
+            CurrenciesData currenciesData) {
+        return new AddCurrencyButtonEventHandler(parentWindow, currenciesData);
     }
 
     private void setParentWindow(Window parentWindow) {
@@ -48,9 +30,19 @@ public class AddCurrencyButtonEventHandler extends AbstractButtonEventHandler {
         return parentWindow;
     }
 
+    private CurrenciesData getCurrenciesData() {
+        return currenciesData;
+    }
+
+    private void setCurrenciesData(CurrenciesData currenciesData) {
+        this.currenciesData = currenciesData;
+    }
+
     @Override
     protected void executeAction() {
-        AddCurrencyWindow window = AddCurrencyWindow.create(getParentWindow());
+        AddCurrencyWindow window =
+                AddCurrencyWindow
+                        .create(getParentWindow(), getCurrenciesData());
         window.showAndWait();
     }
 }

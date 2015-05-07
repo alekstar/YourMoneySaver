@@ -1,26 +1,44 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
-import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import com.alekstar.yourmoneysaver.Currency;
+import com.alekstar.yourmoneysaver.database.CurrencyEntity;
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class CurrenciesTable {
-    private TableView<Currency> tableView;
+    private TableView<CurrencyEntity> tableView;
+    private CurrenciesData currenciesData;
 
-    private CurrenciesTable(List<Currency> currenciesData) {
-        setTableView(new TableView<Currency>());
-        prepareTable(currenciesData);
+    private CurrenciesTable(CurrenciesData currenciesData) {
+        setTableView(new TableView<CurrencyEntity>());
+        setCurrenciesData(currenciesData);
+        prepareTable();
     }
 
-    public static CurrenciesTable create(List<Currency> currenciesData) {
+    public static CurrenciesTable create(CurrenciesData currenciesData) {
         CurrenciesTable currenciesTable = new CurrenciesTable(currenciesData);
         return currenciesTable;
+    }
+
+    public TableView<CurrencyEntity> getTableView() {
+        return tableView;
+    }
+
+    protected void setTableView(TableView<CurrencyEntity> tableView) {
+        if (tableView == null) {
+            throw new ArgumentIsNullException("tableView");
+        }
+        this.tableView = tableView;
+    }
+
+    public CurrenciesData getCurrenciesData() {
+        return currenciesData;
+    }
+
+    private void setCurrenciesData(CurrenciesData currenciesData) {
+        this.currenciesData = currenciesData;
     }
 
     private String defineColumnNameForCurrencyName() {
@@ -55,64 +73,57 @@ public class CurrenciesTable {
         return "comments";
     }
 
-    private void prepareTable(List<Currency> currenciesData) {
+    private void prepareTable() {
         getTableView().getColumns().add(defineNameColumn());
         getTableView().getColumns().add(defineIsoCodeColumn());
         getTableView().getColumns().add(defineSymbolColumn());
         getTableView().getColumns().add(defineCommentsColumn());
-        getTableView().setItems(
-                FXCollections.observableArrayList(currenciesData));
-
+        setData();
     }
 
-    private TableColumn<Currency, String> defineCommentsColumn() {
-        TableColumn<Currency, String> comments =
-                new TableColumn<Currency, String>(
+    private TableColumn<CurrencyEntity, String> defineCommentsColumn() {
+        TableColumn<CurrencyEntity, String> comments =
+                new TableColumn<CurrencyEntity, String>(
                         defineColumnNameForCurrencyComments());
-        comments.setCellValueFactory(new PropertyValueFactory<Currency, String>(
+        comments.setCellValueFactory(new PropertyValueFactory<CurrencyEntity, String>(
                 defineCurrencyCommentsFieldName()));
         return comments;
     }
 
-    private TableColumn<Currency, String> defineNameColumn() {
-        TableColumn<Currency, String> name =
-                new TableColumn<Currency, String>(
+    private TableColumn<CurrencyEntity, String> defineNameColumn() {
+        TableColumn<CurrencyEntity, String> name =
+                new TableColumn<CurrencyEntity, String>(
                         defineColumnNameForCurrencyName());
-        name.setCellValueFactory(new PropertyValueFactory<Currency, String>(
+        name.setCellValueFactory(new PropertyValueFactory<CurrencyEntity, String>(
                 defineCurrencyNameFieldName()));
         return name;
     }
 
-    private TableColumn<Currency, String> defineIsoCodeColumn() {
-        TableColumn<Currency, String> isoCode =
-                new TableColumn<Currency, String>(
+    private TableColumn<CurrencyEntity, String> defineIsoCodeColumn() {
+        TableColumn<CurrencyEntity, String> isoCode =
+                new TableColumn<CurrencyEntity, String>(
                         defineColumnNameForCurrencyIsoCode());
-        isoCode.setCellValueFactory(new PropertyValueFactory<Currency, String>(
+        isoCode.setCellValueFactory(new PropertyValueFactory<CurrencyEntity, String>(
                 defineCurrencyIsoCodeFieldName()));
         return isoCode;
     }
 
-    private TableColumn<Currency, String> defineSymbolColumn() {
-        TableColumn<Currency, String> symbol =
-                new TableColumn<Currency, String>(
+    private TableColumn<CurrencyEntity, String> defineSymbolColumn() {
+        TableColumn<CurrencyEntity, String> symbol =
+                new TableColumn<CurrencyEntity, String>(
                         defineColumnNameForCurrencySymbol());
-        symbol.setCellValueFactory(new PropertyValueFactory<Currency, String>(
+        symbol.setCellValueFactory(new PropertyValueFactory<CurrencyEntity, String>(
                 defineCurrencySymbolFieldName()));
         return symbol;
     }
 
-    public TableView<Currency> getTableView() {
-        return tableView;
-    }
-
-    protected void setTableView(TableView<Currency> tableView) {
-        if (tableView == null) {
-            throw new ArgumentIsNullException("tableView");
-        }
-        this.tableView = tableView;
-    }
-
-    public Currency getCurrencyFromCurrentPosition() {
+    public CurrencyEntity getCurrencyFromCurrentPosition() {
         return getTableView().getFocusModel().getFocusedItem();
+    }
+
+    public void setData() {
+        getTableView().setItems(
+                FXCollections
+                        .observableArrayList(getCurrenciesData().getList()));
     }
 }
