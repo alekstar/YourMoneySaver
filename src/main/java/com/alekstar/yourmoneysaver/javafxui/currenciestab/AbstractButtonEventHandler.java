@@ -1,7 +1,5 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
-import com.alekstar.yourmoneysaver.javafxui.currenciestab.addwindow.AddCurrencyWindow;
-
 import javafx.event.EventHandler;
 import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyCode;
