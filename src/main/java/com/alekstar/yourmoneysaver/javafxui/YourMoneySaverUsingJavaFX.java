@@ -12,7 +12,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class YourMoneySaverUsingJavaFX extends Application {
 
     @Override
     public void start(Stage primaryStage) {
