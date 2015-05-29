@@ -4,6 +4,8 @@ import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialogs;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -141,8 +143,10 @@ public class AddCurrencyWindow {
             getCurrenciesData().save(currencyEntity);
             getThisWindow().close();
         } catch (IllegalArgumentException e) {
-            Dialogs.create().owner(getThisWindow()).title("Error")
-                    .message(e.getMessage()).showError();
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(e.getMessage());
+            alert.showAndWait();
         }
     }
 
