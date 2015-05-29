@@ -89,7 +89,7 @@ public class CurrenciesTab extends AbstractTab {
     private Node defineToolBox() {
         CurrenciesOperationsToolBox toolBox =
                 CurrenciesOperationsToolBox.create(getParentWindow(),
-                        getCurrenciesData());
+                        getCurrenciesData(), getTable());
         return toolBox.getBox();
     }
 }
