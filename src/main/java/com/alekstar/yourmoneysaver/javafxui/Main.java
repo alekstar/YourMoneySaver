@@ -1,5 +1,8 @@
 package com.alekstar.yourmoneysaver.javafxui;
 
+import com.alekstar.yourmoneysaver.CurrenciesDataAccessObject;
+import com.alekstar.yourmoneysaver.database.CurrenciesAtJpa;
+import com.alekstar.yourmoneysaver.javafxui.currenciestab.CurrenciesDataUsingDataAccessObject;
 import com.alekstar.yourmoneysaver.javafxui.currenciestab.CurrenciesTab;
 
 import javafx.application.Application;
@@ -32,7 +35,11 @@ public class Main extends Application {
         TabPane mainPanel = new TabPane();
 
         AccountsTab accountsTab = AccountsTab.create(parentWindow);
-        CurrenciesTab currenciesTab = CurrenciesTab.create(parentWindow);
+        CurrenciesDataAccessObject currenciesDataAccessObject =
+                CurrenciesAtJpa.create(EntityManagerFactorySingleton
+                        .getEntityManager());
+        CurrenciesTab currenciesTab =
+                CurrenciesTab.create(parentWindow, currenciesDataAccessObject);
 
         Tab accounts = accountsTab.getTab();
         Tab history = getHistoryTab();
