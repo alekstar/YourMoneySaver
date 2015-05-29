@@ -1,5 +1,8 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab.addwindow;
 
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialogs;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+
 import com.alekstar.yourmoneysaver.database.CurrencyEntity;
 import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJpa;
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
@@ -129,11 +133,17 @@ public class AddCurrencyWindow {
     }
 
     public void createNewCurrency() {
-        CurrencyEntity currencyEntity =
-                new CurrencyEntityAtJpa(getName().getText(), getIsoCode()
-                        .getText(), getSymbol().getText(), getComments()
-                        .getText());
-        getCurrenciesData().save(currencyEntity);
+        try {
+            CurrencyEntity currencyEntity =
+                    new CurrencyEntityAtJpa(getName().getText(), getIsoCode()
+                            .getText(), getSymbol().getText(), getComments()
+                            .getText());
+            getCurrenciesData().save(currencyEntity);
+            getThisWindow().close();
+        } catch (IllegalArgumentException e) {
+            Dialogs.create().owner(getThisWindow()).title("Error")
+                    .message(e.getMessage()).showError();
+        }
     }
 
     private Button defineAddButton() {
