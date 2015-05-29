@@ -7,7 +7,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import com.alekstar.yourmoneysaver.database.CurrencyEntity;
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 
-public class CurrenciesTable {
+public class CurrenciesTable implements Refreshable {
     private TableView<CurrencyEntity> tableView;
     private CurrenciesData currenciesData;
 
@@ -125,5 +125,10 @@ public class CurrenciesTable {
         getTableView().setItems(
                 FXCollections
                         .observableArrayList(getCurrenciesData().getList()));
+    }
+
+    @Override
+    public void refresh() {
+        setData();
     }
 }
