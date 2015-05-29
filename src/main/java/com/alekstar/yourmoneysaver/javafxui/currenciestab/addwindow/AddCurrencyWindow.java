@@ -160,4 +160,8 @@ public class AddCurrencyWindow {
     public void showAndWait() {
         getThisWindow().showAndWait();
     }
+
+    public void close() {
+        getThisWindow().close();
+    }
 }

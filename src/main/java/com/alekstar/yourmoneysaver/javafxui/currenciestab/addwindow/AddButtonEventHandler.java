@@ -24,5 +24,6 @@ public class AddButtonEventHandler extends AbstractButtonEventHandler {
     @Override
     protected void executeAction() {
         getParentWindow().createNewCurrency();
+        getParentWindow().close();
     }
 }
