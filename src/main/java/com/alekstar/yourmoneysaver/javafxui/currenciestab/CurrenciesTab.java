@@ -4,11 +4,13 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 import com.alekstar.yourmoneysaver.CurrenciesDataAccessObject;
 import com.alekstar.yourmoneysaver.javafxui.AbstractTab;
 import com.alekstar.yourmoneysaver.javafxui.Standarts;
+import com.alekstar.yourmoneysaver.javafxui.currenciestab.addwindow.AddCurrencyWindow;
 
-public class CurrenciesTab extends AbstractTab {
+public class CurrenciesTab extends AbstractTab implements AddCurrency {
     private CurrenciesDataAccessObject currenciesDataAccessObject;
     private CurrenciesTable table;
     private Pane mainPanel;
@@ -91,5 +93,18 @@ public class CurrenciesTab extends AbstractTab {
                 CurrenciesOperationsToolBox.create(getParentWindow(),
                         getCurrenciesData(), getTable());
         return toolBox.getBox();
+    }
+
+    @Override
+    public void addCurrency() {
+        AddCurrencyWindow window =
+                AddCurrencyWindow
+                        .create(getParentWindow(), getCurrenciesData());
+        window.showAndWait();
+        refreshCurrenciesTable();
+    }
+
+    private void refreshCurrenciesTable() {
+        getTable().refresh();
     }
 }
