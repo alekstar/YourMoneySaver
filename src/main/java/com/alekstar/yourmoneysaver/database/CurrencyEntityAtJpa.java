@@ -110,6 +110,9 @@ public class CurrencyEntityAtJpa implements CurrencyEntity {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
         if (!(obj instanceof CurrencyEntityAtJpa)) {
             throw new IllegalArgumentException(obj.toString()
                     + " is not CurrencyEntityAtJPA object.");
