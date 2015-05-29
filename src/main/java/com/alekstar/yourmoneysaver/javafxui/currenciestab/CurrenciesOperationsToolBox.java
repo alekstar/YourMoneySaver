@@ -12,20 +12,28 @@ public class CurrenciesOperationsToolBox {
     private Window parentWindow;
     private CurrenciesData currenciesData;
     private Refreshable currenciesTable;
+    private AddCurrency addCurrency;
 
     public static CurrenciesOperationsToolBox create(Window parentWindow,
-            CurrenciesData currenciesData, Refreshable curreciesTable) {
+            CurrenciesData currenciesData, Refreshable curreciesTable,
+            AddCurrency addCurrency) {
         return new CurrenciesOperationsToolBox(parentWindow, currenciesData,
-                curreciesTable);
+                curreciesTable, addCurrency);
     }
 
     private CurrenciesOperationsToolBox(Window parentWindow,
-            CurrenciesData currenciesData, Refreshable curreciesTable) {
+            CurrenciesData currenciesData, Refreshable curreciesTable,
+            AddCurrency addCurrency) {
         setCurrenciesData(currenciesData);
         setParentWindow(parentWindow);
         setCurrenciesTable(curreciesTable);
+        this.addCurrency = addCurrency;
         initializeBox();
         addButtons();
+    }
+
+    private AddCurrency getAddCurrency() {
+        return this.addCurrency;
     }
 
     public HBox getBox() {
@@ -75,7 +83,8 @@ public class CurrenciesOperationsToolBox {
         Button button = new Button("Add");
         AddCurrencyButtonEventHandler pressedHandler =
                 AddCurrencyButtonEventHandler.create(getParentWindow(),
-                        getCurrenciesData(), getCurrenciesTable());
+                        getCurrenciesData(), getCurrenciesTable(),
+                        getAddCurrency());
         button.setOnKeyPressed(pressedHandler);
         button.setOnMouseClicked(pressedHandler);
         addNode(button);

@@ -8,18 +8,22 @@ public class AddCurrencyButtonEventHandler extends AbstractButtonEventHandler {
     private Window parentWindow;
     private CurrenciesData currenciesData;
     private Refreshable currenciesTable;
+    private AddCurrency addCurrency;
 
     protected AddCurrencyButtonEventHandler(Window parentWindow,
-            CurrenciesData currenciesData, Refreshable currenciesTable) {
+            CurrenciesData currenciesData, Refreshable currenciesTable,
+            AddCurrency addCurrency) {
         setParentWindow(parentWindow);
         setCurrenciesData(currenciesData);
         setCurrenciesTable(currenciesTable);
+        this.addCurrency = addCurrency;
     }
 
     public static AddCurrencyButtonEventHandler create(Window parentWindow,
-            CurrenciesData currenciesData, Refreshable currenciesTable) {
+            CurrenciesData currenciesData, Refreshable currenciesTable,
+            AddCurrency addCurrency) {
         return new AddCurrencyButtonEventHandler(parentWindow, currenciesData,
-                currenciesTable);
+                currenciesTable, addCurrency);
     }
 
     private void setParentWindow(Window parentWindow) {
@@ -49,16 +53,12 @@ public class AddCurrencyButtonEventHandler extends AbstractButtonEventHandler {
         this.currenciesTable = currenciesTable;
     }
 
-    @Override
-    protected void executeAction() {
-        AddCurrencyWindow window =
-                AddCurrencyWindow
-                        .create(getParentWindow(), getCurrenciesData());
-        window.showAndWait();
-        refreshCurrenciesTable();
+    private void addCurrency() {
+        this.addCurrency.addCurrency();
     }
 
-    private void refreshCurrenciesTable() {
-        getCurrenciesTable().refresh();
+    @Override
+    protected void executeAction() {
+        addCurrency();
     }
 }
