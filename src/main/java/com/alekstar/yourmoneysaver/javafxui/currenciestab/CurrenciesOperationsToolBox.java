@@ -82,9 +82,7 @@ public class CurrenciesOperationsToolBox {
     private void addAddButton() {
         Button button = new Button("Add");
         AddCurrencyButtonEventHandler pressedHandler =
-                AddCurrencyButtonEventHandler.create(getParentWindow(),
-                        getCurrenciesData(), getCurrenciesTable(),
-                        getAddCurrency());
+                AddCurrencyButtonEventHandler.create(getAddCurrency());
         button.setOnKeyPressed(pressedHandler);
         button.setOnMouseClicked(pressedHandler);
         addNode(button);
