@@ -5,28 +5,16 @@ import com.alekstar.yourmoneysaver.javafxui.Standarts;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.stage.Window;
 
 public class CurrenciesOperationsToolBox {
     private HBox box = new HBox();
-    private Window parentWindow;
-    private CurrenciesData currenciesData;
-    private Refreshable currenciesTable;
     private AddCurrency addCurrency;
 
-    public static CurrenciesOperationsToolBox create(Window parentWindow,
-            CurrenciesData currenciesData, Refreshable curreciesTable,
-            AddCurrency addCurrency) {
-        return new CurrenciesOperationsToolBox(parentWindow, currenciesData,
-                curreciesTable, addCurrency);
+    public static CurrenciesOperationsToolBox create(AddCurrency addCurrency) {
+        return new CurrenciesOperationsToolBox(addCurrency);
     }
 
-    private CurrenciesOperationsToolBox(Window parentWindow,
-            CurrenciesData currenciesData, Refreshable curreciesTable,
-            AddCurrency addCurrency) {
-        setCurrenciesData(currenciesData);
-        setParentWindow(parentWindow);
-        setCurrenciesTable(curreciesTable);
+    private CurrenciesOperationsToolBox(AddCurrency addCurrency) {
         this.addCurrency = addCurrency;
         initializeBox();
         addButtons();
@@ -38,33 +26,6 @@ public class CurrenciesOperationsToolBox {
 
     public HBox getBox() {
         return box;
-    }
-
-    private Window getParentWindow() {
-        return parentWindow;
-    }
-
-    private CurrenciesData getCurrenciesData() {
-        return currenciesData;
-    }
-
-    private void setCurrenciesData(CurrenciesData currenciesData) {
-        this.currenciesData = currenciesData;
-    }
-
-    private void setParentWindow(Window parentWindow) {
-        if (parentWindow == null) {
-            throw new ArgumentIsNullException("parentWindow");
-        }
-        this.parentWindow = parentWindow;
-    }
-
-    private Refreshable getCurrenciesTable() {
-        return currenciesTable;
-    }
-
-    private void setCurrenciesTable(Refreshable currenciesTable) {
-        this.currenciesTable = currenciesTable;
     }
 
     private void initializeBox() {
