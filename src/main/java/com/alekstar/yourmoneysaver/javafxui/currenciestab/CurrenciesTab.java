@@ -98,7 +98,7 @@ public class CurrenciesTab extends AbstractTab implements AddCurrency,
 
     private Node defineToolBox() {
         CurrenciesOperationsToolBox toolBox =
-                CurrenciesOperationsToolBox.create(this);
+                CurrenciesOperationsToolBox.create(this, this);
         return toolBox.getBox();
     }
 
@@ -137,5 +137,6 @@ public class CurrenciesTab extends AbstractTab implements AddCurrency,
                 getTable().getTableView().getSelectionModel().getSelectedItem();
 
         removeCurrency(selectedItem);
+        refreshCurrenciesTable();
     }
 }

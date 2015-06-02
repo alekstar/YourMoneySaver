@@ -9,19 +9,27 @@ import javafx.scene.layout.HBox;
 public class CurrenciesOperationsToolBox {
     private HBox box = new HBox();
     private AddCurrency addCurrency;
+    private RemoveCurrency removeCurrency;
 
-    public static CurrenciesOperationsToolBox create(AddCurrency addCurrency) {
-        return new CurrenciesOperationsToolBox(addCurrency);
+    public static CurrenciesOperationsToolBox create(AddCurrency addCurrency,
+            RemoveCurrency removeCurrency) {
+        return new CurrenciesOperationsToolBox(addCurrency, removeCurrency);
     }
 
-    private CurrenciesOperationsToolBox(AddCurrency addCurrency) {
+    private CurrenciesOperationsToolBox(AddCurrency addCurrency,
+            RemoveCurrency removeCurrency) {
         this.addCurrency = addCurrency;
+        this.removeCurrency = removeCurrency;
         initializeBox();
         addButtons();
     }
 
     private AddCurrency getAddCurrency() {
         return this.addCurrency;
+    }
+
+    private RemoveCurrency getRemoveCurrency() {
+        return this.removeCurrency;
     }
 
     public HBox getBox() {
@@ -56,6 +64,10 @@ public class CurrenciesOperationsToolBox {
 
     private void addRemoveButton() {
         Button button = new Button("Remove");
+        RemoveCurrencyButtonEventHandler pressedHandler =
+                RemoveCurrencyButtonEventHandler.create(getRemoveCurrency());
+        button.setOnKeyPressed(pressedHandler);
+        button.setOnMouseClicked(pressedHandler);
         addNode(button);
     }
 
