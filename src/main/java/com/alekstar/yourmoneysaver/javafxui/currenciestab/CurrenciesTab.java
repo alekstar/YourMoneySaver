@@ -19,7 +19,6 @@ import com.alekstar.yourmoneysaver.javafxui.currenciestab.addwindow.AddCurrencyW
 
 public class CurrenciesTab extends AbstractTab implements AddCurrency,
         RemoveCurrency {
-    private CurrenciesDataAccessObject currenciesDataAccessObject;
     private CurrenciesTable table;
     private Pane mainPanel;
     private CurrenciesData currenciesData;
@@ -27,8 +26,7 @@ public class CurrenciesTab extends AbstractTab implements AddCurrency,
     private CurrenciesTab(Stage parentWindow,
             CurrenciesDataAccessObject currenciesDataAccessObject) {
         super(parentWindow);
-        setCurrenciesDataAccessObject(currenciesDataAccessObject);
-        initializeCurrenciesData();
+        initializeCurrenciesData(currenciesDataAccessObject);
     }
 
     public static CurrenciesTab create(Stage parentWindow,
@@ -45,15 +43,6 @@ public class CurrenciesTab extends AbstractTab implements AddCurrency,
 
     public Pane getMainPanel() {
         return this.mainPanel;
-    }
-
-    public CurrenciesDataAccessObject getCurrenciesDataAccessObject() {
-        return this.currenciesDataAccessObject;
-    }
-
-    private void setCurrenciesDataAccessObject(
-            CurrenciesDataAccessObject currenciesDataAccessObject) {
-        this.currenciesDataAccessObject = currenciesDataAccessObject;
     }
 
     private CurrenciesData getCurrenciesData() {
@@ -80,13 +69,15 @@ public class CurrenciesTab extends AbstractTab implements AddCurrency,
         this.table = CurrenciesTable.create(getCurrenciesData());
     }
 
-    private void initializeCurrenciesData() {
-        setCurrenciesData(defineCurrenciesData());
+    private void initializeCurrenciesData(
+            CurrenciesDataAccessObject currenciesDataAccessObject) {
+        setCurrenciesData(defineCurrenciesData(currenciesDataAccessObject));
     }
 
-    private CurrenciesDataUsingDataAccessObject defineCurrenciesData() {
+    private CurrenciesDataUsingDataAccessObject defineCurrenciesData(
+            CurrenciesDataAccessObject currenciesDataAccessObject) {
         return CurrenciesDataUsingDataAccessObject
-                .create(getCurrenciesDataAccessObject());
+                .create(currenciesDataAccessObject);
     }
 
     private void initializeMainPanel() {
