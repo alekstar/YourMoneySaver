@@ -135,8 +135,9 @@ public class CurrenciesTab extends AbstractTab implements AddCurrency,
     public void removeCurrency() {
         CurrencyEntity selectedItem =
                 getTable().getTableView().getSelectionModel().getSelectedItem();
-
-        removeCurrency(selectedItem);
-        refreshCurrenciesTable();
+        if (selectedItem != null) {
+            removeCurrency(selectedItem);
+            refreshCurrenciesTable();
+        }
     }
 }
