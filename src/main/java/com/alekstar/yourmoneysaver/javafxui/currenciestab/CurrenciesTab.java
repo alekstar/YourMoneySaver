@@ -118,8 +118,12 @@ public class CurrenciesTab extends AbstractTab implements AddCurrency,
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeYes) {
-            getCurrenciesData().remove(currencyEntity);
+            removeCurrencyFromCurrencyData(currencyEntity);
         }
+    }
+
+    private void removeCurrencyFromCurrencyData(CurrencyEntity currencyEntity) {
+        getCurrenciesData().remove(currencyEntity);
     }
 
     @Override
