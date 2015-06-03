@@ -125,13 +125,18 @@ public class CurrenciesTab extends AbstractTab implements AbleToAddCurrency,
 
         alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 
-        setDefaultButtonFlag(alert, buttonTypeYes, false);
-        setDefaultButtonFlag(alert, buttonTypeNo, true);
+        switchDefaultButton(alert, buttonTypeYes, buttonTypeNo);
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeYes) {
             removeCurrencyFromCurrencyData(currencyEntity);
         }
+    }
+
+    private void switchDefaultButton(Alert alert, ButtonType fromButton,
+            ButtonType toButton) {
+        setDefaultButtonFlag(alert, fromButton, false);
+        setDefaultButtonFlag(alert, toButton, true);
     }
 
     private void removeCurrencyFromCurrencyData(CurrencyEntity currencyEntity) {
