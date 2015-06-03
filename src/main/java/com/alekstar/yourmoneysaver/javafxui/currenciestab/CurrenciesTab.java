@@ -116,7 +116,8 @@ public class CurrenciesTab extends AbstractTab implements AbleToAddCurrency,
     private void removeCurrency(CurrencyEntity currencyEntity) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmation for removing currency");
-        alert.setHeaderText("Do you really want to remove currency \""
+        alert.setHeaderText("Confirmation for removing currency");
+        alert.setContentText("Do you really want to remove currency \""
                 + currencyEntity.getName() + "\"?");
 
         ButtonType buttonTypeYes = new ButtonType("Yes", ButtonData.YES);
