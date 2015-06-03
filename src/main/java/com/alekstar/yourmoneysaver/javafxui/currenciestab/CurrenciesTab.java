@@ -5,6 +5,7 @@ import java.util.Optional;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
@@ -106,6 +107,12 @@ public class CurrenciesTab extends AbstractTab implements AbleToAddCurrency,
         getTable().refresh();
     }
 
+    private void setDefaultButtonFlag(Alert alert, ButtonType buttonType,
+            boolean isDefaultButtonFlag) {
+        Button button = (Button) alert.getDialogPane().lookupButton(buttonType);
+        button.setDefaultButton(isDefaultButtonFlag);
+    }
+
     private void removeCurrency(CurrencyEntity currencyEntity) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmation for removing currency");
@@ -116,6 +123,9 @@ public class CurrenciesTab extends AbstractTab implements AbleToAddCurrency,
         ButtonType buttonTypeNo = new ButtonType("No", ButtonData.NO);
 
         alert.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+        setDefaultButtonFlag(alert, buttonTypeYes, false);
+        setDefaultButtonFlag(alert, buttonTypeNo, true);
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeYes) {
