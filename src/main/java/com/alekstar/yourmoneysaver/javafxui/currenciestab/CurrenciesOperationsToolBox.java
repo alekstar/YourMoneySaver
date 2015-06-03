@@ -10,16 +10,19 @@ public class CurrenciesOperationsToolBox {
     private HBox box = new HBox();
     private AddCurrency addCurrency;
     private RemoveCurrency removeCurrency;
+    private EditCurrency editCurrency;
 
     public static CurrenciesOperationsToolBox create(AddCurrency addCurrency,
-            RemoveCurrency removeCurrency) {
-        return new CurrenciesOperationsToolBox(addCurrency, removeCurrency);
+            RemoveCurrency removeCurrency, EditCurrency editCurrency) {
+        return new CurrenciesOperationsToolBox(addCurrency, removeCurrency,
+                editCurrency);
     }
 
     private CurrenciesOperationsToolBox(AddCurrency addCurrency,
-            RemoveCurrency removeCurrency) {
+            RemoveCurrency removeCurrency, EditCurrency editCurrency) {
         this.addCurrency = addCurrency;
         this.removeCurrency = removeCurrency;
+        this.editCurrency = editCurrency;
         initializeBox();
         addButtons();
     }
@@ -30,6 +33,10 @@ public class CurrenciesOperationsToolBox {
 
     private RemoveCurrency getRemoveCurrency() {
         return this.removeCurrency;
+    }
+
+    private EditCurrency getEditCurrency() {
+        return this.editCurrency;
     }
 
     public HBox getBox() {
@@ -59,6 +66,10 @@ public class CurrenciesOperationsToolBox {
 
     private void addEditButton() {
         Button button = new Button("Edit");
+        EditCurrencyButtonEventHandler pressedHandler =
+                EditCurrencyButtonEventHandler.create(getEditCurrency());
+        button.setOnKeyPressed(pressedHandler);
+        button.setOnMouseClicked(pressedHandler);
         addNode(button);
     }
 

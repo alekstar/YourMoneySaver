@@ -18,7 +18,7 @@ import com.alekstar.yourmoneysaver.javafxui.Standarts;
 import com.alekstar.yourmoneysaver.javafxui.currenciestab.addwindow.AddCurrencyWindow;
 
 public class CurrenciesTab extends AbstractTab implements AddCurrency,
-        RemoveCurrency {
+        RemoveCurrency, EditCurrency {
     private CurrenciesTable table;
     private Pane mainPanel;
     private CurrenciesData currenciesData;
@@ -89,7 +89,7 @@ public class CurrenciesTab extends AbstractTab implements AddCurrency,
 
     private Node defineToolBox() {
         CurrenciesOperationsToolBox toolBox =
-                CurrenciesOperationsToolBox.create(this, this);
+                CurrenciesOperationsToolBox.create(this, this, this);
         return toolBox.getBox();
     }
 
@@ -109,7 +109,8 @@ public class CurrenciesTab extends AbstractTab implements AddCurrency,
     private void removeCurrency(CurrencyEntity currencyEntity) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmation for removing currency");
-        alert.setHeaderText("Do you really want to remove selected currency?");
+        alert.setHeaderText("Do you really want to remove currency \""
+                + currencyEntity.getName() + "\"?");
 
         ButtonType buttonTypeYes = new ButtonType("Yes", ButtonData.YES);
         ButtonType buttonTypeNo = new ButtonType("No", ButtonData.NO);
@@ -126,13 +127,31 @@ public class CurrenciesTab extends AbstractTab implements AddCurrency,
         getCurrenciesData().remove(currencyEntity);
     }
 
+    private CurrencyEntity defineSelectedItem() {
+        return getTable().getTableView().getSelectionModel().getSelectedItem();
+
+    }
+
     @Override
     public void removeCurrency() {
-        CurrencyEntity selectedItem =
-                getTable().getTableView().getSelectionModel().getSelectedItem();
+        CurrencyEntity selectedItem = defineSelectedItem();
         if (selectedItem != null) {
             removeCurrency(selectedItem);
             refreshCurrenciesTable();
         }
+    }
+
+    @Override
+    public void editCurrency() {
+        CurrencyEntity selectedItem = defineSelectedItem();
+        if (selectedItem != null) {
+            editCurrency(selectedItem);
+            refreshCurrenciesTable();
+        }
+    }
+
+    private void editCurrency(CurrencyEntity currencyEntity) {
+        currencyEntity.setComments("EDITED");
+        getCurrenciesData().save(currencyEntity);
     }
 }
