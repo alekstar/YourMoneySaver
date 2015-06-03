@@ -8,27 +8,27 @@ import javafx.scene.layout.HBox;
 
 public class CurrenciesOperationsToolBox {
     private HBox box = new HBox();
-    private AddCurrency addCurrency;
+    private AbleToAddCurrency ableToAddCurrency;
     private RemoveCurrency removeCurrency;
     private EditCurrency editCurrency;
 
-    public static CurrenciesOperationsToolBox create(AddCurrency addCurrency,
+    public static CurrenciesOperationsToolBox create(AbleToAddCurrency ableToAddCurrency,
             RemoveCurrency removeCurrency, EditCurrency editCurrency) {
-        return new CurrenciesOperationsToolBox(addCurrency, removeCurrency,
+        return new CurrenciesOperationsToolBox(ableToAddCurrency, removeCurrency,
                 editCurrency);
     }
 
-    private CurrenciesOperationsToolBox(AddCurrency addCurrency,
+    private CurrenciesOperationsToolBox(AbleToAddCurrency ableToAddCurrency,
             RemoveCurrency removeCurrency, EditCurrency editCurrency) {
-        this.addCurrency = addCurrency;
+        this.ableToAddCurrency = ableToAddCurrency;
         this.removeCurrency = removeCurrency;
         this.editCurrency = editCurrency;
         initializeBox();
         addButtons();
     }
 
-    private AddCurrency getAddCurrency() {
-        return this.addCurrency;
+    private AbleToAddCurrency getAbleToAddCurrency() {
+        return this.ableToAddCurrency;
     }
 
     private RemoveCurrency getRemoveCurrency() {
@@ -58,7 +58,7 @@ public class CurrenciesOperationsToolBox {
     private void addAddButton() {
         Button button = new Button("Add");
         AddCurrencyButtonEventHandler pressedHandler =
-                AddCurrencyButtonEventHandler.create(getAddCurrency());
+                AddCurrencyButtonEventHandler.create(getAbleToAddCurrency());
         button.setOnKeyPressed(pressedHandler);
         button.setOnMouseClicked(pressedHandler);
         addNode(button);

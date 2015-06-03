@@ -17,7 +17,7 @@ import com.alekstar.yourmoneysaver.javafxui.AbstractTab;
 import com.alekstar.yourmoneysaver.javafxui.Standarts;
 import com.alekstar.yourmoneysaver.javafxui.currenciestab.addwindow.AddCurrencyWindow;
 
-public class CurrenciesTab extends AbstractTab implements AddCurrency,
+public class CurrenciesTab extends AbstractTab implements AbleToAddCurrency,
         RemoveCurrency, EditCurrency {
     private CurrenciesTable table;
     private Pane mainPanel;

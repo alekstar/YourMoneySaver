@@ -1,5 +1,5 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
-public interface AddCurrency {
+public interface AbleToAddCurrency {
     void addCurrency();
 }

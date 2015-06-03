@@ -1,18 +1,18 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
 public class AddCurrencyButtonEventHandler extends AbstractButtonEventHandler {
-    private AddCurrency addCurrency;
+    private AbleToAddCurrency ableToAddCurrency;
 
-    protected AddCurrencyButtonEventHandler(AddCurrency addCurrency) {
-        this.addCurrency = addCurrency;
+    protected AddCurrencyButtonEventHandler(AbleToAddCurrency ableToAddCurrency) {
+        this.ableToAddCurrency = ableToAddCurrency;
     }
 
-    public static AddCurrencyButtonEventHandler create(AddCurrency addCurrency) {
-        return new AddCurrencyButtonEventHandler(addCurrency);
+    public static AddCurrencyButtonEventHandler create(AbleToAddCurrency ableToAddCurrency) {
+        return new AddCurrencyButtonEventHandler(ableToAddCurrency);
     }
 
     private void addCurrency() {
-        this.addCurrency.addCurrency();
+        this.ableToAddCurrency.addCurrency();
     }
 
     @Override
