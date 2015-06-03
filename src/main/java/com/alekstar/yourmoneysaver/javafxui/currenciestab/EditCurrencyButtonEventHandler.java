@@ -1,22 +1,22 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
 public class EditCurrencyButtonEventHandler extends AbstractButtonEventHandler {
-    private EditCurrency parentWindow;
+    private AbleToEditCurrency parentWindow;
 
-    protected EditCurrencyButtonEventHandler(EditCurrency parentWindow) {
+    protected EditCurrencyButtonEventHandler(AbleToEditCurrency parentWindow) {
         setParentWindow(parentWindow);
     }
 
     public static EditCurrencyButtonEventHandler create(
-            EditCurrency parentWindow) {
+            AbleToEditCurrency parentWindow) {
         return new EditCurrencyButtonEventHandler(parentWindow);
     }
 
-    private EditCurrency getParentWindow() {
+    private AbleToEditCurrency getParentWindow() {
         return parentWindow;
     }
 
-    private void setParentWindow(EditCurrency parentWindow) {
+    private void setParentWindow(AbleToEditCurrency parentWindow) {
         this.parentWindow = parentWindow;
     }
 

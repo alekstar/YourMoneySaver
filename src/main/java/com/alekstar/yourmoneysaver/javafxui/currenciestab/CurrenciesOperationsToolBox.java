@@ -10,19 +10,19 @@ public class CurrenciesOperationsToolBox {
     private HBox box = new HBox();
     private AbleToAddCurrency ableToAddCurrency;
     private RemoveCurrency removeCurrency;
-    private EditCurrency editCurrency;
+    private AbleToEditCurrency ableToEditCurrency;
 
     public static CurrenciesOperationsToolBox create(AbleToAddCurrency ableToAddCurrency,
-            RemoveCurrency removeCurrency, EditCurrency editCurrency) {
+            RemoveCurrency removeCurrency, AbleToEditCurrency ableToEditCurrency) {
         return new CurrenciesOperationsToolBox(ableToAddCurrency, removeCurrency,
-                editCurrency);
+                ableToEditCurrency);
     }
 
     private CurrenciesOperationsToolBox(AbleToAddCurrency ableToAddCurrency,
-            RemoveCurrency removeCurrency, EditCurrency editCurrency) {
+            RemoveCurrency removeCurrency, AbleToEditCurrency ableToEditCurrency) {
         this.ableToAddCurrency = ableToAddCurrency;
         this.removeCurrency = removeCurrency;
-        this.editCurrency = editCurrency;
+        this.ableToEditCurrency = ableToEditCurrency;
         initializeBox();
         addButtons();
     }
@@ -35,8 +35,8 @@ public class CurrenciesOperationsToolBox {
         return this.removeCurrency;
     }
 
-    private EditCurrency getEditCurrency() {
-        return this.editCurrency;
+    private AbleToEditCurrency getEditCurrency() {
+        return this.ableToEditCurrency;
     }
 
     public HBox getBox() {
