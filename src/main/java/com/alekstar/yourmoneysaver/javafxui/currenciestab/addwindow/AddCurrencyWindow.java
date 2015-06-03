@@ -1,13 +1,9 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab.addwindow;
 
-import org.controlsfx.control.action.Action;
-import org.controlsfx.dialog.Dialogs;
-
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -109,15 +105,12 @@ public class AddCurrencyWindow {
 
     private void addControlsToPane(Pane pane) {
         VBox vBox = new VBox();
-        vBox.getChildren().add(new Label("Name: "));
         vBox.getChildren().add(getName());
-        vBox.getChildren().add(new Label("ISO code: "));
         vBox.getChildren().add(getIsoCode());
-        vBox.getChildren().add(new Label("Symbol: "));
         vBox.getChildren().add(getSymbol());
-        vBox.getChildren().add(new Label("Comments: "));
         vBox.getChildren().add(getComments());
         vBox.setPadding(Standarts.defineMainPanelInsets());
+        vBox.setSpacing(10);
 
         HBox hBox = new HBox();
         hBox.getChildren().add(defineAddButton());
@@ -128,10 +121,34 @@ public class AddCurrencyWindow {
     }
 
     private void initializeTextFields() {
-        setName(new TextField());
-        setIsoCode(new TextField());
-        setSymbol(new TextField());
-        setComments(new TextField());
+        initializeNameTextField();
+        initializeIsoCodeTextField();
+        initializeSymbolTextField();
+        initializeCommentsTextField();
+    }
+
+    private void initializeCommentsTextField() {
+        TextField textField = new TextField();
+        textField.setPromptText("Comments");
+        setComments(textField);
+    }
+
+    private void initializeSymbolTextField() {
+        TextField textField = new TextField();
+        textField.setPromptText("Symbol");
+        setSymbol(textField);
+    }
+
+    private void initializeIsoCodeTextField() {
+        TextField textField = new TextField();
+        textField.setPromptText("IsoCode");
+        setIsoCode(textField);
+    }
+
+    private void initializeNameTextField() {
+        TextField textField = new TextField();
+        textField.setPromptText("Name");
+        setName(textField);
     }
 
     public void createNewCurrency() {
@@ -162,7 +179,8 @@ public class AddCurrencyWindow {
         Stage window = new Stage();
         StackPane stackPane = new StackPane();
         addControlsToPane(stackPane);
-        Scene scene = new Scene(stackPane, 500, 200);
+        Scene scene = new Scene(stackPane);
+        window.setWidth(500);
         window.setScene(scene);
         window.initOwner(getParentWindow());
         window.initModality(Modality.WINDOW_MODAL);
