@@ -2,22 +2,22 @@ package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
 public class RemoveCurrencyButtonEventHandler extends
         AbstractButtonEventHandler {
-    private RemoveCurrency parentWindow;
+    private AbleToRemoveCurrency parentWindow;
 
-    protected RemoveCurrencyButtonEventHandler(RemoveCurrency parentWindow) {
+    protected RemoveCurrencyButtonEventHandler(AbleToRemoveCurrency parentWindow) {
         setParentWindow(parentWindow);
     }
 
     public static RemoveCurrencyButtonEventHandler create(
-            RemoveCurrency parentWindow) {
+            AbleToRemoveCurrency parentWindow) {
         return new RemoveCurrencyButtonEventHandler(parentWindow);
     }
 
-    private RemoveCurrency getParentWindow() {
+    private AbleToRemoveCurrency getParentWindow() {
         return parentWindow;
     }
 
-    private void setParentWindow(RemoveCurrency parentWindow) {
+    private void setParentWindow(AbleToRemoveCurrency parentWindow) {
         this.parentWindow = parentWindow;
     }
 

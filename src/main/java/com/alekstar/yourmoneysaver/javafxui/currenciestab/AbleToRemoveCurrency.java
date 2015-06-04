@@ -1,5 +1,5 @@
 package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
-public interface RemoveCurrency {
+public interface AbleToRemoveCurrency {
     void removeCurrency();
 }

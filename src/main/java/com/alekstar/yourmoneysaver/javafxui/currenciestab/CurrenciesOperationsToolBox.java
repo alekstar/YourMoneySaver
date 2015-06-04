@@ -9,19 +9,19 @@ import javafx.scene.layout.HBox;
 public class CurrenciesOperationsToolBox {
     private HBox box = new HBox();
     private AbleToAddCurrency ableToAddCurrency;
-    private RemoveCurrency removeCurrency;
+    private AbleToRemoveCurrency ableToRemoveCurrency;
     private AbleToEditCurrency ableToEditCurrency;
 
     public static CurrenciesOperationsToolBox create(AbleToAddCurrency ableToAddCurrency,
-            RemoveCurrency removeCurrency, AbleToEditCurrency ableToEditCurrency) {
-        return new CurrenciesOperationsToolBox(ableToAddCurrency, removeCurrency,
+            AbleToRemoveCurrency ableToRemoveCurrency, AbleToEditCurrency ableToEditCurrency) {
+        return new CurrenciesOperationsToolBox(ableToAddCurrency, ableToRemoveCurrency,
                 ableToEditCurrency);
     }
 
     private CurrenciesOperationsToolBox(AbleToAddCurrency ableToAddCurrency,
-            RemoveCurrency removeCurrency, AbleToEditCurrency ableToEditCurrency) {
+            AbleToRemoveCurrency ableToRemoveCurrency, AbleToEditCurrency ableToEditCurrency) {
         this.ableToAddCurrency = ableToAddCurrency;
-        this.removeCurrency = removeCurrency;
+        this.ableToRemoveCurrency = ableToRemoveCurrency;
         this.ableToEditCurrency = ableToEditCurrency;
         initializeBox();
         addButtons();
@@ -31,8 +31,8 @@ public class CurrenciesOperationsToolBox {
         return this.ableToAddCurrency;
     }
 
-    private RemoveCurrency getRemoveCurrency() {
-        return this.removeCurrency;
+    private AbleToRemoveCurrency getAbleToRemoveCurrency() {
+        return this.ableToRemoveCurrency;
     }
 
     private AbleToEditCurrency getEditCurrency() {
@@ -76,7 +76,7 @@ public class CurrenciesOperationsToolBox {
     private void addRemoveButton() {
         Button button = new Button("Remove");
         RemoveCurrencyButtonEventHandler pressedHandler =
-                RemoveCurrencyButtonEventHandler.create(getRemoveCurrency());
+                RemoveCurrencyButtonEventHandler.create(getAbleToRemoveCurrency());
         button.setOnKeyPressed(pressedHandler);
         button.setOnMouseClicked(pressedHandler);
         addNode(button);
