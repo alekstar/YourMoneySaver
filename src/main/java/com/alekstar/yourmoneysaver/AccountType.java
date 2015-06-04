@@ -8,6 +8,7 @@ public class AccountType {
 
     public AccountType(String name, String comments) {
         setName(name);
+        setComments(comments);
     }
 
     public String getName() {
