@@ -35,4 +35,11 @@ public class AccountTypeTest {
         AccountType accountType = new AccountType(null, "Some comments");
         fail();
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowIllegalArgumentExceptionIfNameIsEmpty() {
+        @SuppressWarnings("unused")
+        AccountType accountType = new AccountType("", "Some comments");
+        fail();
+    }
 }
