@@ -15,6 +15,13 @@ public class AccountTypeTest {
         assertEquals(expectedName, accountType.getName());
     }
 
+    @Test
+    public void shouldCreateAccountTypeWithNullComments() {
+        String expectedName = "Nice Account Type";
+        AccountType accountType = new AccountType(expectedName, null);
+        assertNull(accountType.getComments());
+    }
+
     @Test(expected = ArgumentIsNullException.class)
     public void shouldThrowArgumentIsNullExceptionIfNameIsNullAndCommentsIsNull() {
         @SuppressWarnings("unused")
