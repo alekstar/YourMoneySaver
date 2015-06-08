@@ -28,4 +28,11 @@ public class AccountTypeTest {
         AccountType accountType = new AccountType(null, null);
         fail();
     }
+
+    @Test(expected = ArgumentIsNullException.class)
+    public void shouldThrowArgumentIsNullExceptionIfNameIsNullAndCommentsIsNotNull() {
+        @SuppressWarnings("unused")
+        AccountType accountType = new AccountType(null, "Some comments");
+        fail();
+    }
 }
