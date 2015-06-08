@@ -114,8 +114,7 @@ public class CurrencyEntityAtJpa implements CurrencyEntity {
             return false;
         }
         if (!(obj instanceof CurrencyEntityAtJpa)) {
-            throw new IllegalArgumentException(obj.toString()
-                    + " is not CurrencyEntityAtJPA object.");
+            return false;
         }
         return getCurrency().equals(((CurrencyEntityAtJpa) obj).getCurrency());
     }
