@@ -2,6 +2,9 @@ package com.alekstar.yourmoneysaver.database;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -16,6 +19,10 @@ public class AccountTypeAtJpa implements AccountTypeEntity {
     public AccountTypeAtJpa() {
         setAccountType(new AccountType(defineInvalidAccountTypeName(),
                 defineInvalidAccountTypeComments()));
+    }
+
+    public AccountTypeAtJpa(String name, String comments) {
+        setAccountType(new AccountType(name, comments));
     }
 
     private static String defineInvalidAccountTypeComments() {
@@ -57,7 +64,31 @@ public class AccountTypeAtJpa implements AccountTypeEntity {
         this.accountType = accountType;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     public long getId() {
         return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        return getAccountType().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof AccountTypeAtJpa)) {
+            return false;
+        }
+        return getAccountType().equals(
+                ((AccountTypeAtJpa) obj).getAccountType());
     }
 }
