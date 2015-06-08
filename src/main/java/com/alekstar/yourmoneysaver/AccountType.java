@@ -19,7 +19,7 @@ public class AccountType {
         return comments;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         if (name == null) {
             throw new ArgumentIsNullException("name");
         }
