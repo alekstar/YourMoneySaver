@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 import com.alekstar.yourmoneysaver.Currency;
 
 @Entity
-@Table(name = "Currencies")
+@Table(name = "currencies")
 public class CurrencyEntityAtJpa implements CurrencyEntity {
     public static final int NAME_MAX_STRING_LENGTH =
             Currency.NAME_MAX_STRING_LENGTH;
