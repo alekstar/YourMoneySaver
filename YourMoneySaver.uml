@@ -28,7 +28,7 @@
 <XPD:REF name="Namespace">gPmPs/FDR0ary39AT4lzNQAA</XPD:REF>
 <XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedDiagrams[0]" type="UMLClassDiagram" guid="ZHB+8SDpN02h+a5COrdf3wAA">
-<XPD:ATTR name="Name" type="string">Main</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Account</XPD:ATTR>
 <XPD:ATTR name="DefaultDiagram" type="boolean">True</XPD:ATTR>
 <XPD:REF name="DiagramOwner">N+Jix/894UK9Sp/4b0+yjAAA</XPD:REF>
 <XPD:OBJ name="DiagramView" type="UMLClassDiagramView" guid="mSXklRaYY0SZgUzqbI3fSgAA">
