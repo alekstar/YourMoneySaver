@@ -6,3 +6,6 @@ Using next technologies:
 - Hibernate for working woith database;
 - PostgreSQL database for main application;
 - H2 database for tests.
+
+I'm using White StarUML (http://sourceforge.net/projects/whitestaruml/) 
+application for working with *.uml files.
