@@ -21,10 +21,15 @@ public class BigDecimalTest {
     @Test
     public void shouldBe2Dot00() {
         BigDecimal first =
-                new BigDecimal("2", new MathContext(2, RoundingMode.HALF_UP));
-        String result = defineStringInFormat(first, 2);
+                new BigDecimal("2", new MathContext(defineDefaultPrecision(),
+                        RoundingMode.HALF_UP));
+        String result = defineStringInFormat(first, defineDefaultPrecision());
         String expected = defineExpectedValueForShouldBe2Dot00TestCase();
         assertEquals(expected, result);
+    }
+
+    private int defineDefaultPrecision() {
+        return 2;
     }
 
     private String defineExpectedValueForShouldBe2Dot00TestCase() {
