@@ -26,4 +26,10 @@ public class CommonMoneyTest {
         Money money = CommonMoney.create("45.78", USD);
         money.getCurrency();
     }
+
+    @Test
+    public void shouldGetCurrencyReturnCurrencyObject() {
+        Money money = CommonMoney.create("45.78", USD);
+        assertTrue(money.getCurrency() instanceof Currency);
+    }
 }
