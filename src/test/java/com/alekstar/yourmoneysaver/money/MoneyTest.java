@@ -20,11 +20,4 @@ public class MoneyTest {
         Money money = CommonMoney.create("45.78", usd);
         assertNotNull(money);
     }
-
-    @Test
-    public void shouldNotCreateCommonMoneyObjectWithEmptyConstructor() {
-        @SuppressWarnings("unused")
-        Money money = new CommonMoney();
-        fail();
-    }
 }
