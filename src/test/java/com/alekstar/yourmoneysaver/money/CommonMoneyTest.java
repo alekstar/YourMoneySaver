@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.alekstar.yourmoneysaver.Currency;
 
-public class MoneyTest {
+public class CommonMoneyTest {
     @Test
     public void shouldCreateCommonMoneyObject() {
         Currency usd = new Currency("US Dollar", "USD", "$", null);
