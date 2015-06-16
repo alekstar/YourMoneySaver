@@ -5,6 +5,7 @@ import com.alekstar.yourmoneysaver.Currency;
 public class CommonMoney implements Money {
 
     public static Money create(String decimalPart, Currency currency) {
-        return null;
+        return new Money() {
+        };
     }
 }
