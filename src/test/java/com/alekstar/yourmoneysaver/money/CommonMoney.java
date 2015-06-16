@@ -6,6 +6,15 @@ public class CommonMoney implements Money {
 
     public static Money create(String decimalPart, Currency currency) {
         return new Money() {
+            @Override
+            public void getCurrency() {
+
+            }
         };
+    }
+
+    @Override
+    public void getCurrency() {
+
     }
 }
