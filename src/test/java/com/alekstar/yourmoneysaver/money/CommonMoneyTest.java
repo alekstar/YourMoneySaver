@@ -38,6 +38,13 @@ public class CommonMoneyTest {
         assertTrue(money instanceof CommonMoney);
     }
 
+    @Test
+    public void shouldGetCurrencyMethodReturnThatCurrencyWhichWasPassedThroughCreateMethod() {
+        Currency usd = createCurrencyUSD();
+        Money money = CommonMoney.create("45.78", usd);
+        assertTrue(usd == money.getCurrency());
+    }
+
     private Money createCommonMoneyFor45Point78USD() {
         return CommonMoney.create("45.78", createCurrencyUSD());
     }

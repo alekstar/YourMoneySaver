@@ -3,13 +3,18 @@ package com.alekstar.yourmoneysaver.money;
 import com.alekstar.yourmoneysaver.Currency;
 
 public class CommonMoney implements Money {
+    private Currency currency;
+
+    protected CommonMoney(Currency currency) {
+        this.currency = currency;
+    }
 
     public static Money create(String decimalPart, Currency currency) {
-        return new CommonMoney();
+        return new CommonMoney(currency);
     }
 
     @Override
     public Currency getCurrency() {
-        return new Currency("name", "ISO", "i", "comments");
+        return this.currency;
     }
 }
