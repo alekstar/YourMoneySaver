@@ -32,4 +32,10 @@ public class CommonMoneyTest {
         Money money = CommonMoney.create("45.78", USD);
         assertTrue(money.getCurrency() instanceof Currency);
     }
+
+    @Test
+    public void shouldCreateMethodReturnCommonMoneyObject() {
+        Money money = CommonMoney.create("45.78", USD);
+        assertTrue(money instanceof CommonMoney);
+    }
 }
