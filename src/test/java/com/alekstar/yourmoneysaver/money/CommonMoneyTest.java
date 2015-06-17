@@ -45,6 +45,14 @@ public class CommonMoneyTest {
         assertTrue(usd == money.getCurrency());
     }
 
+    @Test
+    public void shouldSetCurrencyChangeCurrencyWhichIsAtCommonMoneyObject() {
+        Money money = createCommonMoneyFor45Point78USD();
+        Currency uah = new Currency("Ukrainian hrivnya", "UAH", "₴", null);
+        money.setCurrency(uah);
+        assertSame(uah, money.getCurrency());
+    }
+
     private Money createCommonMoneyFor45Point78USD() {
         return CommonMoney.create("45.78", createCurrencyUSD());
     }

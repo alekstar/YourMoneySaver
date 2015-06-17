@@ -17,4 +17,9 @@ public class CommonMoney implements Money {
     public Currency getCurrency() {
         return this.currency;
     }
+
+    @Override
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 }
