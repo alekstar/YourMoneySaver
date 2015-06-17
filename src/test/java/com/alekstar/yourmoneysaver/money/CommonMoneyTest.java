@@ -7,7 +7,6 @@ import org.junit.Test;
 import com.alekstar.yourmoneysaver.Currency;
 
 public class CommonMoneyTest {
-    private final Currency USD = new Currency("US Dollar", "USD", "$", null);
 
     @Test
     public void shouldCreateCommonMoneyObject() {
@@ -40,6 +39,11 @@ public class CommonMoneyTest {
     }
 
     private Money createCommonMoneyFor45Point78USD() {
-        return CommonMoney.create("45.78", USD);
+        return CommonMoney.create("45.78", createCurrencyUSD());
     }
+
+    private Currency createCurrencyUSD() {
+        return new Currency("US Dollar", "USD", "$", null);
+    }
+
 }
