@@ -22,7 +22,8 @@ public class BigDecimalTest {
         BigDecimal bigDecimal =
                 new BigDecimal("2", new MathContext(defineDefaultPrecision(),
                         RoundingMode.HALF_UP));
-        String result = defineStringInFormat(bigDecimal, defineDefaultPrecision());
+        String result =
+                defineStringInFormat(bigDecimal, defineDefaultPrecision());
         String expected = defineExpectedValueForShouldBe2Dot00TestCase();
         assertEquals(expected, result);
     }
@@ -31,6 +32,12 @@ public class BigDecimalTest {
     public void shouldBeMinus2Dot34() {
         BigDecimal bigDecimal = new BigDecimal("-2.34");
         assertEquals("-2.34", bigDecimal.toString());
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void shouldThrowNumberFormatException() {
+        new BigDecimal("3,56");
+        fail();
     }
 
     private int defineDefaultPrecision() {
