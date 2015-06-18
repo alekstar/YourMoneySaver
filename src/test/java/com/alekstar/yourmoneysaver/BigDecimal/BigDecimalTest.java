@@ -13,16 +13,16 @@ import org.junit.Test;
 public class BigDecimalTest {
     @Test
     public void shouldBe2Dot34() {
-        BigDecimal first = new BigDecimal("2.34");
-        assertEquals("2.34", first.toString());
+        BigDecimal bigDecimal = new BigDecimal("2.34");
+        assertEquals("2.34", bigDecimal.toString());
     }
 
     @Test
     public void shouldBe2Dot00() {
-        BigDecimal first =
+        BigDecimal bigDecimal =
                 new BigDecimal("2", new MathContext(defineDefaultPrecision(),
                         RoundingMode.HALF_UP));
-        String result = defineStringInFormat(first, defineDefaultPrecision());
+        String result = defineStringInFormat(bigDecimal, defineDefaultPrecision());
         String expected = defineExpectedValueForShouldBe2Dot00TestCase();
         assertEquals(expected, result);
     }
