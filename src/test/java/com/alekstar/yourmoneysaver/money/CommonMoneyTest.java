@@ -53,6 +53,13 @@ public class CommonMoneyTest {
         assertSame(uah, money.getCurrency());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldSetCurrencyThrowIllegalArgumentException() {
+        Money money = createCommonMoneyFor45Point78USD();
+        money.setCurrency(null);
+        fail();
+    }
+
     private Money createCommonMoneyFor45Point78USD() {
         return CommonMoney.create("45.78", createCurrencyUSD());
     }

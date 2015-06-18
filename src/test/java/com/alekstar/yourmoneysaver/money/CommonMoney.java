@@ -20,6 +20,9 @@ public class CommonMoney implements Money {
 
     @Override
     public void setCurrency(Currency currency) {
+        if (currency == null) {
+            throw new IllegalArgumentException();
+        }
         this.currency = currency;
     }
 }
