@@ -27,6 +27,12 @@ public class BigDecimalTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void shouldBeMinus2Dot34() {
+        BigDecimal bigDecimal = new BigDecimal("-2.34");
+        assertEquals("-2.34", bigDecimal.toString());
+    }
+
     private int defineDefaultPrecision() {
         return 2;
     }
