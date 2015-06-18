@@ -9,8 +9,7 @@ import com.alekstar.yourmoneysaver.Currency;
 public class CommonMoneyTest {
     @Test
     public void shouldCreateCommonMoneyObject() {
-        @SuppressWarnings("unused")
-        Money money = createCommonMoneyFor45Point78USD();
+        createCommonMoneyFor45Point78USD();
     }
 
     @Test
