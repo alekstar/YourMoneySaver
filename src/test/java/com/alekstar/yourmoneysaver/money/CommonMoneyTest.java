@@ -72,6 +72,12 @@ public class CommonMoneyTest {
         }
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldCreateMethodThrowIllegalArgumentException() {
+        CommonMoney.create("45.78", null);
+        fail();
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }

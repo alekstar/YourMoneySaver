@@ -6,7 +6,7 @@ public class CommonMoney implements Money {
     private Currency currency;
 
     protected CommonMoney(Currency currency) {
-        this.currency = currency;
+        setCurrency(currency);
     }
 
     public static Money create(String decimalPart, Currency currency) {
@@ -21,7 +21,8 @@ public class CommonMoney implements Money {
     @Override
     public void setCurrency(Currency currency) {
         if (currency == null) {
-            throw new IllegalArgumentException(defineExceptionTextWhenCurrencyIsNull());
+            throw new IllegalArgumentException(
+                    defineExceptionTextWhenCurrencyIsNull());
         }
         this.currency = currency;
     }
