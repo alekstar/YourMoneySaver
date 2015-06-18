@@ -65,10 +65,15 @@ public class CommonMoneyTest {
         try {
             money.setCurrency(null);
         } catch (IllegalArgumentException e) {
-            if (!e.getMessage().contentEquals("Argument currency is null.")) {
+            if (!e.getMessage().contentEquals(
+                    defineExceptionTextWhenCurrencyIsNull())) {
                 fail();
             }
         }
+    }
+
+    private String defineExceptionTextWhenCurrencyIsNull() {
+        return "Argument currency is null.";
     }
 
     private Money createCommonMoneyFor45Point78USD() {

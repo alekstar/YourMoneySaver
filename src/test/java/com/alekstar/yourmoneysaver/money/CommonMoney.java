@@ -21,8 +21,12 @@ public class CommonMoney implements Money {
     @Override
     public void setCurrency(Currency currency) {
         if (currency == null) {
-            throw new IllegalArgumentException("Argument currency is null.");
+            throw new IllegalArgumentException(defineExceptionTextWhenCurrencyIsNull());
         }
         this.currency = currency;
+    }
+
+    private String defineExceptionTextWhenCurrencyIsNull() {
+        return "Argument currency is null.";
     }
 }
