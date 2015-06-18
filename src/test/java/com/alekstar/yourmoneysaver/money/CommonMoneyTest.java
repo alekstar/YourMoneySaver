@@ -7,7 +7,6 @@ import org.junit.Test;
 import com.alekstar.yourmoneysaver.Currency;
 
 public class CommonMoneyTest {
-
     @Test
     public void shouldCreateCommonMoneyObject() {
         @SuppressWarnings("unused")
@@ -60,6 +59,18 @@ public class CommonMoneyTest {
         fail();
     }
 
+    @Test
+    public void shouldSetCurrencyThrowIllegalArgumentExceptionWithInformationAboutWrongArgument() {
+        Money money = createCommonMoneyFor45Point78USD();
+        try {
+            money.setCurrency(null);
+        } catch (IllegalArgumentException e) {
+            if (!e.getMessage().contentEquals("Argument currency is null.")) {
+                fail();
+            }
+        }
+    }
+
     private Money createCommonMoneyFor45Point78USD() {
         return CommonMoney.create("45.78", createCurrencyUSD());
     }
@@ -67,5 +78,4 @@ public class CommonMoneyTest {
     private Currency createCurrencyUSD() {
         return new Currency("US Dollar", "USD", "$", null);
     }
-
 }
