@@ -8,4 +8,6 @@ public interface Money {
     void setCurrency(Currency currency);
 
     void setDecimalPart(String decimalPart);
+
+    void getDecimalPart();
 }

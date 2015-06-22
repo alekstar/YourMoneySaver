@@ -30,6 +30,11 @@ public class CommonMoney implements Money {
     @Override
     public void setDecimalPart(String decimalPart) {
     }
+
+    @Override
+    public void getDecimalPart() {
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
