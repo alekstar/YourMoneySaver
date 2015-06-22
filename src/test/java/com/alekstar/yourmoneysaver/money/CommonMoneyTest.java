@@ -77,6 +77,11 @@ public class CommonMoneyTest {
         fail();
     }
 
+    @Test
+    public void shouldBeSetDecimalPartMethod() {
+        Money money = createCommonMoneyFor45Point78USD();
+        money.setDecimalPart("45.78");
+    }
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }

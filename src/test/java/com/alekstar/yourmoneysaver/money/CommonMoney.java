@@ -27,6 +27,9 @@ public class CommonMoney implements Money {
         this.currency = currency;
     }
 
+    @Override
+    public void setDecimalPart(String decimalPart) {
+    }
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }

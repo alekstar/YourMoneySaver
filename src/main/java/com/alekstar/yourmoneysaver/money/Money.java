@@ -6,4 +6,6 @@ public interface Money {
     Currency getCurrency();
 
     void setCurrency(Currency currency);
+
+    void setDecimalPart(String decimalPart);
 }
