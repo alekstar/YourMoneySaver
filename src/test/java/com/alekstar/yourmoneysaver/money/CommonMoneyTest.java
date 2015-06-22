@@ -117,6 +117,14 @@ public class CommonMoneyTest {
         money1Point50USD.add(money123Point12USD);
     }
 
+    @Test
+    public void shouldAddMethodReturnCommonMoneyObject() {
+        final Currency usd = createCurrencyUSD();
+        Money money1Point50USD = CommonMoney.create("1.50", usd);
+        Money money123Point12USD = CommonMoney.create("123.12", usd);
+        assertTrue(money123Point12USD.add(money1Point50USD) instanceof CommonMoney);
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }

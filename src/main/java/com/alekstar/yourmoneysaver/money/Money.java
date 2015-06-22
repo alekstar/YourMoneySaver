@@ -11,5 +11,5 @@ public interface Money {
 
     String getDecimalPart();
 
-    void add(Money money);
+    Money add(Money money);
 }
