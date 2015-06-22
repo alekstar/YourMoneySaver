@@ -4,14 +4,15 @@ import com.alekstar.yourmoneysaver.Currency;
 
 public class CommonMoney implements Money {
     private Currency currency;
-    private String decimalPart = "";
+    private String decimalPart;
 
-    protected CommonMoney(Currency currency) {
+    protected CommonMoney(String decimalPart, Currency currency) {
         setCurrency(currency);
+        setDecimalPart(decimalPart);
     }
 
     public static Money create(String decimalPart, Currency currency) {
-        return new CommonMoney(currency);
+        return new CommonMoney(decimalPart, currency);
     }
 
     @Override
