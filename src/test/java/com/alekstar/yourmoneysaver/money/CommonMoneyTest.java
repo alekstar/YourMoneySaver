@@ -109,6 +109,14 @@ public class CommonMoneyTest {
         assertEquals("45.78", money.getDecimalPart());
     }
 
+    @Test
+    public void shouldBeAddMethodWithMoneyParameter() {
+        final Currency usd = createCurrencyUSD();
+        Money money1Point50USD = CommonMoney.create("1.50", usd);
+        Money money123Point12USD = CommonMoney.create("123.12", usd);
+        money1Point50USD.add(money123Point12USD);
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }

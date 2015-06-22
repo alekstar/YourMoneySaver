@@ -42,4 +42,9 @@ public class CommonMoney implements Money {
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
+
+    @Override
+    public void add(Money money) {
+
+    }
 }

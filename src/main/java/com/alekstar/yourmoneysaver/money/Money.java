@@ -10,4 +10,6 @@ public interface Money {
     void setDecimalPart(String decimalPart);
 
     String getDecimalPart();
+
+    void add(Money money);
 }
