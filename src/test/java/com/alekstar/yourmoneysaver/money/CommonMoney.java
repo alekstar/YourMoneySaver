@@ -4,6 +4,7 @@ import com.alekstar.yourmoneysaver.Currency;
 
 public class CommonMoney implements Money {
     private Currency currency;
+    private String decimalPart = "";
 
     protected CommonMoney(Currency currency) {
         setCurrency(currency);
@@ -29,11 +30,12 @@ public class CommonMoney implements Money {
 
     @Override
     public void setDecimalPart(String decimalPart) {
+        this.decimalPart = decimalPart;
     }
 
     @Override
     public String getDecimalPart() {
-        return "";
+        return this.decimalPart;
     }
 
     private String defineExceptionTextWhenCurrencyIsNull() {

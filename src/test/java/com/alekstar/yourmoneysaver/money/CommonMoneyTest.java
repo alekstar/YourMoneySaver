@@ -95,6 +95,14 @@ public class CommonMoneyTest {
         assertEquals(String.class, money.getDecimalPart().getClass());
     }
 
+    @Test
+    public void shouldGetDecimalReturn345Point78() {
+        Money money = createCommonMoneyFor45Point78USD();
+        final String DECIMAL_PART = "345.48";
+        money.setDecimalPart(DECIMAL_PART);
+        assertEquals(DECIMAL_PART, money.getDecimalPart());
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
