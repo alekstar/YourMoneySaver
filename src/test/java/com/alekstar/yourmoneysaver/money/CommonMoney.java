@@ -32,7 +32,8 @@ public class CommonMoney implements Money {
     }
 
     @Override
-    public void getDecimalPart() {
+    public String getDecimalPart() {
+        return "";
     }
 
     private String defineExceptionTextWhenCurrencyIsNull() {

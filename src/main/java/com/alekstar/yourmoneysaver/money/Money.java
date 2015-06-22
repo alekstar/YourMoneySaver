@@ -9,5 +9,5 @@ public interface Money {
 
     void setDecimalPart(String decimalPart);
 
-    void getDecimalPart();
+    String getDecimalPart();
 }
