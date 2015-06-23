@@ -1,10 +1,12 @@
 package com.alekstar.yourmoneysaver.money;
 
+import java.math.BigDecimal;
+
 import com.alekstar.yourmoneysaver.Currency;
 
 public class CommonMoney implements Money {
     private Currency currency;
-    private String decimalPart;
+    private BigDecimal decimalPart;
 
     protected CommonMoney(String decimalPart, Currency currency) {
         setCurrency(currency);
@@ -31,12 +33,12 @@ public class CommonMoney implements Money {
 
     @Override
     public void setDecimalPart(String decimalPart) {
-        this.decimalPart = decimalPart;
+        this.decimalPart = new BigDecimal(decimalPart);
     }
 
     @Override
     public String getDecimalPart() {
-        return this.decimalPart;
+        return this.decimalPart.toString();
     }
 
     private String defineExceptionTextWhenCurrencyIsNull() {
@@ -45,7 +47,8 @@ public class CommonMoney implements Money {
 
     @Override
     public Money add(Money money) {
-        return CommonMoney.create("124.62", new Currency("name", "ISO", "s",
-                null));
+        BigDecimal newDecimalPart =
+                this.decimalPart.add(((CommonMoney) money).decimalPart);
+        return create(newDecimalPart.toString(), getCurrency());
     }
 }
