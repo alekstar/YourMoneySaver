@@ -39,7 +39,11 @@ public class CommonMoney implements Money {
 
     private void initializeDecimalPart(String decimalPart) {
         this.decimalPart =
-                new BigDecimal(decimalPart).setScale(defineScale(), RoundingMode.HALF_EVEN);
+                new BigDecimal(decimalPart).setScale(defineScale(), defineRoundingMode());
+    }
+
+    private RoundingMode defineRoundingMode() {
+        return RoundingMode.HALF_EVEN;
     }
 
     private int defineScale() {
