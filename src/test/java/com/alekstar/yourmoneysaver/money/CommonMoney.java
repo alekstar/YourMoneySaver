@@ -45,10 +45,15 @@ public class CommonMoney implements Money {
         return "Argument currency is null.";
     }
 
+    private BigDecimal getDecimalPartInBigDecimal() {
+        return this.decimalPart;
+    }
+
     @Override
     public Money add(Money money) {
         BigDecimal newDecimalPart =
-                this.decimalPart.add(((CommonMoney) money).decimalPart);
+                getDecimalPartInBigDecimal().add(
+                        ((CommonMoney) money).getDecimalPartInBigDecimal());
         return create(newDecimalPart.toString(), getCurrency());
     }
 }
