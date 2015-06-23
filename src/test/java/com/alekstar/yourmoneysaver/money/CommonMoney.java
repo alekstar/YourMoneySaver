@@ -33,6 +33,10 @@ public class CommonMoney implements Money {
 
     @Override
     public void setDecimalPart(String decimalPart) {
+        initializeDecimalPart(decimalPart);
+    }
+
+    private void initializeDecimalPart(String decimalPart) {
         this.decimalPart = new BigDecimal(decimalPart);
     }
 
