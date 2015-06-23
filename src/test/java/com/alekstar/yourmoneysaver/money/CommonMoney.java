@@ -1,6 +1,8 @@
 package com.alekstar.yourmoneysaver.money;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 
 import com.alekstar.yourmoneysaver.Currency;
 
@@ -37,7 +39,7 @@ public class CommonMoney implements Money {
     }
 
     private void initializeDecimalPart(String decimalPart) {
-        this.decimalPart = new BigDecimal(decimalPart);
+        this.decimalPart = new BigDecimal(decimalPart).setScale(2);
     }
 
     @Override
