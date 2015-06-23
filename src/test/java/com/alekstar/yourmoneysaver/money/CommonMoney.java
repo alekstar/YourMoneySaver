@@ -45,6 +45,7 @@ public class CommonMoney implements Money {
 
     @Override
     public Money add(Money money) {
-        return CommonMoney.create(null, new Currency("name", "ISO", "s", null));
+        return CommonMoney.create("124.62", new Currency("name", "ISO", "s",
+                null));
     }
 }
