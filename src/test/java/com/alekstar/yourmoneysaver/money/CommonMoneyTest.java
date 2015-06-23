@@ -7,6 +7,8 @@ import org.junit.Test;
 import com.alekstar.yourmoneysaver.Currency;
 
 public class CommonMoneyTest {
+    private final Currency USD = createCurrencyUSD();
+
     @Test
     public void shouldCreateCommonMoneyObject() {
         createCommonMoneyFor45Point78USD();
@@ -111,25 +113,22 @@ public class CommonMoneyTest {
 
     @Test
     public void shouldBeAddMethodWithMoneyParameter() {
-        final Currency usd = createCurrencyUSD();
-        Money money1Point50USD = CommonMoney.create("1.50", usd);
-        Money money123Point12USD = CommonMoney.create("123.12", usd);
+        Money money1Point50USD = CommonMoney.create("1.50", USD);
+        Money money123Point12USD = CommonMoney.create("123.12", USD);
         money1Point50USD.add(money123Point12USD);
     }
 
     @Test
     public void shouldAddMethodReturnCommonMoneyObject() {
-        final Currency usd = createCurrencyUSD();
-        Money money1Point50USD = CommonMoney.create("1.50", usd);
-        Money money123Point12USD = CommonMoney.create("123.12", usd);
+        Money money1Point50USD = CommonMoney.create("1.50", USD);
+        Money money123Point12USD = CommonMoney.create("123.12", USD);
         assertTrue(money123Point12USD.add(money1Point50USD) instanceof CommonMoney);
     }
 
     @Test
     public void shouldResultBe124Point62() {
-        final Currency usd = createCurrencyUSD();
-        Money money1Point50USD = CommonMoney.create("1.50", usd);
-        Money money123Point12USD = CommonMoney.create("123.12", usd);
+        Money money1Point50USD = CommonMoney.create("1.50", USD);
+        Money money123Point12USD = CommonMoney.create("123.12", USD);
         Money result = money123Point12USD.add(money1Point50USD);
         assertEquals("124.62", result.getDecimalPart());
     }
