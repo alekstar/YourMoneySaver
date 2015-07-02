@@ -153,6 +153,12 @@ public class CommonMoneyTest {
         assertEquals("3.00", money.getDecimalPart());
     }
 
+    @Test
+    public void shouldGetDecimalPartReturnMinus10Point23() {
+        Money money = CommonMoney.create("-10.28", USD);
+        assertEquals("-10.28", money.getDecimalPart());
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
