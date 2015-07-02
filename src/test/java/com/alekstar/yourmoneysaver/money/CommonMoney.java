@@ -65,6 +65,11 @@ public class CommonMoney implements Money {
 
     @Override
     public Money add(Money money) {
+        if (money.getCurrency() != getCurrency()) {
+            throw new IllegalArgumentException(
+                    "To add money to other money they must have same "
+                            + "currency.");
+        }
         BigDecimal newDecimalPart =
                 getDecimalPartInBigDecimal().add(
                         ((CommonMoney) money).getDecimalPartInBigDecimal());

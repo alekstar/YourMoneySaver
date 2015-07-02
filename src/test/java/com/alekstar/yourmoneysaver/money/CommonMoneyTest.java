@@ -175,6 +175,16 @@ public class CommonMoneyTest {
         assertEquals("3.21", result.getDecimalPart());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldAddMethodThrowIllegalArgumentException() {
+        Money first = CommonMoney.create("5", USD);
+        Money second =
+                CommonMoney.create("5", new Currency("Ukrainian hryvnia",
+                        "UAH", "₴", null));
+        first.add(second);
+        fail();
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
