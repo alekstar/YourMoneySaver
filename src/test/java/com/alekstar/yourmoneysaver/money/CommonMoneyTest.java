@@ -159,6 +159,14 @@ public class CommonMoneyTest {
         assertEquals("-10.28", money.getDecimalPart());
     }
 
+    @Test
+    public void shouldResultBeMinus7Point33() {
+        Money first = CommonMoney.create("-10.28", USD);
+        Money second = CommonMoney.create("2.95", USD);
+        Money result = first.add(second);
+        assertEquals("-7.33", result.getDecimalPart());
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
