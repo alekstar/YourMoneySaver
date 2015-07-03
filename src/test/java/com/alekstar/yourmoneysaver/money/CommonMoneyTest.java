@@ -185,6 +185,17 @@ public class CommonMoneyTest {
         fail();
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldAddMethodThrowIllegalArgumentExceptionIfCurrenciesAreEqual() {
+        Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴", null);
+        Currency anotherUah =
+                new Currency("Ukrainian hryvnia", "UAH", "₴", null);
+        Money moneyWithUah = CommonMoney.create("5", uah);
+        Money moneyWithAnotherUah = CommonMoney.create("7", anotherUah);
+        moneyWithUah.add(moneyWithAnotherUah);
+        fail();
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
