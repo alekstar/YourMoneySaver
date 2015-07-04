@@ -211,6 +211,14 @@ public class CommonMoneyTest {
         assertEquals(expected, first.getDecimalPart());
     }
 
+    @Test
+    public void shouldAddMethodNotToChangeCurrencyOfObject() {
+        Money first = createCommonMoneyFor45Point78USD();
+        Currency expected = first.getCurrency();
+        first.add(first);
+        assertSame(expected, first.getCurrency());
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
