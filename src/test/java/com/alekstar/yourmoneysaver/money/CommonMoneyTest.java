@@ -203,6 +203,14 @@ public class CommonMoneyTest {
         assertEquals("91.56", result.getDecimalPart());
     }
 
+    @Test
+    public void shouldAddMethodDontChangeDecimalPartOfObject() {
+        Money first = createCommonMoneyFor45Point78USD();
+        String expected = first.getDecimalPart();
+        first.add(first);
+        assertEquals(expected, first.getDecimalPart());
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
