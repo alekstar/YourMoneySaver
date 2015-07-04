@@ -12,4 +12,6 @@ public interface Money {
     String getDecimalPart();
 
     Money add(Money money);
+
+    void substract(Money second);
 }

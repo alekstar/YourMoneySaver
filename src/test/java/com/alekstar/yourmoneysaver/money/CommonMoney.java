@@ -76,4 +76,8 @@ public class CommonMoney implements Money {
                         ((CommonMoney) money).getDecimalPartInBigDecimal());
         return create(newDecimalPart.toString(), getCurrency());
     }
+
+    @Override
+    public void substract(Money second) {
+    }
 }
