@@ -13,5 +13,5 @@ public interface Money {
 
     Money add(Money money);
 
-    Money substract(Money second);
+    Money subtract(Money second);
 }

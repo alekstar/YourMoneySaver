@@ -223,7 +223,7 @@ public class CommonMoneyTest {
     public void shouldHaveSubstractMethodWithOtherMoneyObject() {
         Money first = CommonMoney.create("11.11", USD);
         Money second = CommonMoney.create("12.12", USD);
-        first.substract(second);
+        first.subtract(second);
     }
 
     @Test
@@ -231,14 +231,14 @@ public class CommonMoneyTest {
         Money first = CommonMoney.create("11.11", USD);
         Money second = CommonMoney.create("12.12", USD);
         @SuppressWarnings("unused")
-        Money result = first.substract(second);
+        Money result = first.subtract(second);
     }
 
     @Test
     public void shouldSubstractMethodReturnCommonMoneyObject() {
         Money first = CommonMoney.create("11.11", USD);
         Money second = CommonMoney.create("12.12", USD);
-        Money result = first.substract(second);
+        Money result = first.subtract(second);
         assertTrue(result instanceof CommonMoney);
     }
 
@@ -246,7 +246,7 @@ public class CommonMoneyTest {
     public void shouldResultBe2Point50() {
         Money first = CommonMoney.create("5.00", USD);
         Money second = CommonMoney.create("2.50", USD);
-        Money result = first.substract(second);
+        Money result = first.subtract(second);
         assertEquals("2.50", result.getDecimalPart());
     }
 
@@ -254,7 +254,7 @@ public class CommonMoneyTest {
     public void shouldResultBeUSD() {
         Money first = CommonMoney.create("5.00", USD);
         Money second = CommonMoney.create("2.50", USD);
-        Money result = first.substract(second);
+        Money result = first.subtract(second);
         assertSame(USD, result.getCurrency());
     }
 

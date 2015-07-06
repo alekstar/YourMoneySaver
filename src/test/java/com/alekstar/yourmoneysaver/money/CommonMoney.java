@@ -78,7 +78,7 @@ public class CommonMoney implements Money {
     }
 
     @Override
-    public Money substract(Money money) {
+    public Money subtract(Money money) {
         BigDecimal newDecimalPart =
                 getDecimalPartInBigDecimal().subtract(
                         ((CommonMoney) money).getDecimalPartInBigDecimal());
