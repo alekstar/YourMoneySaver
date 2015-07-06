@@ -226,6 +226,14 @@ public class CommonMoneyTest {
         first.substract(second);
     }
 
+    @Test
+    public void shouldSubstractMethodReturnMoneyObject() {
+        Money first = CommonMoney.create("11.11", USD);
+        Money second = CommonMoney.create("12.12", USD);
+        @SuppressWarnings("unused")
+        Money result = first.substract(second);
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }

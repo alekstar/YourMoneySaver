@@ -78,6 +78,8 @@ public class CommonMoney implements Money {
     }
 
     @Override
-    public void substract(Money second) {
+    public Money substract(Money second) {
+        return CommonMoney.create("12", new Currency("US Dollar", "USD", "$",
+                null));
     }
 }
