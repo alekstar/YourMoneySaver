@@ -250,6 +250,14 @@ public class CommonMoneyTest {
         assertEquals("2.50", result.getDecimalPart());
     }
 
+    @Test
+    public void shouldResultBeUSD() {
+        Money first = CommonMoney.create("5.00", USD);
+        Money second = CommonMoney.create("2.50", USD);
+        Money result = first.substract(second);
+        assertSame(USD, result.getCurrency());
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
