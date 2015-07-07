@@ -2,6 +2,7 @@ package com.alekstar.yourmoneysaver.javafxui.currenciestab;
 
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.javafxui.Standarts;
+
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
