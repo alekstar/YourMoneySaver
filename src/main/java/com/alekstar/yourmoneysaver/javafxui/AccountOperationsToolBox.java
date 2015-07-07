@@ -24,8 +24,7 @@ public class AccountOperationsToolBox {
         @Override
         public void handle(MouseEvent mouseEvent) {
             AccountsTableDataStructure selectedAccount =
-                    (AccountsTableDataStructure) getTableView()
-                            .getSelectionModel().getSelectedItem();
+                    getTableView().getSelectionModel().getSelectedItem();
             if (selectedAccount != null) {
                 System.out.println("Editing account "
                         + selectedAccount.getName());
