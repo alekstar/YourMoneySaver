@@ -251,6 +251,14 @@ public class CommonMoneyTest {
     }
 
     @Test
+    public void shouldResultBeMinus5Point15() {
+        Money first = CommonMoney.create("2.85", USD);
+        Money second = CommonMoney.create("8.00", USD);
+        Money result = first.subtract(second);
+        assertEquals("-5.15", result.getDecimalPart());
+    }
+
+    @Test
     public void shouldResultBeUSD() {
         Money first = CommonMoney.create("5.00", USD);
         Money second = CommonMoney.create("2.50", USD);
