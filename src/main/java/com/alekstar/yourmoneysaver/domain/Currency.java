@@ -1,6 +1,6 @@
 package com.alekstar.yourmoneysaver.domain;
 
-import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 public class Currency implements Comparable<Currency> {
     public static final int NAME_MAX_STRING_LENGTH = 50;

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.alekstar.yourmoneysaver.domain.Currency;
-import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 public class CurrencyTest {
 

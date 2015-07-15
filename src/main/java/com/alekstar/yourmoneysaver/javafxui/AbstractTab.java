@@ -3,7 +3,7 @@ package com.alekstar.yourmoneysaver.javafxui;
 import javafx.scene.control.Tab;
 import javafx.stage.Stage;
 
-import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 public abstract class AbstractTab {
     Stage parentWindow;

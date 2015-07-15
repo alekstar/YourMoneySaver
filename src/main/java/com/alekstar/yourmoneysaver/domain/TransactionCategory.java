@@ -1,6 +1,6 @@
 package com.alekstar.yourmoneysaver.domain;
 
-import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 public class TransactionCategory {
     public enum Sign {

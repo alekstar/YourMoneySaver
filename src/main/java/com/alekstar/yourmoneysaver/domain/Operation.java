@@ -3,7 +3,7 @@ package com.alekstar.yourmoneysaver.domain;
 import java.util.Date;
 import java.util.LinkedList;
 
-import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 public class Operation {
     Account account;

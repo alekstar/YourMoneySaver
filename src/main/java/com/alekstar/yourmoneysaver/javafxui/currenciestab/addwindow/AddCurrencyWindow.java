@@ -15,7 +15,7 @@ import javafx.stage.Window;
 
 import com.alekstar.yourmoneysaver.database.CurrencyEntity;
 import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJpa;
-import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.javafxui.Standarts;
 import com.alekstar.yourmoneysaver.javafxui.currenciestab.CurrenciesData;
 
