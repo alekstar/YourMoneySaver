@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver;
+package com.alekstar.yourmoneysaver.domain;
 
 public class Transaction {
     public enum Sign {

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.alekstar.yourmoneysaver.domain.AccountType;
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 
 public class AccountTypeTest {

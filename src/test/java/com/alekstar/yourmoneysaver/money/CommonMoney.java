@@ -3,7 +3,7 @@ package com.alekstar.yourmoneysaver.money;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import com.alekstar.yourmoneysaver.Currency;
+import com.alekstar.yourmoneysaver.domain.Currency;
 
 public class CommonMoney implements Money {
     private Currency currency;

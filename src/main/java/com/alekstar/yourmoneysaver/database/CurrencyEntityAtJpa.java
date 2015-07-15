@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.alekstar.yourmoneysaver.Currency;
+import com.alekstar.yourmoneysaver.domain.Currency;
 
 @Entity
 @Table(name = "currencies")

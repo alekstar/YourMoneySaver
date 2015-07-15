@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.alekstar.yourmoneysaver.AccountType;
+import com.alekstar.yourmoneysaver.domain.AccountType;
 
 @Entity
 @Table(name = "account_types")

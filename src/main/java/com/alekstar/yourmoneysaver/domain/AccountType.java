@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver;
+package com.alekstar.yourmoneysaver.domain;
 
 import com.alekstar.yourmoneysaver.exceptions.ArgumentIsNullException;
 

@@ -1,6 +1,6 @@
 package com.alekstar.yourmoneysaver.money;
 
-import com.alekstar.yourmoneysaver.Currency;
+import com.alekstar.yourmoneysaver.domain.Currency;
 
 public interface Money {
     Currency getCurrency();

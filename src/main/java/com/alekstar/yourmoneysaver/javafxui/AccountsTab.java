@@ -8,10 +8,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import com.alekstar.yourmoneysaver.Account;
-import com.alekstar.yourmoneysaver.AccountType;
-import com.alekstar.yourmoneysaver.Currency;
-import com.alekstar.yourmoneysaver.Money;
+import com.alekstar.yourmoneysaver.domain.Account;
+import com.alekstar.yourmoneysaver.domain.AccountType;
+import com.alekstar.yourmoneysaver.domain.Currency;
+import com.alekstar.yourmoneysaver.domain.Money;
 
 public class AccountsTab extends AbstractTab {
 

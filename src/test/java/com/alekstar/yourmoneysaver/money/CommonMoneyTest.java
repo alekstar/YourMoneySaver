@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.alekstar.yourmoneysaver.Currency;
+import com.alekstar.yourmoneysaver.domain.Currency;
 
 public class CommonMoneyTest {
     private final Currency USD = createCurrencyUSD();
