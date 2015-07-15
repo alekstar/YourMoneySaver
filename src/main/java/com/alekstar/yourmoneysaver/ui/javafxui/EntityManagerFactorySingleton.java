@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.javafxui;
+package com.alekstar.yourmoneysaver.ui.javafxui;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

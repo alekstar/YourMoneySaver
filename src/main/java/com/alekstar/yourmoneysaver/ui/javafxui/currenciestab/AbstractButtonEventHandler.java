@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.javafxui.currenciestab;
+package com.alekstar.yourmoneysaver.ui.javafxui.currenciestab;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.InputEvent;

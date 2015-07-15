@@ -1,7 +1,7 @@
-package com.alekstar.yourmoneysaver.javafxui.currenciestab;
+package com.alekstar.yourmoneysaver.ui.javafxui.currenciestab;
 
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
-import com.alekstar.yourmoneysaver.javafxui.Standarts;
+import com.alekstar.yourmoneysaver.ui.javafxui.Standarts;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;

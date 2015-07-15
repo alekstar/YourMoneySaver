@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.javafxui.currenciestab;
+package com.alekstar.yourmoneysaver.ui.javafxui.currenciestab;
 
 import javafx.collections.FXCollections;
 import javafx.scene.control.TableColumn;

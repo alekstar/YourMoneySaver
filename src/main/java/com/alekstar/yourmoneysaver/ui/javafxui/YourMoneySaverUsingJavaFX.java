@@ -1,8 +1,8 @@
-package com.alekstar.yourmoneysaver.javafxui;
+package com.alekstar.yourmoneysaver.ui.javafxui;
 
 import com.alekstar.yourmoneysaver.database.CurrenciesAtJpa;
 import com.alekstar.yourmoneysaver.domain.CurrenciesDataAccessObject;
-import com.alekstar.yourmoneysaver.javafxui.currenciestab.CurrenciesTab;
+import com.alekstar.yourmoneysaver.ui.javafxui.currenciestab.CurrenciesTab;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
