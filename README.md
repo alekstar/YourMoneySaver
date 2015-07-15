@@ -7,5 +7,5 @@ Using next technologies:
 - PostgreSQL database for main application;
 - H2 database for tests.
 
-I'm using White StarUML (http://sourceforge.net/projects/whitestaruml/) 
+I'm using StarUML 2.4.0 (http://staruml.io/) 
 application for working with *.uml files.
