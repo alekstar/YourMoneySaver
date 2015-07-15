@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.ui.javafxui.currenciestab.addwindow;
+package com.alekstar.yourmoneysaver.ui.javafx.currenciestab.addwindow;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -16,8 +16,8 @@ import javafx.stage.Window;
 import com.alekstar.yourmoneysaver.database.CurrencyEntity;
 import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJpa;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
-import com.alekstar.yourmoneysaver.ui.javafxui.Standarts;
-import com.alekstar.yourmoneysaver.ui.javafxui.currenciestab.CurrenciesData;
+import com.alekstar.yourmoneysaver.ui.javafx.Standarts;
+import com.alekstar.yourmoneysaver.ui.javafx.currenciestab.CurrenciesData;
 
 public class AddCurrencyWindow {
     private CurrenciesData currenciesData;

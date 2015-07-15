@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.ui.javafxui.currenciestab;
+package com.alekstar.yourmoneysaver.ui.javafx.currenciestab;
 
 import java.util.Optional;
 
@@ -14,9 +14,9 @@ import javafx.stage.Stage;
 
 import com.alekstar.yourmoneysaver.database.CurrencyEntity;
 import com.alekstar.yourmoneysaver.domain.CurrenciesDataAccessObject;
-import com.alekstar.yourmoneysaver.ui.javafxui.AbstractTab;
-import com.alekstar.yourmoneysaver.ui.javafxui.Standarts;
-import com.alekstar.yourmoneysaver.ui.javafxui.currenciestab.addwindow.AddCurrencyWindow;
+import com.alekstar.yourmoneysaver.ui.javafx.AbstractTab;
+import com.alekstar.yourmoneysaver.ui.javafx.Standarts;
+import com.alekstar.yourmoneysaver.ui.javafx.currenciestab.addwindow.AddCurrencyWindow;
 
 public class CurrenciesTab extends AbstractTab implements AbleToAddCurrency,
         AbleToRemoveCurrency, AbleToEditCurrency {

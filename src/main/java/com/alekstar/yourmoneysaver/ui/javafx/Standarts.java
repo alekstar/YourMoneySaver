@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.ui.javafxui;
+package com.alekstar.yourmoneysaver.ui.javafx;
 
 import javafx.geometry.Insets;
 

@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.ui.javafxui.currenciestab;
+package com.alekstar.yourmoneysaver.ui.javafx.currenciestab;
 
 public class RemoveCurrencyButtonEventHandler extends
         AbstractButtonEventHandler {

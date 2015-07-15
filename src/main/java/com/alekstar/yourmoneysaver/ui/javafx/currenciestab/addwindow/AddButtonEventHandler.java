@@ -1,6 +1,6 @@
-package com.alekstar.yourmoneysaver.ui.javafxui.currenciestab.addwindow;
+package com.alekstar.yourmoneysaver.ui.javafx.currenciestab.addwindow;
 
-import com.alekstar.yourmoneysaver.ui.javafxui.currenciestab.AbstractButtonEventHandler;
+import com.alekstar.yourmoneysaver.ui.javafx.currenciestab.AbstractButtonEventHandler;
 
 public class AddButtonEventHandler extends AbstractButtonEventHandler {
     private AddCurrencyWindow parentWindow;
