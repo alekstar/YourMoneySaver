@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import com.alekstar.yourmoneysaver.domain.Currency;
+import com.alekstar.yourmoneysaver.domain.money.Money;
 
 public class CommonMoney implements Money {
     private Currency currency;
