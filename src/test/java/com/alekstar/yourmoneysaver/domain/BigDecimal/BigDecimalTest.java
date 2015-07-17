@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.BigDecimal;
+package com.alekstar.yourmoneysaver.domain.BigDecimal;
 
 import static org.junit.Assert.*;
 
