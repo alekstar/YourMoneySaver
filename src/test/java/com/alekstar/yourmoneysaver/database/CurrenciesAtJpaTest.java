@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver;
+package com.alekstar.yourmoneysaver.database;
 
 import static org.junit.Assert.*;
 
