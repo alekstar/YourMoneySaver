@@ -31,7 +31,8 @@ public class Cash implements Account {
         return name;
     }
 
-    public Money getRest() {
+    @Override
+    public Money defineRest() {
         return rest;
     }
 

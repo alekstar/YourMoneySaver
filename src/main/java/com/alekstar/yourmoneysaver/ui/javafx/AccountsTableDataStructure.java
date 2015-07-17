@@ -22,12 +22,12 @@ public class AccountsTableDataStructure {
         accountsTableDataStructure.setName(account.getName());
         accountsTableDataStructure.setType(account.getAccountType().getName());
         StringBuilder restStringBuilder = new StringBuilder();
-        restStringBuilder.append(account.getRest().getBase());
+        restStringBuilder.append(account.defineRest().getBase());
         restStringBuilder.append(accountsTableDataStructure
                 .getDefaultSeparatorForNumbers());
-        restStringBuilder.append(account.getRest().getCoins());
+        restStringBuilder.append(account.defineRest().getCoins());
         accountsTableDataStructure.setRest(restStringBuilder.toString());
-        accountsTableDataStructure.setCurrencyCode(account.getRest()
+        accountsTableDataStructure.setCurrencyCode(account.defineRest()
                 .getCurrency().getIsoCode());
         accountsTableDataStructure.setComments(account.getComments());
         return accountsTableDataStructure;

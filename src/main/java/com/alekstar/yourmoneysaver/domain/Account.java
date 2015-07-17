@@ -12,4 +12,6 @@ public interface Account {
     String getComments();
 
     void setComments(String comments);
+
+    Money defineRest();
 }
