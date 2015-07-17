@@ -3,17 +3,17 @@ package com.alekstar.yourmoneysaver.domain;
 import java.util.List;
 
 public class AccountsContainer {
-    List<Account> accounts;
+    List<Cash> accounts;
 
     // TODO add constructor and factory method
 
-    public int add(Account account) {
+    public int add(Cash account) {
         verifyAccounts();
         accounts.add(account);
         return (accounts.size() - 1);
     }
 
-    public Account get(int index) {
+    public Cash get(int index) {
         verifyAccounts();
         return accounts.get(index);
     }

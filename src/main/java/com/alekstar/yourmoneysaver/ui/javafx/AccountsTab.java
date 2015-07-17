@@ -8,7 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import com.alekstar.yourmoneysaver.domain.Account;
+import com.alekstar.yourmoneysaver.domain.Cash;
 import com.alekstar.yourmoneysaver.domain.AccountType;
 import com.alekstar.yourmoneysaver.domain.Currency;
 import com.alekstar.yourmoneysaver.domain.Money;
@@ -58,13 +58,13 @@ public class AccountsTab extends AbstractTab {
                 new ArrayList<AccountsTableDataStructure>();
         Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴", null);
         AccountType plasticCard = new AccountType("Plastic card", null);
-        Account account =
-                new Account("SwedenBank Card", plasticCard, new Money(uah, 150,
+        Cash account =
+                new Cash("SwedenBank Card", plasticCard, new Money(uah, 150,
                         45), "Issued in 19.02.2015");
         accountsData.add(AccountsTableDataStructure.create(account));
 
-        Account anotherAccount =
-                new Account("PolishBank Card", plasticCard, new Money(uah,
+        Cash anotherAccount =
+                new Cash("PolishBank Card", plasticCard, new Money(uah,
                         1457, 87), "Issued in 23.02.2015");
         accountsData.add(AccountsTableDataStructure.create(anotherAccount));
 

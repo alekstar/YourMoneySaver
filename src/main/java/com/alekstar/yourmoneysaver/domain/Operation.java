@@ -6,13 +6,13 @@ import java.util.LinkedList;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 public class Operation {
-    Account account;
+    Cash account;
     String comment;
     Date date;
     String receiver;
     LinkedList<Transaction> transactions;
 
-    public Operation(Account account, String receiver,
+    public Operation(Cash account, String receiver,
             LinkedList<Transaction> transactions, String comment, Date date) {
         setAccount(account);
         setReceiver(receiver);
@@ -21,7 +21,7 @@ public class Operation {
         setDate(date);
     }
 
-    public Account getAccount() {
+    public Cash getAccount() {
         return account;
     }
 
@@ -41,7 +41,7 @@ public class Operation {
         return transactions;
     }
 
-    public void setAccount(Account account) {
+    public void setAccount(Cash account) {
         if (account == null) {
             throw new ArgumentIsNullException("account");
         }

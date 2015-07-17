@@ -2,13 +2,13 @@ package com.alekstar.yourmoneysaver.domain;
 
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
-public class Account {
+public class Cash {
     Money rest;
     AccountType accountType;
     String name;
     String comments;
 
-    public Account(String name, AccountType accountType, Money rest,
+    public Cash(String name, AccountType accountType, Money rest,
             String comments) {
         setRest(rest);
         setAccountType(accountType);

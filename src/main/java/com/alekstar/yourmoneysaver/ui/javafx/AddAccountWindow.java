@@ -1,6 +1,6 @@
 package com.alekstar.yourmoneysaver.ui.javafx;
 
-import com.alekstar.yourmoneysaver.domain.Account;
+import com.alekstar.yourmoneysaver.domain.Cash;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 import javafx.geometry.Insets;
@@ -16,7 +16,7 @@ public class AddAccountWindow {
     private Stage parentWindow;
     private Stage thisWindow;
     private StackPane rootPane;
-    private Account newAccount;
+    private Cash newAccount;
 
     private AddAccountWindow() {
 
@@ -30,11 +30,11 @@ public class AddAccountWindow {
         return addAccountWindow;
     }
 
-    public Account getNewAccount() {
+    public Cash getNewAccount() {
         return newAccount;
     }
 
-    private void setNewAccount(Account newAccount) {
+    private void setNewAccount(Cash newAccount) {
         if (newAccount == null) {
             throw new ArgumentIsNullException("newAccount");
         }
