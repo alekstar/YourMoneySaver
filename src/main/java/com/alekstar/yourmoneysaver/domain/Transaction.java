@@ -1,5 +1,7 @@
 package com.alekstar.yourmoneysaver.domain;
 
+import com.alekstar.yourmoneysaver.domain.money.Money;
+
 public class Transaction {
     public enum Sign {
         MINUS, PLUS

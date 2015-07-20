@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import com.alekstar.yourmoneysaver.domain.Cash;
 import com.alekstar.yourmoneysaver.domain.AccountType;
 import com.alekstar.yourmoneysaver.domain.Currency;
-import com.alekstar.yourmoneysaver.domain.Money;
 
 public class AccountsTab extends AbstractTab {
 
