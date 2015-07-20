@@ -58,13 +58,13 @@ public class AccountsTab extends AbstractTab {
         Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴", null);
         AccountType plasticCard = new AccountType("Plastic card", null);
         Cash account =
-                new Cash("SwedenBank Card", plasticCard, new Money(uah, 150,
-                        45), "Issued in 19.02.2015");
+                new Cash("SwedenBank Card", plasticCard, uah,
+                        "Issued in 19.02.2015");
         accountsData.add(AccountsTableDataStructure.create(account));
 
         Cash anotherAccount =
-                new Cash("PolishBank Card", plasticCard, new Money(uah,
-                        1457, 87), "Issued in 23.02.2015");
+                new Cash("PolishBank Card", plasticCard, uah,
+                        "Issued in 23.02.2015");
         accountsData.add(AccountsTableDataStructure.create(anotherAccount));
 
         return accountsData;

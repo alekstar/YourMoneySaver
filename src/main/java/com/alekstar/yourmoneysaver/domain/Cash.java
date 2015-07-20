@@ -10,10 +10,11 @@ public class Cash implements Account {
     String comments;
     Currency currency;
 
-    public Cash(String name, AccountType accountType, Money rest,
+    public Cash(String name, AccountType accountType, Currency currency,
             String comments) {
         setAccountType(accountType);
         setName(name);
+        setCurrency(currency);
         setComments(comments);
     }
 
