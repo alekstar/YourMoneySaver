@@ -1,9 +1,10 @@
 package com.alekstar.yourmoneysaver.domain;
 
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
+import com.alekstar.yourmoneysaver.domain.money.Money;
 
 public class Cash implements Account {
-    Money rest;
     AccountType accountType;
     String name;
     String comments;
@@ -11,7 +12,6 @@ public class Cash implements Account {
 
     public Cash(String name, AccountType accountType, Money rest,
             String comments) {
-        setRest(rest);
         setAccountType(accountType);
         setName(name);
         setComments(comments);
@@ -33,7 +33,8 @@ public class Cash implements Account {
 
     @Override
     public Money defineRest() {
-        return rest;
+        // TODO calculate operations' sums
+        return CommonMoney.create("0", getCurrency());
     }
 
     public void setAccountType(AccountType accountType) {
@@ -51,13 +52,6 @@ public class Cash implements Account {
     @Override
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setRest(Money rest) {
-        if (rest == null) {
-            throw new ArgumentIsNullException("rest");
-        }
-        this.rest = rest;
     }
 
     @Override
