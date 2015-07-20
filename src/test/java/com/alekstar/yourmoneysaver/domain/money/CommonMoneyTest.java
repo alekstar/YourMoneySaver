@@ -267,6 +267,30 @@ public class CommonMoneyTest {
         assertSame(USD, result.getCurrency());
     }
 
+    @Test
+    public void shouldResultBe$5Point00() {
+        Money fiveDollars = CommonMoney.create("5.00", USD);
+        assertEquals("$5.00", fiveDollars.defineStringRepresentation());
+    }
+
+    @Test
+    public void shouldResultBe$45Point78() {
+        Money money = createCommonMoneyFor45Point78USD();
+        assertEquals("$45.78", money.defineStringRepresentation());
+    }
+
+    @Test
+    public void shouldResultBeMinus$27Point50() {
+        Money money = CommonMoney.create("-27.50", USD);
+        assertEquals("-$27.50", money.defineStringRepresentation());
+    }
+
+    @Test
+    public void shouldResultBe$0Point00() {
+        Money money = CommonMoney.create("0", USD);
+        assertEquals("$0.00", money.defineStringRepresentation());
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }

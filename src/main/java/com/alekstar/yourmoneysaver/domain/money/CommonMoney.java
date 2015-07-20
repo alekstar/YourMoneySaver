@@ -85,4 +85,18 @@ public class CommonMoney implements Money {
                         ((CommonMoney) money).getDecimalPartInBigDecimal());
         return create(newDecimalPart.toString(), getCurrency());
     }
+
+    @Override
+    public String defineStringRepresentation() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (getDecimalPartInBigDecimal().compareTo(new BigDecimal("0")) >= 0) {
+            stringBuilder.append(getCurrency().getSymbol());
+            stringBuilder.append(getDecimalPart().toString());
+        } else {
+            stringBuilder.append('-');
+            stringBuilder.append(getCurrency().getSymbol());
+            stringBuilder.append(getDecimalPartInBigDecimal().abs().toString());
+        }
+        return stringBuilder.toString();
+    }
 }

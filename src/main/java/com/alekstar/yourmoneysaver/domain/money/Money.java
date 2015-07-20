@@ -14,4 +14,6 @@ public interface Money {
     Money add(Money money);
 
     Money subtract(Money second);
+
+    String defineStringRepresentation();
 }
