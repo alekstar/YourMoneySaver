@@ -67,4 +67,11 @@ public class Cash implements Account {
         }
         this.currency = currency;
     }
+
+    @Override
+    public Boolean isClosed() {
+        // TODO if account have last operation of closing account then true,
+        // else false
+        return new Boolean(false);
+    }
 }
