@@ -21,12 +21,8 @@ public class AccountsTableDataStructure {
         accountsTableDataStructure.setAccount(account);
         accountsTableDataStructure.setName(account.getName());
         accountsTableDataStructure.setType(account.getAccountType().getName());
-        StringBuilder restStringBuilder = new StringBuilder();
-        restStringBuilder.append(account.defineRest().getBase());
-        restStringBuilder.append(accountsTableDataStructure
-                .getDefaultSeparatorForNumbers());
-        restStringBuilder.append(account.defineRest().getCoins());
-        accountsTableDataStructure.setRest(restStringBuilder.toString());
+        accountsTableDataStructure.setRest(account.defineRest()
+                .getDecimalPart());
         accountsTableDataStructure.setCurrencyCode(account.defineRest()
                 .getCurrency().getIsoCode());
         accountsTableDataStructure.setComments(account.getComments());
@@ -43,10 +39,6 @@ public class AccountsTableDataStructure {
 
     public String getCurrencyCode() {
         return currencyCode;
-    }
-
-    private char getDefaultSeparatorForNumbers() {
-        return ',';
     }
 
     public String getName() {
