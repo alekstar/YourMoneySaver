@@ -56,13 +56,10 @@ public class AccountsTab extends AbstractTab {
         ArrayList<AccountsTableDataStructure> accountsData =
                 new ArrayList<AccountsTableDataStructure>();
         Currency uah = new Currency("Ukrainian hryvnia", "UAH", "₴", null);
-        Account account =
-                new Cash("SwedenBank Card", uah, "Issued in 19.02.2015");
-        accountsData.add(AccountsTableDataStructure.create(account));
-
-        Account anotherAccount =
-                new Cash("PolishBank Card", uah, "Issued in 23.02.2015");
-        accountsData.add(AccountsTableDataStructure.create(anotherAccount));
+        Account pocket = new Cash("My pocket", uah, "my personal pocket");
+        accountsData.add(AccountsTableDataStructure.create(pocket));
+        Account moneyBox = new Cash("Money box", uah, "Money box at home");
+        accountsData.add(AccountsTableDataStructure.create(moneyBox));
 
         return accountsData;
     }
