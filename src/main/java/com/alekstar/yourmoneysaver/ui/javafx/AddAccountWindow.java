@@ -1,6 +1,6 @@
 package com.alekstar.yourmoneysaver.ui.javafx;
 
-import com.alekstar.yourmoneysaver.domain.Cash;
+import com.alekstar.yourmoneysaver.domain.account.Cash;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 import javafx.geometry.Insets;

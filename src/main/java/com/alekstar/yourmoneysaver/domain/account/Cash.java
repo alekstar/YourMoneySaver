@@ -1,6 +1,7 @@
-package com.alekstar.yourmoneysaver.domain;
+package com.alekstar.yourmoneysaver.domain.account;
 
-import com.alekstar.yourmoneysaver.domain.account.Account;
+import com.alekstar.yourmoneysaver.domain.AccountType;
+import com.alekstar.yourmoneysaver.domain.Currency;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 import com.alekstar.yourmoneysaver.domain.money.Money;

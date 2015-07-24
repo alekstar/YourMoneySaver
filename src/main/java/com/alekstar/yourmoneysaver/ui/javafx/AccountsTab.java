@@ -8,9 +8,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import com.alekstar.yourmoneysaver.domain.Cash;
 import com.alekstar.yourmoneysaver.domain.AccountType;
 import com.alekstar.yourmoneysaver.domain.Currency;
+import com.alekstar.yourmoneysaver.domain.account.Cash;
 
 public class AccountsTab extends AbstractTab {
 

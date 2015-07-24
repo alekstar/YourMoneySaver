@@ -2,6 +2,8 @@ package com.alekstar.yourmoneysaver.domain;
 
 import java.util.List;
 
+import com.alekstar.yourmoneysaver.domain.account.Cash;
+
 public class AccountsContainer {
     List<Cash> accounts;
 
