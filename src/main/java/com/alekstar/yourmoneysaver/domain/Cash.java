@@ -1,5 +1,6 @@
 package com.alekstar.yourmoneysaver.domain;
 
+import com.alekstar.yourmoneysaver.domain.account.Account;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 import com.alekstar.yourmoneysaver.domain.money.Money;
