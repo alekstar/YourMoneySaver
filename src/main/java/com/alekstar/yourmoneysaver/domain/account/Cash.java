@@ -1,27 +1,19 @@
 package com.alekstar.yourmoneysaver.domain.account;
 
-import com.alekstar.yourmoneysaver.domain.AccountType;
 import com.alekstar.yourmoneysaver.domain.Currency;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 import com.alekstar.yourmoneysaver.domain.money.Money;
 
 public class Cash implements Account {
-    AccountType accountType;
     String name;
     String comments;
     Currency currency;
 
-    public Cash(String name, AccountType accountType, Currency currency,
-            String comments) {
-        setAccountType(accountType);
+    public Cash(String name, Currency currency, String comments) {
         setName(name);
         setCurrency(currency);
         setComments(comments);
-    }
-
-    public AccountType getAccountType() {
-        return accountType;
     }
 
     @Override
@@ -38,13 +30,6 @@ public class Cash implements Account {
     public Money defineRest() {
         // TODO calculate operations' sums
         return CommonMoney.create("0", getCurrency());
-    }
-
-    public void setAccountType(AccountType accountType) {
-        if (accountType == null) {
-            throw new ArgumentIsNullException("accountType");
-        }
-        this.accountType = accountType;
     }
 
     @Override
