@@ -20,7 +20,7 @@ public class AccountsTableDataStructure {
                 new AccountsTableDataStructure();
         accountsTableDataStructure.setAccount(account);
         accountsTableDataStructure.setName(account.getName());
-        accountsTableDataStructure.setType(account.getAccountType().getName());
+        accountsTableDataStructure.setType(account.defineAccountTypeName());
         accountsTableDataStructure.setRest(account.defineRest()
                 .getDecimalPart());
         accountsTableDataStructure.setCurrencyCode(account.defineRest()
