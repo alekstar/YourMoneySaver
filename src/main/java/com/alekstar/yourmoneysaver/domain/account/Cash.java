@@ -76,4 +76,9 @@ public class Cash implements Account {
         // else false
         return new Boolean(false);
     }
+
+    @Override
+    public String defineAccountTypeName() {
+        return "Cash";
+    }
 }

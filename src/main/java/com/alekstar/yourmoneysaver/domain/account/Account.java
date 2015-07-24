@@ -19,4 +19,6 @@ public interface Account {
     Money defineRest();
 
     Boolean isClosed();
+
+    String defineAccountTypeName();
 }
