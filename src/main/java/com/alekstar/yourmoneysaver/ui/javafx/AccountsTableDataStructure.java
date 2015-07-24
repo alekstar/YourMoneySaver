@@ -1,10 +1,11 @@
 package com.alekstar.yourmoneysaver.ui.javafx;
 
+import com.alekstar.yourmoneysaver.domain.account.Account;
 import com.alekstar.yourmoneysaver.domain.account.Cash;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 public class AccountsTableDataStructure {
-    private Cash account;
+    private Account account;
     private String name;
     private String type;
     private String rest;
@@ -15,7 +16,7 @@ public class AccountsTableDataStructure {
 
     }
 
-    public static AccountsTableDataStructure create(Cash account) {
+    public static AccountsTableDataStructure create(Account account) {
         AccountsTableDataStructure accountsTableDataStructure =
                 new AccountsTableDataStructure();
         accountsTableDataStructure.setAccount(account);
@@ -29,7 +30,7 @@ public class AccountsTableDataStructure {
         return accountsTableDataStructure;
     }
 
-    public Cash getAccount() {
+    public Account getAccount() {
         return account;
     }
 
@@ -53,7 +54,7 @@ public class AccountsTableDataStructure {
         return type;
     }
 
-    public void setAccount(Cash account) {
+    public void setAccount(Account account) {
         if (account == null) {
             throw new ArgumentIsNullException("account");
         }
