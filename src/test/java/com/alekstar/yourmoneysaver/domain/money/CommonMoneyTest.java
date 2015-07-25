@@ -297,6 +297,11 @@ public class CommonMoneyTest {
         assertFalse(money.equals(null));
     }
 
+    @Test
+    public void shouldCommonMoneyNotBeEqualToString() {
+        assertFalse(createCommonMoneyFor45Point78USD().equals("45.78 USD"));
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
