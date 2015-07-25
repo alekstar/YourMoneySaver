@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import com.alekstar.yourmoneysaver.domain.Currency;
+import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 public class CashTest {
     Account pocket = new Cash("Pocket", new Currency("US Dollar", "USD", "$",
@@ -19,5 +20,11 @@ public class CashTest {
     public void haveSetNameChangeNameToMyPocket() {
         pocket.setName("My Pocket");
         assertEquals("My Pocket", pocket.getName());
+    }
+
+    @Test(expected = ArgumentIsNullException.class)
+    public void haveThrowExceptionIfNameIsNull() {
+        pocket.setName(null);
+        fail();
     }
 }
