@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.database;
+package com.alekstar.yourmoneysaver.database.currency;
 
 import static org.junit.Assert.*;
 
