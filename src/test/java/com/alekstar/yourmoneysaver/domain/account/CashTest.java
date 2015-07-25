@@ -27,4 +27,10 @@ public class CashTest {
         pocket.setName(null);
         fail();
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void haveToThrowExceptionIfNameIsEmpty() {
+        pocket.setName("");
+        fail();
+    }
 }

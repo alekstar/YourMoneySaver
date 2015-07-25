@@ -42,6 +42,9 @@ public class Cash implements Account {
         if (name == null) {
             throw new ArgumentIsNullException("name");
         }
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("Name can't be empty.");
+        }
         this.name = name;
     }
 
