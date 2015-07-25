@@ -26,6 +26,7 @@ public class CurrenciesAtJpa implements CurrenciesDataAccessObject {
             getEntityManager().getTransaction().commit();
         } catch (Exception e) {
             getEntityManager().getTransaction().rollback();
+            throw e;
         }
 
     }
@@ -38,6 +39,7 @@ public class CurrenciesAtJpa implements CurrenciesDataAccessObject {
             getEntityManager().getTransaction().commit();
         } catch (Exception e) {
             getEntityManager().getTransaction().rollback();
+            throw e;
         }
     }
 
