@@ -14,4 +14,10 @@ public class CashTest {
     public void haveGetNameReturnPocket() {
         assertEquals("Pocket", pocket.getName());
     }
+
+    @Test
+    public void haveSetNameChangeNameToMyPocket() {
+        pocket.setName("My Pocket");
+        assertEquals("My Pocket", pocket.getName());
+    }
 }
