@@ -7,8 +7,6 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
 
-import com.alekstar.yourmoneysaver.domain.CurrenciesDataAccessObject;
-
 public class CurrenciesAtJpa implements CurrenciesDataAccessObject {
     private EntityManager entityManager;
 

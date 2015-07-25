@@ -1,8 +1,6 @@
-package com.alekstar.yourmoneysaver.domain;
+package com.alekstar.yourmoneysaver.database;
 
 import java.util.List;
-
-import com.alekstar.yourmoneysaver.database.CurrencyEntity;
 
 public interface CurrenciesDataAccessObject {
     void save(CurrencyEntity currency);

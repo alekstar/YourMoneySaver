@@ -1,7 +1,7 @@
 package com.alekstar.yourmoneysaver.ui.javafx;
 
 import com.alekstar.yourmoneysaver.database.CurrenciesAtJpa;
-import com.alekstar.yourmoneysaver.domain.CurrenciesDataAccessObject;
+import com.alekstar.yourmoneysaver.database.CurrenciesDataAccessObject;
 import com.alekstar.yourmoneysaver.ui.javafx.currenciestab.CurrenciesTab;
 
 import javafx.application.Application;

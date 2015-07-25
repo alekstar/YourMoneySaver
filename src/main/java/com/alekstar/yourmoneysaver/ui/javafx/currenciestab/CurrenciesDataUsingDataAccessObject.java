@@ -2,8 +2,8 @@ package com.alekstar.yourmoneysaver.ui.javafx.currenciestab;
 
 import java.util.List;
 
+import com.alekstar.yourmoneysaver.database.CurrenciesDataAccessObject;
 import com.alekstar.yourmoneysaver.database.CurrencyEntity;
-import com.alekstar.yourmoneysaver.domain.CurrenciesDataAccessObject;
 
 public class CurrenciesDataUsingDataAccessObject implements CurrenciesData {
     private final CurrenciesDataAccessObject currenciesDataAccessObject;

@@ -12,8 +12,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import com.alekstar.yourmoneysaver.database.CurrenciesDataAccessObject;
 import com.alekstar.yourmoneysaver.database.CurrencyEntity;
-import com.alekstar.yourmoneysaver.domain.CurrenciesDataAccessObject;
 import com.alekstar.yourmoneysaver.ui.javafx.AbstractTab;
 import com.alekstar.yourmoneysaver.ui.javafx.Standarts;
 import com.alekstar.yourmoneysaver.ui.javafx.currenciestab.addwindow.AddCurrencyWindow;

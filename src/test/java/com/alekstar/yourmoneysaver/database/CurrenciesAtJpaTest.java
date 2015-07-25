@@ -13,7 +13,6 @@ import org.junit.Test;
 import com.alekstar.yourmoneysaver.database.CurrenciesAtJpa;
 import com.alekstar.yourmoneysaver.database.CurrencyEntity;
 import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJpa;
-import com.alekstar.yourmoneysaver.domain.CurrenciesDataAccessObject;
 import com.alekstar.yourmoneysaver.domain.Currency;
 
 public class CurrenciesAtJpaTest {
