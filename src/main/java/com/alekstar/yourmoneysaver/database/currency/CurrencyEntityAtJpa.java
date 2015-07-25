@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.database;
+package com.alekstar.yourmoneysaver.database.currency;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

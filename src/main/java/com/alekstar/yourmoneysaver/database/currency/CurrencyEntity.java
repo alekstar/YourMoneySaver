@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.database;
+package com.alekstar.yourmoneysaver.database.currency;
 
 public interface CurrencyEntity {
     void setName(String name);

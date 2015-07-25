@@ -10,9 +10,10 @@ import javax.persistence.Persistence;
 
 import org.junit.Test;
 
-import com.alekstar.yourmoneysaver.database.CurrenciesAtJpa;
-import com.alekstar.yourmoneysaver.database.CurrencyEntity;
-import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJpa;
+import com.alekstar.yourmoneysaver.database.currency.CurrenciesAtJpa;
+import com.alekstar.yourmoneysaver.database.currency.CurrenciesDataAccessObject;
+import com.alekstar.yourmoneysaver.database.currency.CurrencyEntity;
+import com.alekstar.yourmoneysaver.database.currency.CurrencyEntityAtJpa;
 import com.alekstar.yourmoneysaver.domain.Currency;
 
 public class CurrenciesAtJpaTest {

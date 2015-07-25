@@ -5,7 +5,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import com.alekstar.yourmoneysaver.database.CurrencyEntity;
+import com.alekstar.yourmoneysaver.database.currency.CurrencyEntity;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 public class CurrenciesTable implements Refreshable {

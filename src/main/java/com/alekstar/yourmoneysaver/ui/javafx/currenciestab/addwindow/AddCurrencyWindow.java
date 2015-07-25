@@ -13,8 +13,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-import com.alekstar.yourmoneysaver.database.CurrencyEntity;
-import com.alekstar.yourmoneysaver.database.CurrencyEntityAtJpa;
+import com.alekstar.yourmoneysaver.database.currency.CurrencyEntity;
+import com.alekstar.yourmoneysaver.database.currency.CurrencyEntityAtJpa;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.ui.javafx.Standarts;
 import com.alekstar.yourmoneysaver.ui.javafx.currenciestab.CurrenciesData;

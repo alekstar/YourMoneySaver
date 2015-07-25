@@ -1,4 +1,4 @@
-package com.alekstar.yourmoneysaver.database;
+package com.alekstar.yourmoneysaver.database.currency;
 
 import java.util.ArrayList;
 import java.util.List;
