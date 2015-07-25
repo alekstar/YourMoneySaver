@@ -23,7 +23,7 @@ public class CashTest {
     }
 
     @Test(expected = ArgumentIsNullException.class)
-    public void haveThrowExceptionIfNameIsNull() {
+    public void haveToThrowExceptionIfNameIsNull() {
         pocket.setName(null);
         fail();
     }
