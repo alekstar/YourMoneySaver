@@ -11,6 +11,7 @@ import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 public class CashTest {
     private final Currency usd = new Currency(defineUsdName(),
             defineUsdIsoCode(), defineUsdSymbol(), null);
+    private final Currency eur = new Currency("Euro", "EUR", "€", null);
     private final Account pocket = new Cash(definePocketName(), usd, null);
     private final Account moneyBox = new Cash(defineMoneyBoxName(), usd,
             defineMoneyBoxComments());
@@ -75,6 +76,12 @@ public class CashTest {
     @Test
     public void haveCommentToBeMyMoneyBox() {
         assertEquals(defineMoneyBoxComments(), moneyBox.getComments());
+    }
+
+    @Test
+    public void canChangeCurrency() {
+        pocket.setCurrency(eur);
+        assertEquals(eur, pocket.getCurrency());
     }
 
     private String definePocketName() {
