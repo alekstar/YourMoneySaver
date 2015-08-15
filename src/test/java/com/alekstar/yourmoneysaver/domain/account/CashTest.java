@@ -11,6 +11,7 @@ import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 public class CashTest {
     private final Currency USD = new Currency("US Dollar", "USD", "$", null);
     private final Account pocket = new Cash("Pocket", USD, null);
+    private final Account moneyBox = new Cash("Money box", USD, "My money box");
 
     @Test
     public void haveGetNameReturnPocket() {
@@ -60,5 +61,11 @@ public class CashTest {
         final String SOME_COMMENTS = "Some comments";
         pocket.setComments(SOME_COMMENTS);
         assertEquals(SOME_COMMENTS, pocket.getComments());
+    }
+
+    @Test
+    public void canSetNullToComments() {
+        moneyBox.setComments(null);
+        assertNull(pocket.getComments());
     }
 }
