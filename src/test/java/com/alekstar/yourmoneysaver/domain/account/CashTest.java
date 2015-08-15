@@ -10,7 +10,7 @@ import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 
 public class CashTest {
     private final Currency USD = new Currency(defineUsdName(),
-            defineUsdIsoCode(), "$", null);
+            defineUsdIsoCode(), defineUsdSymbol(), null);
     private final Account pocket = new Cash(definePocketName(), USD, null);
     private final Account moneyBox = new Cash("Money box", USD, "My money box");
 
@@ -85,5 +85,9 @@ public class CashTest {
 
     private String defineUsdIsoCode() {
         return "USD";
+    }
+
+    private String defineUsdSymbol() {
+        return "$";
     }
 }
