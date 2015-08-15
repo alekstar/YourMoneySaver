@@ -84,6 +84,12 @@ public class CashTest {
         assertEquals(eur, pocket.getCurrency());
     }
 
+    @Test(expected = ArgumentIsNullException.class)
+    public void cantChangeCurrencyToNull() {
+        pocket.setCurrency(null);
+        fail();
+    }
+
     private String definePocketName() {
         return "Pocket";
     }
