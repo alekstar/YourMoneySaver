@@ -6,10 +6,11 @@ import org.junit.Test;
 
 import com.alekstar.yourmoneysaver.domain.Currency;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
+import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 
 public class CashTest {
-    Account pocket = new Cash("Pocket", new Currency("US Dollar", "USD", "$",
-            null), null);
+    private final Currency USD = new Currency("US Dollar", "USD", "$", null);
+    private final Account pocket = new Cash("Pocket", USD, null);
 
     @Test
     public void haveGetNameReturnPocket() {
@@ -32,5 +33,10 @@ public class CashTest {
     public void haveToThrowExceptionIfNameIsEmpty() {
         pocket.setName("");
         fail();
+    }
+
+    @Test
+    public void haveToDefineRestReturn0OfUSD() {
+        assertEquals(CommonMoney.create("0", USD), pocket.defineRest());
     }
 }
