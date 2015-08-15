@@ -39,4 +39,9 @@ public class CashTest {
     public void haveToDefineRestReturn0OfUSD() {
         assertEquals(CommonMoney.create("0", USD), pocket.defineRest());
     }
+
+    @Test
+    public void haveToBeNotClosed() {
+        assertEquals(false, pocket.isClosed());
+    }
 }
