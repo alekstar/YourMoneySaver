@@ -44,4 +44,9 @@ public class CashTest {
     public void haveToBeNotClosed() {
         assertEquals(false, pocket.isClosed());
     }
+
+    @Test
+    public void haveToHaveTypeNameCash() {
+        assertEquals("Cash", pocket.defineAccountTypeName());
+    }
 }
