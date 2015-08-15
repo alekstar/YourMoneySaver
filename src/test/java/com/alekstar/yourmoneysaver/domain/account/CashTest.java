@@ -61,9 +61,9 @@ public class CashTest {
 
     @Test
     public void haveToHaveSomeCommentsInComments() {
-        final String SOME_COMMENTS = "Some comments";
-        pocket.setComments(SOME_COMMENTS);
-        assertEquals(SOME_COMMENTS, pocket.getComments());
+        final String someComments = "Some comments";
+        pocket.setComments(someComments);
+        assertEquals(someComments, pocket.getComments());
     }
 
     @Test
