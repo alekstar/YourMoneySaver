@@ -9,10 +9,10 @@ import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 
 public class CashTest {
-    private final Currency USD = new Currency(defineUsdName(),
+    private final Currency usd = new Currency(defineUsdName(),
             defineUsdIsoCode(), defineUsdSymbol(), null);
-    private final Account pocket = new Cash(definePocketName(), USD, null);
-    private final Account moneyBox = new Cash("Money box", USD, "My money box");
+    private final Account pocket = new Cash(definePocketName(), usd, null);
+    private final Account moneyBox = new Cash("Money box", usd, "My money box");
 
     @Test
     public void haveGetNameReturnPocket() {
@@ -39,7 +39,7 @@ public class CashTest {
 
     @Test
     public void haveToDefineRestReturn0OfUSD() {
-        assertEquals(CommonMoney.create("0", USD), pocket.defineRest());
+        assertEquals(CommonMoney.create("0", usd), pocket.defineRest());
     }
 
     @Test
