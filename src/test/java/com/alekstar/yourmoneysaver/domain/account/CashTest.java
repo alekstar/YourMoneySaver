@@ -9,7 +9,7 @@ import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 
 public class CashTest {
-    private final Currency USD = new Currency(defineUSDName(),
+    private final Currency USD = new Currency(defineUsdName(),
             defineUsdIsoCode(), "$", null);
     private final Account pocket = new Cash(definePocketName(), USD, null);
     private final Account moneyBox = new Cash("Money box", USD, "My money box");
@@ -79,7 +79,7 @@ public class CashTest {
         return "Pocket";
     }
 
-    private String defineUSDName() {
+    private String defineUsdName() {
         return "US Dollar";
     }
 
