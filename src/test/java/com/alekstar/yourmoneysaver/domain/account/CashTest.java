@@ -10,12 +10,12 @@ import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 
 public class CashTest {
     private final Currency USD = new Currency("US Dollar", "USD", "$", null);
-    private final Account pocket = new Cash("Pocket", USD, null);
+    private final Account pocket = new Cash(definePocketName(), USD, null);
     private final Account moneyBox = new Cash("Money box", USD, "My money box");
 
     @Test
     public void haveGetNameReturnPocket() {
-        assertEquals("Pocket", pocket.getName());
+        assertEquals(definePocketName(), pocket.getName());
     }
 
     @Test
@@ -72,5 +72,9 @@ public class CashTest {
     @Test
     public void haveCommentToBeMyMoneyBox() {
         assertEquals("My money box", moneyBox.getComments());
+    }
+
+    private String definePocketName() {
+        return "Pocket";
     }
 }
