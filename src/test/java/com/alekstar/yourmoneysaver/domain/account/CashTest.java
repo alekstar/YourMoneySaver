@@ -54,4 +54,11 @@ public class CashTest {
     public void haveNotToHaveComments() {
         assertNull(pocket.getComments());
     }
+
+    @Test
+    public void haveToHaveSomeCommentsInComments() {
+        final String SOME_COMMENTS = "Some comments";
+        pocket.setComments(SOME_COMMENTS);
+        assertEquals(SOME_COMMENTS, pocket.getComments());
+    }
 }
