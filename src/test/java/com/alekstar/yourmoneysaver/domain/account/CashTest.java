@@ -90,6 +90,12 @@ public class CashTest {
         fail();
     }
 
+    @Test
+    public void haveToSetReferenceToCurrencyWhichWasSet() {
+        pocket.setCurrency(eur);
+        assertSame(eur, pocket.getCurrency());
+    }
+
     private String definePocketName() {
         return "Pocket";
     }
