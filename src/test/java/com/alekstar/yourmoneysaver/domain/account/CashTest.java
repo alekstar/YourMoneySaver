@@ -68,4 +68,9 @@ public class CashTest {
         moneyBox.setComments(null);
         assertNull(pocket.getComments());
     }
+
+    @Test
+    public void haveCommentToBeMyMoneyBox() {
+        assertEquals("My money box", moneyBox.getComments());
+    }
 }
