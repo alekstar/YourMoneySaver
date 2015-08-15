@@ -49,4 +49,9 @@ public class CashTest {
     public void haveToHaveTypeNameCash() {
         assertEquals("Cash", pocket.defineAccountTypeName());
     }
+
+    @Test
+    public void haveNotToHaveComments() {
+        assertNull(pocket.getComments());
+    }
 }
