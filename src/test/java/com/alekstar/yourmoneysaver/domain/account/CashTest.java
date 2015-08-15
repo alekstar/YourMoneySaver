@@ -12,7 +12,8 @@ public class CashTest {
     private final Currency usd = new Currency(defineUsdName(),
             defineUsdIsoCode(), defineUsdSymbol(), null);
     private final Account pocket = new Cash(definePocketName(), usd, null);
-    private final Account moneyBox = new Cash("Money box", usd, "My money box");
+    private final Account moneyBox = new Cash(defineMoneyBoxName(), usd,
+            defineMoneyBoxComments());
 
     @Test
     public void haveGetNameReturnPocket() {
@@ -49,7 +50,8 @@ public class CashTest {
 
     @Test
     public void haveToHaveTypeNameCash() {
-        assertEquals("Cash", pocket.defineAccountTypeName());
+        assertEquals(defineCashAccountTypeName(),
+                pocket.defineAccountTypeName());
     }
 
     @Test
@@ -72,7 +74,7 @@ public class CashTest {
 
     @Test
     public void haveCommentToBeMyMoneyBox() {
-        assertEquals("My money box", moneyBox.getComments());
+        assertEquals(defineMoneyBoxComments(), moneyBox.getComments());
     }
 
     private String definePocketName() {
@@ -89,5 +91,17 @@ public class CashTest {
 
     private String defineUsdSymbol() {
         return "$";
+    }
+
+    private String defineMoneyBoxComments() {
+        return "My money box";
+    }
+
+    private String defineMoneyBoxName() {
+        return "Money box";
+    }
+
+    private String defineCashAccountTypeName() {
+        return "Cash";
     }
 }
