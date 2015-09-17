@@ -302,6 +302,13 @@ public class CommonMoneyTest {
         assertFalse(createCommonMoneyFor45Point78USD().equals("45.78 USD"));
     }
 
+    @Test
+    public void oneDollarIsNotEqualsToZeroDollars() {
+        Money oneDollar = CommonMoney.create("1", USD);
+        Money zeroDollars = CommonMoney.create("0", USD);
+        assertNotEquals(oneDollar, zeroDollars);
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
