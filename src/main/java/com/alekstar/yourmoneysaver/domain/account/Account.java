@@ -21,4 +21,6 @@ public interface Account {
     Boolean isClosed();
 
     String defineAccountTypeName();
+
+    void put(Money money);
 }

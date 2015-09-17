@@ -72,4 +72,9 @@ public class Cash implements Account {
     public String defineAccountTypeName() {
         return "Cash";
     }
+
+    @Override
+    public void put(Money money) {
+
+    }
 }
