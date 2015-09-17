@@ -77,4 +77,9 @@ public class Cash implements Account {
     public void put(Money money) {
 
     }
+
+    @Override
+    public void get(String amount, Currency currency) {
+
+    }
 }

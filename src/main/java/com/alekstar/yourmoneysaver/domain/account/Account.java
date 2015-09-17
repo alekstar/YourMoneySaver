@@ -23,4 +23,6 @@ public interface Account {
     String defineAccountTypeName();
 
     void put(Money money);
+
+    void get(String amount, Currency currency);
 }

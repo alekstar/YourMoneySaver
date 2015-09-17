@@ -103,6 +103,13 @@ public class CashTest {
         pocket.put(someMoney);
     }
 
+    @Test
+    public void canGetMoneyBackAfterPuttinItToPocket() {
+        Money someMoney = CommonMoney.create("1", usd);
+        pocket.put(someMoney);
+        pocket.get("1", usd);
+    }
+
     private String definePocketName() {
         return "Pocket";
     }
