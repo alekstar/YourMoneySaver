@@ -27,7 +27,7 @@ public class Cash implements Account {
     }
 
     @Override
-    public Money defineRest() {
+    public Money defineRest(Currency currency) {
         // TODO calculate operations' sums
         return CommonMoney.create("0", getCurrency());
     }

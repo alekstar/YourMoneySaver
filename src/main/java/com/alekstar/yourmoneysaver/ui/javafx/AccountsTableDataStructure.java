@@ -1,7 +1,6 @@
 package com.alekstar.yourmoneysaver.ui.javafx;
 
 import com.alekstar.yourmoneysaver.domain.account.Account;
-import com.alekstar.yourmoneysaver.domain.account.Cash;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 
 public class AccountsTableDataStructure {
@@ -22,10 +21,10 @@ public class AccountsTableDataStructure {
         accountsTableDataStructure.setAccount(account);
         accountsTableDataStructure.setName(account.getName());
         accountsTableDataStructure.setType(account.defineAccountTypeName());
-        accountsTableDataStructure.setRest(account.defineRest()
-                .getDecimalPart());
-        accountsTableDataStructure.setCurrencyCode(account.defineRest()
-                .getCurrency().getIsoCode());
+        accountsTableDataStructure.setRest(account.defineRest(
+                account.getCurrency()).getDecimalPart());
+        accountsTableDataStructure.setCurrencyCode(account.getCurrency()
+                .getIsoCode());
         accountsTableDataStructure.setComments(account.getComments());
         return accountsTableDataStructure;
     }

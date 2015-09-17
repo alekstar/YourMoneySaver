@@ -42,7 +42,7 @@ public class CashTest {
 
     @Test
     public void haveToDefineRestReturn0OfUSD() {
-        assertEquals(CommonMoney.create("0", usd), pocket.defineRest());
+        assertEquals(CommonMoney.create("0", usd), pocket.defineRest(usd));
     }
 
     @Test

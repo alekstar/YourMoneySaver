@@ -16,7 +16,7 @@ public interface Account {
 
     void setComments(String comments);
 
-    Money defineRest();
+    Money defineRest(Currency currency);
 
     Boolean isClosed();
 
