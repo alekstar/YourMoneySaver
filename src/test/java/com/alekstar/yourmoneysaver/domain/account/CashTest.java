@@ -110,6 +110,13 @@ public class CashTest {
         pocket.get("1", usd);
     }
 
+    @Test
+    public void shouldReturnOneDollar() {
+        Money oneDollar = CommonMoney.create("1", usd);
+        pocket.put(oneDollar);
+        assertEquals(oneDollar, pocket.defineRest(usd));
+    }
+
     private String definePocketName() {
         return "Pocket";
     }
