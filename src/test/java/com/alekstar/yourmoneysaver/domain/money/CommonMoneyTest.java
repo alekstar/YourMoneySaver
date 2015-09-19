@@ -309,6 +309,12 @@ public class CommonMoneyTest {
         assertNotEquals(oneDollar, zeroDollars);
     }
 
+    @Test
+    public void shouldResultBe$1Point00() {
+        Money money = CommonMoney.create(1, USD);
+        assertEquals("$1.00", money.defineStringRepresentation());
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }

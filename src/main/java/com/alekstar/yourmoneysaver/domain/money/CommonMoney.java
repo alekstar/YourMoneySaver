@@ -19,6 +19,10 @@ public class CommonMoney implements Money {
         return new CommonMoney(decimalPart, currency);
     }
 
+    public static Money create(int decimalPart, Currency currency) {
+        return new CommonMoney(new Integer(decimalPart).toString(), currency);
+    }
+
     @Override
     public Currency getCurrency() {
         return this.currency;
