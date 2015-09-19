@@ -127,6 +127,22 @@ public class CashTest {
 
     @Test
     public void shouldBeAbilityToPutDollarsAndEuro() {
+        putOneDollarAndOneEuroToPocket();
+    }
+
+    @Test
+    public void shouldReturn1Euro() {
+        putOneDollarAndOneEuroToPocket();
+        assertEquals(CommonMoney.create(1, eur), pocket.defineRest(eur));
+    }
+
+    @Test
+    public void shouldReturn1Dollar() {
+        putOneDollarAndOneEuroToPocket();
+        assertEquals(CommonMoney.create(1, usd), pocket.defineRest(usd));
+    }
+
+    private void putOneDollarAndOneEuroToPocket() {
         Money oneDollar = CommonMoney.create(1, usd);
         Money oneEuro = CommonMoney.create(1, eur);
         pocket.put(oneDollar);
