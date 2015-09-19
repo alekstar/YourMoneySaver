@@ -42,7 +42,7 @@ public class CashTest {
 
     @Test
     public void haveToDefineRestReturn0OfUSD() {
-        assertEquals(CommonMoney.create("0", usd), pocket.defineRest(usd));
+        assertEquals(CommonMoney.create(0, usd), pocket.defineRest(usd));
     }
 
     @Test
@@ -99,27 +99,27 @@ public class CashTest {
 
     @Test
     public void canPutMoneyToPocket() {
-        Money someMoney = CommonMoney.create("1", usd);
+        Money someMoney = CommonMoney.create(1, usd);
         pocket.put(someMoney);
     }
 
     @Test
     public void canGetMoneyBackAfterPuttinItToPocket() {
-        Money someMoney = CommonMoney.create("1", usd);
+        Money someMoney = CommonMoney.create(1, usd);
         pocket.put(someMoney);
         pocket.get("1", usd);
     }
 
     @Test
     public void shouldReturnOneDollar() {
-        Money oneDollar = CommonMoney.create("1", usd);
+        Money oneDollar = CommonMoney.create(1, usd);
         pocket.put(oneDollar);
         assertEquals(oneDollar, pocket.defineRest(usd));
     }
 
     @Test
     public void shouldReturnTwoDollars() {
-        Money threeDollars = CommonMoney.create("3", usd);
+        Money threeDollars = CommonMoney.create(3, usd);
         pocket.put(threeDollars);
         pocket.get("1", usd);
         assertEquals(CommonMoney.create("2", usd), pocket.defineRest(usd));
