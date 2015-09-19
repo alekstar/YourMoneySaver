@@ -14,7 +14,7 @@ public class Cash implements Account {
     public Cash(String name, Currency currency, String comments) {
         setName(name);
         setCurrency(currency);
-        setRest(CommonMoney.create("0", currency));
+        setRest(CommonMoney.create(0, currency));
         setComments(comments);
     }
 

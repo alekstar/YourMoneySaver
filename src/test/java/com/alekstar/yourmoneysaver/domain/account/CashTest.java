@@ -122,7 +122,7 @@ public class CashTest {
         Money threeDollars = CommonMoney.create(3, usd);
         pocket.put(threeDollars);
         pocket.get(1, usd);
-        assertEquals(CommonMoney.create("2", usd), pocket.defineRest(usd));
+        assertEquals(CommonMoney.create(2, usd), pocket.defineRest(usd));
     }
 
     private String definePocketName() {
