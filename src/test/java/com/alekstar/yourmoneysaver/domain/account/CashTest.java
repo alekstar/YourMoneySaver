@@ -125,6 +125,14 @@ public class CashTest {
         assertEquals(CommonMoney.create(2, usd), pocket.defineRest(usd));
     }
 
+    @Test
+    public void shouldBeAbilityToPutDollarsAndEuro() {
+        Money oneDollar = CommonMoney.create(1, usd);
+        Money oneEuro = CommonMoney.create(1, eur);
+        pocket.put(oneDollar);
+        pocket.put(oneEuro);
+    }
+
     private String definePocketName() {
         return "Pocket";
     }

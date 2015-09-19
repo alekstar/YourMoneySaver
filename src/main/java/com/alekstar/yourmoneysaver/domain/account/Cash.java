@@ -1,5 +1,8 @@
 package com.alekstar.yourmoneysaver.domain.account;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import com.alekstar.yourmoneysaver.domain.Currency;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
@@ -9,12 +12,12 @@ public class Cash implements Account {
     String name;
     String comments;
     Currency currency;
-    Money rest;
+    Map<Currency, Money> rest;
 
     public Cash(String name, Currency currency, String comments) {
         setName(name);
         setCurrency(currency);
-        setRest(CommonMoney.create(0, currency));
+        setRest(new TreeMap<Currency, Money>());
         setComments(comments);
     }
 
@@ -30,8 +33,11 @@ public class Cash implements Account {
 
     @Override
     public Money defineRest(Currency currency) {
-        // TODO calculate operations' sums
-        return this.rest;
+        Money restInConcretteCurrency = getRest().get(currency);
+        if (restInConcretteCurrency == null) {
+            return CommonMoney.create(0, currency);
+        }
+        return restInConcretteCurrency;
     }
 
     @Override
@@ -77,19 +83,38 @@ public class Cash implements Account {
 
     @Override
     public void put(Money money) {
-        setRest(getRest().add(money));
+        addToRest(money);
     }
 
     @Override
     public void get(double amount, Currency currency) {
-        setRest(getRest().subtract(CommonMoney.create(amount, currency)));
+        subtractFromRest(CommonMoney.create(amount, currency));
     }
 
-    private Money getRest() {
+    private Map<Currency, Money> getRest() {
         return rest;
     }
 
-    private void setRest(Money rest) {
+    private void setRest(Map<Currency, Money> rest) {
         this.rest = rest;
+    }
+
+    private void addToRest(Money money) {
+        Money restInConcretteCurrency = getRest().get(money.getCurrency());
+        if (restInConcretteCurrency != null) {
+            restInConcretteCurrency = restInConcretteCurrency.add(money);
+            swapWithNewRest(restInConcretteCurrency);
+        } else {
+            getRest().put(money.getCurrency(), money);
+        }
+    }
+
+    private void subtractFromRest(Money money) {
+        swapWithNewRest(getRest().get(money.getCurrency()).subtract(money));
+    }
+
+    private void swapWithNewRest(Money newRest) {
+        getRest().remove(newRest.getCurrency());
+        getRest().put(newRest.getCurrency(), newRest);
     }
 }
