@@ -81,7 +81,7 @@ public class Cash implements Account {
     }
 
     @Override
-    public void get(String amount, Currency currency) {
+    public void get(double amount, Currency currency) {
         setRest(getRest().subtract(CommonMoney.create(amount, currency)));
     }
 

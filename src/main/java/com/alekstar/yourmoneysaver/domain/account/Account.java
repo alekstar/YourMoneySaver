@@ -24,5 +24,5 @@ public interface Account {
 
     void put(Money money);
 
-    void get(String amount, Currency currency);
+    void get(double amount, Currency currency);
 }

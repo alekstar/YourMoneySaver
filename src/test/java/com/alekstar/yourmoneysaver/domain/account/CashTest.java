@@ -107,7 +107,7 @@ public class CashTest {
     public void canGetMoneyBackAfterPuttinItToPocket() {
         Money someMoney = CommonMoney.create(1, usd);
         pocket.put(someMoney);
-        pocket.get("1", usd);
+        pocket.get(1, usd);
     }
 
     @Test
@@ -121,7 +121,7 @@ public class CashTest {
     public void shouldReturnTwoDollars() {
         Money threeDollars = CommonMoney.create(3, usd);
         pocket.put(threeDollars);
-        pocket.get("1", usd);
+        pocket.get(1, usd);
         assertEquals(CommonMoney.create("2", usd), pocket.defineRest(usd));
     }
 
