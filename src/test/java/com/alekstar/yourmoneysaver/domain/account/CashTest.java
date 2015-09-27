@@ -142,6 +142,11 @@ public class CashTest {
         assertEquals(CommonMoney.create(1, usd), pocket.defineRest(usd));
     }
 
+    @Test(expected = InsufficientMoneyException.class)
+    public void shouldThrowInsufficientMoneyExceptionWhenTryingToGet1DollarFromEmptyPocket() {
+        pocket.get(1, usd);
+    }
+
     private void putOneDollarAndOneEuroToPocket() {
         Money oneDollar = CommonMoney.create(1, usd);
         Money oneEuro = CommonMoney.create(1, eur);

@@ -1,11 +1,13 @@
 package com.alekstar.yourmoneysaver.domain.account;
 
+import java.util.Comparator;
 import java.util.Map;
 import java.util.TreeMap;
 
 import com.alekstar.yourmoneysaver.domain.Currency;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
+import com.alekstar.yourmoneysaver.domain.money.CommonMoneyComparator;
 import com.alekstar.yourmoneysaver.domain.money.Money;
 
 public class Cash implements Account {
@@ -110,7 +112,18 @@ public class Cash implements Account {
     }
 
     private void subtractFromRest(Money money) {
-        swapWithNewRest(getRest().get(money.getCurrency()).subtract(money));
+        Comparator<Money> moneyComparator = CommonMoneyComparator.create();
+        Money rest = defineRest(money.getCurrency());
+        if (moneyComparator.compare(rest,
+                CommonMoney.create(0, money.getCurrency())) <= 0) {
+            throw new InsufficientMoneyException("Trying to get "
+                    + money.getDecimalPart() + " "
+                    + money.getCurrency().getIsoCode()
+                    + " from cash account where the rest of money is "
+                    + rest.getDecimalPart() + " "
+                    + rest.getCurrency().getIsoCode());
+        }
+        swapWithNewRest(rest.subtract(money));
     }
 
     private void swapWithNewRest(Money newRest) {
