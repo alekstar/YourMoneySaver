@@ -127,8 +127,7 @@ public class Cash implements Account {
                     + money.getCurrency().getIsoCode() + " from Cash account.");
         }
         Money rest = defineRest(money.getCurrency());
-        if (moneyComparator.compare(rest,
-                CommonMoney.create(0, money.getCurrency())) <= 0) {
+        if (moneyComparator.compare(rest, money) < 0) {
             throw new InsufficientMoneyException("Trying to get "
                     + money.getDecimalPart() + " "
                     + money.getCurrency().getIsoCode()

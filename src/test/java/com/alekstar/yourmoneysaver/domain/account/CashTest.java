@@ -158,6 +158,12 @@ public class CashTest {
         pocket.get(-1, usd);
     }
 
+    @Test(expected = InsufficientMoneyException.class)
+    public void shouldThrowInsufficientMoneyExceptionWhenTryingToGet3DollarsFromPocketWith2Dollars() {
+        pocket.put(CommonMoney.create(2, usd));
+        pocket.get(3, usd);
+    }
+
     private void putOneDollarAndOneEuroToPocket() {
         Money oneDollar = CommonMoney.create(1, usd);
         Money oneEuro = CommonMoney.create(1, eur);
