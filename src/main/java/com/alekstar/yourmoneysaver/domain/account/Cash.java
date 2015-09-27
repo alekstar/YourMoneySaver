@@ -120,6 +120,12 @@ public class Cash implements Account {
 
     private void subtractFromRest(Money money) {
         Comparator<Money> moneyComparator = CommonMoneyComparator.create();
+        if (moneyComparator.compare(money,
+                CommonMoney.create(0, money.getCurrency())) < 0) {
+            throw new IllegalArgumentException("Can't get "
+                    + money.getDecimalPart() + " "
+                    + money.getCurrency().getIsoCode() + " from Cash account.");
+        }
         Money rest = defineRest(money.getCurrency());
         if (moneyComparator.compare(rest,
                 CommonMoney.create(0, money.getCurrency())) <= 0) {
