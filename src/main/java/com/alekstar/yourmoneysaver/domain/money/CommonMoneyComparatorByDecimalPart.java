@@ -3,13 +3,13 @@ package com.alekstar.yourmoneysaver.domain.money;
 import java.math.BigDecimal;
 import java.util.Comparator;
 
-public class CommonMoneyComparator implements Comparator<Money> {
+public class CommonMoneyComparatorByDecimalPart implements Comparator<Money> {
 
-    protected CommonMoneyComparator() {
+    protected CommonMoneyComparatorByDecimalPart() {
     }
 
-    public static CommonMoneyComparator create() {
-        return new CommonMoneyComparator();
+    public static CommonMoneyComparatorByDecimalPart create() {
+        return new CommonMoneyComparatorByDecimalPart();
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import com.alekstar.yourmoneysaver.domain.Currency;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
-import com.alekstar.yourmoneysaver.domain.money.CommonMoneyComparator;
+import com.alekstar.yourmoneysaver.domain.money.CommonMoneyComparatorByDecimalPart;
 import com.alekstar.yourmoneysaver.domain.money.Money;
 
 public class Cash implements Account {
@@ -102,7 +102,7 @@ public class Cash implements Account {
     }
 
     private void addToRest(Money money) {
-        Comparator<Money> moneyComparator = CommonMoneyComparator.create();
+        Comparator<Money> moneyComparator = CommonMoneyComparatorByDecimalPart.create();
         if (moneyComparator.compare(money,
                 CommonMoney.create(0, money.getCurrency())) < 0) {
             throw new IllegalArgumentException("Can't put "
@@ -119,7 +119,7 @@ public class Cash implements Account {
     }
 
     private void subtractFromRest(Money money) {
-        Comparator<Money> moneyComparator = CommonMoneyComparator.create();
+        Comparator<Money> moneyComparator = CommonMoneyComparatorByDecimalPart.create();
         if (moneyComparator.compare(money,
                 CommonMoney.create(0, money.getCurrency())) < 0) {
             throw new IllegalArgumentException("Can't get "

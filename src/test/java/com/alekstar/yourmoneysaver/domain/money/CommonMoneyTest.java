@@ -325,7 +325,7 @@ public class CommonMoneyTest {
     public void shouldOneDollarBeGreaterThanZeroDollars() {
         Money oneDollar = CommonMoney.create(1, USD);
         Money zeroDollars = CommonMoney.create(0, USD);
-        assertTrue(CommonMoneyComparator.create().compare(oneDollar,
+        assertTrue(CommonMoneyComparatorByDecimalPart.create().compare(oneDollar,
                 zeroDollars) > 0);
     }
 
