@@ -102,6 +102,13 @@ public class Cash implements Account {
     }
 
     private void addToRest(Money money) {
+        Comparator<Money> moneyComparator = CommonMoneyComparator.create();
+        if (moneyComparator.compare(money,
+                CommonMoney.create(0, money.getCurrency())) < 0) {
+            throw new IllegalArgumentException("Can't put "
+                    + money.getDecimalPart() + " "
+                    + money.getCurrency().getIsoCode() + " to Cash account.");
+        }
         Money restInConcretteCurrency = getRest().get(money.getCurrency());
         if (restInConcretteCurrency != null) {
             restInConcretteCurrency = restInConcretteCurrency.add(money);

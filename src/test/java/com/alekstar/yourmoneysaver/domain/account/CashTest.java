@@ -147,6 +147,11 @@ public class CashTest {
         pocket.get(1, usd);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowIllegalArgumentExceptionWhenTryingToPutMinusOneDollar() {
+        pocket.put(CommonMoney.create(-1, usd));
+    }
+
     private void putOneDollarAndOneEuroToPocket() {
         Money oneDollar = CommonMoney.create(1, usd);
         Money oneEuro = CommonMoney.create(1, eur);
