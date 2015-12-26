@@ -128,7 +128,7 @@ public class Cash implements Account {
         }
         Money newRest = defineRest(money.getCurrency());
         if (moneyComparator.compare(newRest, money) < 0) {
-            throw new InsufficientMoneyException(newRest);
+            throw new InsufficientMoneyException(newRest, money);
         }
         swapWithNewRest(newRest.subtract(money));
     }

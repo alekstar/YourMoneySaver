@@ -174,6 +174,16 @@ public class CashTest {
         }
     }
 
+    @Test
+    public void shouldGetRequestedSumOfInsufficientMoneyExcetpionObjectReturn3Dollars() throws Exception {
+        pocket.put(CommonMoney.create(2, usd));
+        try {
+            pocket.get(3, usd);
+        } catch (InsufficientMoneyException e) {
+            assertEquals(CommonMoney.create(3, usd), e.getRequestedSum());
+        }
+    }
+
     private void putOneDollarAndOneEuroToPocket() {
         Money oneDollar = CommonMoney.create(1, usd);
         Money oneEuro = CommonMoney.create(1, eur);
