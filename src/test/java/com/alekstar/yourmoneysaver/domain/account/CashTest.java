@@ -167,9 +167,9 @@ public class CashTest {
     @Test
     public void shouldGetRestOfInsufficientMoneyExceptionObjectReturn2Dollars() throws Exception {
         pocket.put(CommonMoney.create(2, usd));
-        try{
+        try {
             pocket.get(3, usd);
-        } catch(InsufficientMoneyException e) {
+        } catch (InsufficientMoneyException e) {
             assertEquals(CommonMoney.create(2, usd), e.getRest());
         }
     }
