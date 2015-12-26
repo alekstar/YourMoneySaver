@@ -126,16 +126,11 @@ public class Cash implements Account {
                     + money.getDecimalPart() + " "
                     + money.getCurrency().getIsoCode() + " from Cash account.");
         }
-        Money rest = defineRest(money.getCurrency());
-        if (moneyComparator.compare(rest, money) < 0) {
-            throw new InsufficientMoneyException("Trying to get "
-                    + money.getDecimalPart() + " "
-                    + money.getCurrency().getIsoCode()
-                    + " from cash account where the rest of money is "
-                    + rest.getDecimalPart() + " "
-                    + rest.getCurrency().getIsoCode());
+        Money newRest = defineRest(money.getCurrency());
+        if (moneyComparator.compare(newRest, money) < 0) {
+            throw new InsufficientMoneyException(newRest);
         }
-        swapWithNewRest(rest.subtract(money));
+        swapWithNewRest(newRest.subtract(money));
     }
 
     private void swapWithNewRest(Money newRest) {
