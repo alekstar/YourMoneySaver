@@ -175,7 +175,7 @@ public class CashTest {
     }
 
     @Test
-    public void shouldGetRequestedSumOfInsufficientMoneyExcetpionObjectReturn3Dollars() throws Exception {
+    public void shouldGetRequestedSumOfInsufficientMoneyExceptionObjectReturn3Dollars() throws Exception {
         pocket.put(CommonMoney.create(2, usd));
         try {
             pocket.get(3, usd);
