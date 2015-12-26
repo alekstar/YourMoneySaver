@@ -16,12 +16,14 @@ public class Cash implements Account {
     String comments;
     Currency currency;
     Map<Currency, Money> rest;
+    List<String> operations;
 
     public Cash(String name, Currency currency, String comments) {
         setName(name);
         setCurrency(currency);
         setRest(new TreeMap<>());
         setComments(comments);
+        operations = new ArrayList<>();
     }
 
     @Override
@@ -87,6 +89,7 @@ public class Cash implements Account {
     @Override
     public void put(Money money) {
         addToRest(money);
+        operations.add("");
     }
 
     @Override
@@ -96,7 +99,7 @@ public class Cash implements Account {
 
     @Override
     public List<String> getOperations() {
-        return new ArrayList<>();
+        return operations;
     }
 
     private Map<Currency, Money> getRest() {
