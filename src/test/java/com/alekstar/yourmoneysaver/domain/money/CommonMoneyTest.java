@@ -9,6 +9,7 @@ import com.alekstar.yourmoneysaver.domain.money.Money;
 
 public class CommonMoneyTest {
     private final Currency USD = createCurrencyUSD();
+    private final Currency EUR = createCurrencyEUR();
 
     @Test
     public void shouldCreateCommonMoneyObject() {
@@ -329,6 +330,13 @@ public class CommonMoneyTest {
                 zeroDollars) > 0);
     }
 
+    @Test
+    public void shouldNot2DollarsBeEqualTo2Euros() throws Exception {
+        Money twoDollars = CommonMoney.create(2, USD);
+        Money twoEuros = CommonMoney.create(2, EUR);
+        assertNotEquals(twoDollars, twoEuros);
+    }
+
     private String defineExceptionTextWhenCurrencyIsNull() {
         return "Argument currency is null.";
     }
@@ -339,5 +347,8 @@ public class CommonMoneyTest {
 
     private Currency createCurrencyUSD() {
         return new Currency("US Dollar", "USD", "$", null);
+    }
+
+    private Currency createCurrencyEUR() { return new Currency("Euro", "EUR", "€", null);
     }
 }

@@ -114,9 +114,13 @@ public class CommonMoney implements Money {
         }
         if (obj instanceof Money) {
             Money anotherMoney = (Money) obj;
-            if (getDecimalPart().equals(anotherMoney.getDecimalPart())) {
-                return true;
+            if (!getDecimalPart().equals(anotherMoney.getDecimalPart())) {
+                return false;
             }
+            if(!getCurrency().equals(anotherMoney.getCurrency())) {
+                return false;
+            }
+            return true;
         }
         return false;
     }
