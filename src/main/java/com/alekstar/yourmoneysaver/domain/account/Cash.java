@@ -101,36 +101,36 @@ public class Cash implements Account {
         this.rest = rest;
     }
 
-    private void addToRest(Money money) {
+    private void addToRest(Money requestedSum) {
         Comparator<Money> moneyComparator = CommonMoneyComparatorByDecimalPart.create();
-        if (moneyComparator.compare(money,
-                CommonMoney.create(0, money.getCurrency())) < 0) {
+        if (moneyComparator.compare(requestedSum,
+                CommonMoney.create(0, requestedSum.getCurrency())) < 0) {
             throw new IllegalArgumentException("Can't put "
-                    + money.getDecimalPart() + " "
-                    + money.getCurrency().getIsoCode() + " to Cash account.");
+                    + requestedSum.getDecimalPart() + " "
+                    + requestedSum.getCurrency().getIsoCode() + " to Cash account.");
         }
-        Money restInConcretteCurrency = getRest().get(money.getCurrency());
+        Money restInConcretteCurrency = getRest().get(requestedSum.getCurrency());
         if (restInConcretteCurrency != null) {
-            restInConcretteCurrency = restInConcretteCurrency.add(money);
+            restInConcretteCurrency = restInConcretteCurrency.add(requestedSum);
             swapWithNewRest(restInConcretteCurrency);
         } else {
-            getRest().put(money.getCurrency(), money);
+            getRest().put(requestedSum.getCurrency(), requestedSum);
         }
     }
 
-    private void subtractFromRest(Money money) {
+    private void subtractFromRest(Money requestedSum) {
         Comparator<Money> moneyComparator = CommonMoneyComparatorByDecimalPart.create();
-        if (moneyComparator.compare(money,
-                CommonMoney.create(0, money.getCurrency())) < 0) {
+        if (moneyComparator.compare(requestedSum,
+                CommonMoney.create(0, requestedSum.getCurrency())) < 0) {
             throw new IllegalArgumentException("Can't get "
-                    + money.getDecimalPart() + " "
-                    + money.getCurrency().getIsoCode() + " from Cash account.");
+                    + requestedSum.getDecimalPart() + " "
+                    + requestedSum.getCurrency().getIsoCode() + " from Cash account.");
         }
-        Money newRest = defineRest(money.getCurrency());
-        if (moneyComparator.compare(newRest, money) < 0) {
-            throw new InsufficientMoneyException(newRest, money);
+        Money newRest = defineRest(requestedSum.getCurrency());
+        if (moneyComparator.compare(newRest, requestedSum) < 0) {
+            throw new InsufficientMoneyException(newRest, requestedSum);
         }
-        swapWithNewRest(newRest.subtract(money));
+        swapWithNewRest(newRest.subtract(requestedSum));
     }
 
     private void swapWithNewRest(Money newRest) {
