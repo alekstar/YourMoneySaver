@@ -19,7 +19,7 @@ public class Cash implements Account {
     public Cash(String name, Currency currency, String comments) {
         setName(name);
         setCurrency(currency);
-        setRest(new TreeMap<Currency, Money>());
+        setRest(new TreeMap<>());
         setComments(comments);
     }
 
@@ -75,7 +75,7 @@ public class Cash implements Account {
     public Boolean isClosed() {
         // TODO if account have last operation of closing account then true,
         // else false
-        return new Boolean(false);
+        return false;
     }
 
     @Override
