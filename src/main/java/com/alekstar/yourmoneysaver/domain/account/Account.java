@@ -3,6 +3,8 @@ package com.alekstar.yourmoneysaver.domain.account;
 import com.alekstar.yourmoneysaver.domain.Currency;
 import com.alekstar.yourmoneysaver.domain.money.Money;
 
+import java.util.List;
+
 public interface Account {
     String getName();
 
@@ -25,4 +27,6 @@ public interface Account {
     void put(Money money);
 
     void get(double amount, Currency currency);
+
+    List<String> getOperations();
 }

@@ -1,14 +1,15 @@
 package com.alekstar.yourmoneysaver.domain.account;
 
-import java.util.Comparator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 import com.alekstar.yourmoneysaver.domain.Currency;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoneyComparatorByDecimalPart;
 import com.alekstar.yourmoneysaver.domain.money.Money;
+
+// TODO History
+// TODO Categories of operations
 
 public class Cash implements Account {
     String name;
@@ -91,6 +92,11 @@ public class Cash implements Account {
     @Override
     public void get(double amount, Currency currency) {
         subtractFromRest(CommonMoney.create(amount, currency));
+    }
+
+    @Override
+    public List<String> getOperations() {
+        return new ArrayList<>();
     }
 
     private Map<Currency, Money> getRest() {
