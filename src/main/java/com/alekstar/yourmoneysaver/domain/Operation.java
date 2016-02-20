@@ -2,6 +2,7 @@ package com.alekstar.yourmoneysaver.domain;
 
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 import com.alekstar.yourmoneysaver.domain.account.Cash;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
@@ -11,10 +12,10 @@ public class Operation {
     String comment;
     Date date;
     String receiver;
-    LinkedList<Transaction> transactions;
+    List<Transaction> transactions;
 
     public Operation(Cash account, String receiver,
-            LinkedList<Transaction> transactions, String comment, Date date) {
+                     List<Transaction> transactions, String comment, Date date) {
         setAccount(account);
         setReceiver(receiver);
         setTransactions(transactions);
@@ -38,7 +39,7 @@ public class Operation {
         return receiver;
     }
 
-    public LinkedList<Transaction> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
@@ -64,7 +65,7 @@ public class Operation {
         this.receiver = receiver;
     }
 
-    public void setTransactions(LinkedList<Transaction> transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         if (transactions == null) {
             throw new ArgumentIsNullException("transactions");
         }

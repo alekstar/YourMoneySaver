@@ -3,6 +3,9 @@ package com.alekstar.yourmoneysaver.domain.account;
 import java.util.*;
 
 import com.alekstar.yourmoneysaver.domain.Currency;
+import com.alekstar.yourmoneysaver.domain.Operation;
+import com.alekstar.yourmoneysaver.domain.Transaction;
+import com.alekstar.yourmoneysaver.domain.TransactionCategory;
 import com.alekstar.yourmoneysaver.domain.exceptions.ArgumentIsNullException;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoney;
 import com.alekstar.yourmoneysaver.domain.money.CommonMoneyComparatorByDecimalPart;
@@ -16,7 +19,7 @@ public class Cash implements Account {
     String comments;
     Currency currency;
     Map<Currency, Money> rest;
-    List<String> operations;
+    List<Operation> operations;
 
     public Cash(String name, Currency currency, String comments) {
         setName(name);
@@ -89,7 +92,9 @@ public class Cash implements Account {
     @Override
     public void put(Money money) {
         addToRest(money);
-        operations.add("");
+        ArrayList<Transaction> transactions = new ArrayList<>();
+        transactions.add(new Transaction(Transaction.Sign.PLUS, money, new TransactionCategory(null, "Category", TransactionCategory.Sign.PLUS), ""));
+        operations.add(new Operation(this, "", transactions, "", new Date()));
     }
 
     @Override
@@ -98,7 +103,7 @@ public class Cash implements Account {
     }
 
     @Override
-    public List<String> getOperations() {
+    public List<Operation> getOperations() {
         return operations;
     }
 
