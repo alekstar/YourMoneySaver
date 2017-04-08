@@ -10,11 +10,15 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.apache.log4j.Logger;
 
 public class YourMoneySaverUsingJavaFX extends Application {
 
+    private final static Logger logger = Logger.getLogger(YourMoneySaverUsingJavaFX.class);
+
     @Override
     public void start(Stage primaryStage) {
+        logger.info("Starting application");
 
         TabPane mainPanel = getMainPanel(primaryStage);
 
@@ -61,7 +65,7 @@ public class YourMoneySaverUsingJavaFX extends Application {
         try {
             launch(args);
         } finally {
-            System.err.println("Attempt to close EntityManagerFactory.");
+            logger.info("Attempt to close EntityManagerFactory.");
             EntityManagerFactorySingleton.close();
         }
     }
