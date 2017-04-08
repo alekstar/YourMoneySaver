@@ -19,46 +19,55 @@ public class YourMoneySaverUsingJavaFX extends Application {
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting application");
-
-        TabPane mainPanel = getMainPanel(primaryStage);
-
-        StackPane root = new StackPane();
-        root.getChildren().add(mainPanel);
-
-        Scene mainWindow = new Scene(root, 500, 500);
-
-        primaryStage.setTitle("YourMoneySaver");
-        primaryStage.setScene(mainWindow);
-        primaryStage.setResizable(false);
-        primaryStage.centerOnScreen();
+        initialize(primaryStage);
         primaryStage.show();
     }
 
-    private TabPane getMainPanel(Stage parentWindow) {
-        TabPane mainPanel = new TabPane();
+    private void initialize(Stage primaryStage) {
+        primaryStage.setTitle("YourMoneySaver");
+        primaryStage.setScene(defineMainWindow(primaryStage));
+        primaryStage.setResizable(false);
+        primaryStage.centerOnScreen();
+    }
 
-        AccountsTab accountsTab = AccountsTab.create(parentWindow);
-        CurrenciesDataAccessObject currenciesDataAccessObject =
-                CurrenciesAtJpa.create(EntityManagerFactorySingleton
-                        .getEntityManager());
-        CurrenciesTab currenciesTab =
-                CurrenciesTab.create(parentWindow, currenciesDataAccessObject);
+    private Scene defineMainWindow(Stage primaryStage) {
+        final StackPane rootPane = defineRootPane(primaryStage);
+        return new Scene(rootPane, 500, 500);
+    }
 
-        Tab accounts = accountsTab.getTab();
-        Tab history = getHistoryTab();
-        Tab currencies = currenciesTab.getTab();
+    private StackPane defineRootPane(Stage primaryStage) {
+        final TabPane mainPanel = defineMainPanel(primaryStage);
 
-        mainPanel.getTabs().add(accounts);
-        mainPanel.getTabs().add(history);
-        mainPanel.getTabs().add(currencies);
+        final StackPane root = new StackPane();
+        root.getChildren().add(mainPanel);
+        return root;
+    }
+
+    private TabPane defineMainPanel(Stage parentWindow) {
+        final TabPane mainPanel = new TabPane();
+        mainPanel.getTabs().add(defineAccountsTab(parentWindow));
+        mainPanel.getTabs().add(defineHistoryTab());
+        mainPanel.getTabs().add(defineCurrenciesTab(parentWindow));
         return mainPanel;
     }
 
-    private Tab getHistoryTab() {
-        Tab history = new Tab();
-        history.setText("History");
-        history.setClosable(false);
-        return history;
+    private Tab defineCurrenciesTab(Stage parentWindow) {
+        final CurrenciesDataAccessObject currenciesDataAccessObject =
+                CurrenciesAtJpa.create(EntityManagerFactorySingleton.getEntityManager());
+        final CurrenciesTab currenciesTab = CurrenciesTab.create(parentWindow, currenciesDataAccessObject);
+        return currenciesTab.getTab();
+    }
+
+    private Tab defineAccountsTab(Stage parentWindow) {
+        final AccountsTab accountsTab = AccountsTab.create(parentWindow);
+        return accountsTab.getTab();
+    }
+
+    private Tab defineHistoryTab() {
+        final Tab historyTab = new Tab();
+        historyTab.setText("History");
+        historyTab.setClosable(false);
+        return historyTab;
     }
 
     public static void main(String[] args) {
