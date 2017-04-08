@@ -15,6 +15,8 @@ import org.apache.log4j.Logger;
 public class YourMoneySaverUsingJavaFX extends Application {
 
     private final static Logger logger = Logger.getLogger(YourMoneySaverUsingJavaFX.class);
+    private final CurrenciesDataAccessObject currenciesDataAccessObject =
+            CurrenciesAtJpa.create(EntityManagerFactorySingleton.getEntityManager());
 
     @Override
     public void start(Stage primaryStage) {
@@ -52,8 +54,6 @@ public class YourMoneySaverUsingJavaFX extends Application {
     }
 
     private Tab defineCurrenciesTab(Stage parentWindow) {
-        final CurrenciesDataAccessObject currenciesDataAccessObject =
-                CurrenciesAtJpa.create(EntityManagerFactorySingleton.getEntityManager());
         final CurrenciesTab currenciesTab = CurrenciesTab.create(parentWindow, currenciesDataAccessObject);
         return currenciesTab.getTab();
     }
