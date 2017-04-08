@@ -9,8 +9,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import org.apache.log4j.Logger;
 
 public class AccountOperationsToolBox {
+
+    private final static Logger logger = Logger.getLogger(AccountOperationsToolBox.class);
+
     private class AddAccountButtonAction implements EventHandler<MouseEvent> {
         @Override
         public void handle(MouseEvent mouseEvent) {
@@ -26,8 +30,7 @@ public class AccountOperationsToolBox {
             AccountsTableDataStructure selectedAccount =
                     getTableView().getSelectionModel().getSelectedItem();
             if (selectedAccount != null) {
-                System.out.println("Editing account "
-                        + selectedAccount.getName());
+                logger.info("Editing account " + selectedAccount.getName());
             }
         }
     }
