@@ -4,3 +4,6 @@
 /YourMoneySaver_2.uml
 /.settings/
 /YourMoneySaver.uml
+/.idea
+*.iml
+*.log
