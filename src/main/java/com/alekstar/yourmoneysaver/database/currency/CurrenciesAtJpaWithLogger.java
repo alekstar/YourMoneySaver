@@ -45,6 +45,9 @@ public class CurrenciesAtJpaWithLogger implements CurrenciesDataAccessObject {
 
     @Override
     public List<CurrencyEntity> loadAll() {
-        return null;
+        logger.debug("Loading all currencies.");
+        final List<CurrencyEntity> currencies = currenciesAtJpa.loadAll();
+        logger.debug("Loaded currencies: " + currencies);
+        return currencies;
     }
 }
