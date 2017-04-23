@@ -118,4 +118,12 @@ public class CurrencyEntityAtJpa implements CurrencyEntity {
         }
         return getCurrency().equals(((CurrencyEntityAtJpa) obj).getCurrency());
     }
+
+    @Override
+    public String toString() {
+        return "CurrencyEntityAtJpa{" +
+                "currency=" + currency +
+                ", id=" + id +
+                '}';
+    }
 }

@@ -142,4 +142,14 @@ public class Currency implements Comparable<Currency> {
             return false;
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Currency{" +
+                "name='" + name + '\'' +
+                ", isoCode='" + isoCode + '\'' +
+                ", symbol='" + symbol + '\'' +
+                ", comments='" + comments + '\'' +
+                '}';
+    }
 }
