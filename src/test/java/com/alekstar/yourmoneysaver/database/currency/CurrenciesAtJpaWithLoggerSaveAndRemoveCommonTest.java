@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -17,9 +16,9 @@ import static org.mockito.MockitoAnnotations.initMocks;
 
 public class CurrenciesAtJpaWithLoggerSaveAndRemoveCommonTest {
 
-    private final CurrencyEntityAtJpa currency;
-
     private final RuntimeException exception;
+
+    private final CurrencyEntityAtJpa currency;
 
     @Mock
     private Logger logger;
@@ -32,9 +31,9 @@ public class CurrenciesAtJpaWithLoggerSaveAndRemoveCommonTest {
 
     private ExpectedException expectedException = ExpectedException.none();
 
-    public CurrenciesAtJpaWithLoggerSaveAndRemoveCommonTest(RuntimeException exception, CurrencyEntityAtJpa currency) {
-        this.exception = exception;
+    public CurrenciesAtJpaWithLoggerSaveAndRemoveCommonTest(CurrencyEntityAtJpa currency, RuntimeException exception) {
         this.currency = currency;
+        this.exception = exception;
     }
 
     @Parameterized.Parameters(name = "Currency: {0}, Exception: {1}")

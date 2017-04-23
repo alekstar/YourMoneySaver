@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 public class CurrenciesAtJpaWithLoggerRemoveTest extends CurrenciesAtJpaWithLoggerSaveAndRemoveCommonTest {
 
     public CurrenciesAtJpaWithLoggerRemoveTest(CurrencyEntityAtJpa currency, RuntimeException exception) {
-        super(exception, currency);
+        super(currency, exception);
     }
 
     @Test
