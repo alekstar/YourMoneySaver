@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 @RunWith(Parameterized.class)
-public class CurrenciesAtJpaWithLoggerTest {
+public class CurrenciesAtJpaWithLoggerSaveTest {
 
     @Mock
     private Logger logger;
@@ -36,7 +36,7 @@ public class CurrenciesAtJpaWithLoggerTest {
     private final CurrencyEntityAtJpa currency;
     private final RuntimeException exception;
 
-    public CurrenciesAtJpaWithLoggerTest(CurrencyEntityAtJpa currency, RuntimeException exception) {
+    public CurrenciesAtJpaWithLoggerSaveTest(CurrencyEntityAtJpa currency, RuntimeException exception) {
         this.currency = currency;
         this.exception = exception;
     }
@@ -60,25 +60,25 @@ public class CurrenciesAtJpaWithLoggerTest {
 
     @Test
     public void shouldCallDebugOnLoggerWithSavingCurrency() {
-        currenciesAtJpaWithLogger.save(currency);
+        save();
         verify(logger, times(1)).debug("Saving currency " + currency);
     }
 
     @Test
     public void shouldCallSaveOfCurrenciesAtJpaWithSpecifiedCurrency() {
-        currenciesAtJpaWithLogger.save(currency);
+        save();
         verify(currenciesAtJpa, times(1)).save(currency);
     }
 
     @Test
     public void shouldCallDebugOnLoggerWithCurrencySaved() {
-        currenciesAtJpaWithLogger.save(currency);
+        save();
         verify(logger, times(1)).debug("Currency " + currency + " saved.");
     }
 
     @Test
     public void shouldCallDebugOnLoggerWithCurrencySavedAfterSaveMethodCalled() {
-        currenciesAtJpaWithLogger.save(currency);
+        save();
         final InOrder inOrder = inOrder(currenciesAtJpa, logger);
         inOrder.verify(currenciesAtJpa).save(currency);
         inOrder.verify(logger).debug("Currency " + currency + " saved.");
@@ -88,8 +88,12 @@ public class CurrenciesAtJpaWithLoggerTest {
     public void shouldCallErrorOnLoggerWithCurrencyHaveNotBeenSavedBecauseOfException() {
         doThrow(exception).when(currenciesAtJpa).save(currency);
         expectedException.expect(exception.getClass());
-        currenciesAtJpaWithLogger.save(currency);
+        save();
         final String message = "Currency " + currency + " have not been saved because of exception.";
         verify(logger, times(1)).error(message, exception);
+    }
+
+    private void save() {
+        currenciesAtJpaWithLogger.save(currency);
     }
 }
