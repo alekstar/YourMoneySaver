@@ -33,6 +33,14 @@ public class CurrenciesAtJpaWithLogger implements CurrenciesDataAccessObject {
 
     @Override
     public void remove(CurrencyEntity currencyEntity) {
+        try {
+            logger.debug("Removing currency " + currencyEntity);
+            currenciesAtJpa.remove(currencyEntity);
+            logger.debug("Currency " + currencyEntity + " have been removed.");
+        } catch (RuntimeException e) {
+            logger.error("Currency " + currencyEntity + " have not been removed because of exception.", e);
+            throw e;
+        }
     }
 
     @Override
